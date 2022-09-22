@@ -75,85 +75,11 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"waitOnCompletion": true,
-								"parameters": {
-									"IngestID": {
-										"value": "@item().IngestID",
-										"type": "Expression"
-									},
-									"SourceSystemName": {
-										"value": "@item().SourceSystemName",
-										"type": "Expression"
-									},
-									"StreamName": {
-										"value": "@item().StreamName",
-										"type": "Expression"
-									},
-									"EntityName": {
-										"value": "@item().EntityName",
-										"type": "Expression"
-									},
-									"DataFromTimestamp": {
-										"value": "@item().DataFromTimestamp",
-										"type": "Expression"
-									},
-									"DataToTimestamp": {
-										"value": "@item().DataToTimestamp",
-										"type": "Expression"
-									},
-									"RunSequence": {
-										"value": "@item().RunSequence",
-										"type": "Expression"
-									},
-									"L1TransformationReqdFlag": {
-										"value": "@item().L1TransformationReqdFlag",
-										"type": "Expression"
-									},
-									"L2TransformationReqdFlag": {
-										"value": "@item().L2TransformationReqdFlag",
-										"type": "Expression"
-									},
-									"DestinationRawFileSystem": {
-										"value": "@item().DestinationRawFileSystem",
-										"type": "Expression"
-									},
-									"DestinationRawFolder": {
-										"value": "@item().DestinationRawFolder",
-										"type": "Expression"
-									},
-									"DestinationRawFile": {
-										"value": "@item().DestinationRawFile",
-										"type": "Expression"
-									},
-									"SourceQuery": {
-										"value": "@item().SourceQuery",
-										"type": "Expression"
-									},
-									"StatQuery": {
-										"value": "@item().StatQuery",
-										"type": "Expression"
-									},
-									"ReloadFlag": {
-										"value": "@item().ReloadFlag",
-										"type": "Expression"
-									},
-									"KeyVaultEnvironmentURL": {
-										"value": "@pipeline().parameters.KeyVaultEnvironmentURL",
-										"type": "Expression"
-									},
-									"KeyVaultUserName": {
-										"value": "@pipeline().parameters.KeyVaultUserName",
-										"type": "Expression"
-									},
-									"KeyVaultPassword": {
-										"value": "@pipeline().parameters.KeyVaultPassword",
-										"type": "Expression"
-									},
-									"KeyVaultSecurityToken": {
-										"value": "@pipeline().parameters.KeyVaultSecurityToken",
-										"type": "Expression"
-									}
-								}
+								"pipeline": {
+									"referenceName": "Salesforce-Ingest",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
 							}
 						}
 					]
