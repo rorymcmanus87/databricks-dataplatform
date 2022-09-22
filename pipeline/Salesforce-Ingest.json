@@ -534,6 +534,15 @@
 						},
 						"readBehavior": "query"
 					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 32
 				},
@@ -560,6 +569,26 @@
 							},
 							"KeyVaultSecurityToken": {
 								"value": "@pipeline().parameters.KeyVaultSecurityToken",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Bronze_Parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"File": {
+								"value": "@variables('_DestinationRawFile')",
 								"type": "Expression"
 							}
 						}
