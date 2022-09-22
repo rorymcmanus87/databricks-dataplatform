@@ -5,11 +5,7 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://bastoragedatalake01.dfs.core.windows.net/"
-		},
-		"connectVia": {
-			"referenceName": "AutoResolveIntegrationRuntime",
-			"type": "IntegrationRuntimeReference"
+			"url": "https://dlsdatamasterydev01.dfs.core.windows.net/"
 		}
 	}
 }
