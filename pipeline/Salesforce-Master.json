@@ -1374,15 +1374,15 @@
 			},
 			"KeyVaultUserName": {
 				"type": "string",
-				"defaultValue": "Salesforce-Corp-UserName"
+				"defaultValue": "Salesforce-UserName"
 			},
 			"KeyVaultPassword": {
 				"type": "string",
-				"defaultValue": "Salesforce-Corp-Password"
+				"defaultValue": "Salesforce-Password"
 			},
 			"KeyVaultSecurityToken": {
 				"type": "string",
-				"defaultValue": "Salesforce-Corp-SecurityToken"
+				"defaultValue": "Salesforce-SecurityToken"
 			}
 		},
 		"folder": {
