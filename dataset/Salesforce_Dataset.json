@@ -1,0 +1,32 @@
+{
+	"name": "Salesforce_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Salesforce",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ObjectName": {
+				"type": "string"
+			},
+			"EnvironmentURL": {
+				"type": "string"
+			},
+			"UserName": {
+				"type": "string"
+			},
+			"Password": {
+				"type": "string"
+			},
+			"SecurityToken": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Azure/Cloud"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": []
+	}
+}
