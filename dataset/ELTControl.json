@@ -1,5 +1,5 @@
 {
-	"name": "ControlDB_Dataset",
+	"name": "ELTControl",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ControlDB",
