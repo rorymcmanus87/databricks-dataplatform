@@ -1,0 +1,11 @@
+{
+	"name": "KeyVault01",
+	"properties": {
+		"description": "Key Vault 01",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://akvdatamasterydev01.vault.azure.net/"
+		}
+	}
+}
