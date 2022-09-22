@@ -14,7 +14,7 @@
 			}
 		},
 		"folder": {
-			"name": "Azure/Datalake"
+			"name": "Azure/Databases"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
