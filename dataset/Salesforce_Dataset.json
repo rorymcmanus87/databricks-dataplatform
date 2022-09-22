@@ -9,16 +9,16 @@
 			"ObjectName": {
 				"type": "string"
 			},
-			"EnvironmentURL": {
+			"KeyVaultEnvironmentURL": {
 				"type": "string"
 			},
-			"UserName": {
+			"KeyVaultUserName": {
 				"type": "string"
 			},
-			"Password": {
+			"KeyVaultPassword": {
 				"type": "string"
 			},
-			"SecurityToken": {
+			"KeyVaultSecurityToken": {
 				"type": "string"
 			}
 		},
