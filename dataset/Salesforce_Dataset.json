@@ -3,7 +3,25 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Salesforce",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"EnvironmentUrl": {
+					"value": "@dataset().KeyVaultEnvironmentURL",
+					"type": "Expression"
+				},
+				"UserName": {
+					"value": "@dataset().KeyVaultUserName",
+					"type": "Expression"
+				},
+				"Password": {
+					"value": "@dataset().KeyVaultPassword",
+					"type": "Expression"
+				},
+				"SecurityToken": {
+					"value": "@dataset().KeyVaultSecurityToken",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"ObjectName": {
@@ -27,6 +45,12 @@
 		},
 		"annotations": [],
 		"type": "SalesforceObject",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": {
+				"value": "@dataset().ObjectName",
+				"type": "Expression"
+			}
+		}
 	}
 }
