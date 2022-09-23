@@ -879,6 +879,32 @@
 							"type": "Expression"
 						},
 						"readBehavior": "query"
+					},
+					"dataset": {
+						"referenceName": "Salesforce_Dataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"ObjectName": {
+								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							},
+							"KeyVaultEnvironmentURL": {
+								"value": "@pipeline().parameters.KeyVaultEnvironmentURL",
+								"type": "Expression"
+							},
+							"KeyVaultUserName": {
+								"value": "@pipeline().parameters.KeyVaultUserName",
+								"type": "Expression"
+							},
+							"KeyVaultPassword": {
+								"value": "@pipeline().parameters.KeyVaultPassword",
+								"type": "Expression"
+							},
+							"KeyVaultSecurityToken": {
+								"value": "@pipeline().parameters.KeyVaultSecurityToken",
+								"type": "Expression"
+							}
+						}
 					}
 				}
 			}
