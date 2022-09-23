@@ -319,6 +319,10 @@
 						},
 						"partitionOption": "None"
 					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
@@ -652,6 +656,10 @@
 							}
 						},
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
