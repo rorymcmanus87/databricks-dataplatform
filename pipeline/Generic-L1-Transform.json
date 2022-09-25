@@ -250,6 +250,9 @@
 			"MaxRetries": {
 				"type": "int",
 				"defaultValue": 3
+			},
+			"NotebookParameters": {
+				"type": "string"
 			}
 		},
 		"folder": {
