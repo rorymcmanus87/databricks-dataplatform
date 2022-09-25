@@ -932,7 +932,7 @@
 			},
 			"EntityName": {
 				"type": "string",
-				"defaultValue": "MBS.VWMBMDW_CONTRACT"
+				"defaultValue": "Contacts"
 			},
 			"DataFromTimestamp": {
 				"type": "string",
@@ -968,7 +968,7 @@
 			},
 			"SourceQuery": {
 				"type": "string",
-				"defaultValue": "SELECT src.* FROM MBS.VWMBMDW_CONTRACT src WHERE EXISTS (SELECT 1 FROM MBS.VWMBMDW_CONTRACT delta WHERE delta.NMI =src.NMI AND delta.LAST_UPDATED BETWEEN '2019-07-15 00:00:00' AND '2019-07-16 00:00:00') WITH UR"
+				"defaultValue": "select * from Contacts"
 			},
 			"StatQuery": {
 				"type": "string",
@@ -979,16 +979,20 @@
 				"defaultValue": false
 			},
 			"KeyVaultEnvironmentURL": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Salesforce-EnvironmentURL"
 			},
 			"KeyVaultUserName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Salesforce-UserName"
 			},
 			"KeyVaultPassword": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Salesforce-Password"
 			},
 			"KeyVaultSecurityToken": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Salesforce-SecurityToken"
 			}
 		},
 		"variables": {
