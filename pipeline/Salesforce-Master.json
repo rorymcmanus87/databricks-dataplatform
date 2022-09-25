@@ -150,7 +150,7 @@
 										"type": "Expression"
 									},
 									"KeyVaultPassword": {
-										"value": "@pipeline().parameters.KeyVaultUserName",
+										"value": "@pipeline().parameters.KeyVaultPassword",
 										"type": "Expression"
 									},
 									"KeyVaultSecurityToken": {
