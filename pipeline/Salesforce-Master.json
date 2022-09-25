@@ -308,6 +308,10 @@
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L1-Transform",
+												"type": "PipelineReference"
+											},
 											"waitOnCompletion": true
 										}
 									}
