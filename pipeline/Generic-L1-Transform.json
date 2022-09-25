@@ -254,7 +254,7 @@
 			"NotebookParameters": {
 				"type": "string"
 			},
-			"OutputL1CuratedFileWriteMode": {
+			"OutputDWTableWriteMode": {
 				"type": "string"
 			},
 			"ReRunL1TransformFlag": {
