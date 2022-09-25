@@ -27,76 +27,8 @@
 						"type": "Expression"
 					},
 					"baseParameters": {
-						"L1TransformInstanceID": {
-							"value": "@string(pipeline().parameters.L1TransformInstanceID)",
-							"type": "Expression"
-						},
-						"InputRawFileSystem": {
-							"value": "@coalesce(pipeline().parameters.InputRawFileSystem, '')",
-							"type": "Expression"
-						},
-						"InputRawFileFolder": {
-							"value": "@coalesce(pipeline().parameters.InputRawFileFolder, '')",
-							"type": "Expression"
-						},
-						"InputRawFile": {
-							"value": "@coalesce(pipeline().parameters.InputRawFile, '')",
-							"type": "Expression"
-						},
-						"InputRawFileDelimiter": {
-							"value": "@coalesce(pipeline().parameters.InputRawFileDelimiter, '')",
-							"type": "Expression"
-						},
-						"InputFileHeaderFlag": {
-							"value": "@{pipeline().parameters.InputFileHeaderFlag}",
-							"type": "Expression"
-						},
-						"OutputL1CurateFileSystem": {
-							"value": "@coalesce(pipeline().parameters.OutputL1CurateFileSystem, '')",
-							"type": "Expression"
-						},
-						"OutputL1CuratedFolder": {
-							"value": "@coalesce(pipeline().parameters.OutputL1CuratedFolder, '')",
-							"type": "Expression"
-						},
-						"OutputL1CuratedFile": {
-							"value": "@coalesce(pipeline().parameters.OutputL1CuratedFile, '')",
-							"type": "Expression"
-						},
-						"OutputL1CuratedFileDelimiter": {
-							"value": "@coalesce(pipeline().parameters.OutputL1CuratedFileDelimiter, '')",
-							"type": "Expression"
-						},
-						"OutputL1CuratedFileFormat": {
-							"value": "@coalesce(pipeline().parameters.OutputL1CuratedFileFormat, '')",
-							"type": "Expression"
-						},
-						"OutputL1CuratedFileWriteMode": {
-							"value": "@coalesce(pipeline().parameters.OutputL1CuratedFileWriteMode, '')",
-							"type": "Expression"
-						},
-						"OutputEntityStaging": {
-							"value": "@coalesce(pipeline().parameters.OutputEntityStaging, '')",
-							"type": "Expression"
-						},
-						"LookupColumns": {
-							"value": "@coalesce(pipeline().parameters.LookupColumns, '')",
-							"type": "Expression"
-						},
-						"OutputEntityName": {
-							"value": "@coalesce(pipeline().parameters.OutputEntityName, '')",
-							"type": "Expression"
-						},
-						"OutputEntityWriteMode": {
-							"value": "@coalesce(pipeline().parameters.OutputEntityWriteMode, '')",
-							"type": "Expression"
-						},
-						"DeltaName": {
-							"value": "@coalesce(pipeline().parameters.DeltaName, '')",
-							"type": "Expression"
-						},
-						"CustomParameters": {
-							"value": "@coalesce(pipeline().parameters.CustomParameters, '')",
+						"NotebookParameters": {
+							"value": "@pipeline().parameters.NotebookParameters",
 							"type": "Expression"
 						}
 					}
@@ -315,83 +247,9 @@
 				"type": "int",
 				"defaultValue": 214
 			},
-			"NotebookName": {
-				"type": "string",
-				"defaultValue": "C1Transform-LoadChangePattern"
-			},
-			"NotebookPath": {
-				"type": "string",
-				"defaultValue": "Shared/Common/C1"
-			},
-			"InputRawFileSystem": {
-				"type": "string",
-				"defaultValue": "raw-zone"
-			},
-			"InputRawFileFolder": {
-				"type": "string",
-				"defaultValue": "Salesforce/Account/2022/08/29"
-			},
-			"InputRawFile": {
-				"type": "string",
-				"defaultValue": "Salesforce_Account_20220829_580aaa0c-f697-479f-b3e4-a6916a0e95b0.parquet"
-			},
-			"InputRawFileDelimiter": {
-				"type": "string"
-			},
-			"InputFileHeaderFlag": {
-				"type": "bool",
-				"defaultValue": false
-			},
-			"OutputL1CurateFileSystem": {
-				"type": "string",
-				"defaultValue": "curated1-zone"
-			},
-			"OutputL1CuratedFolder": {
-				"type": "string",
-				"defaultValue": "Salesforce/Account"
-			},
-			"OutputL1CuratedFile": {
-				"type": "string",
-				"defaultValue": "Salesforce_Account_C1_19000101.parquet"
-			},
-			"OutputL1CuratedFileDelimiter": {
-				"type": "string"
-			},
-			"OutputL1CuratedFileFormat": {
-				"type": "string"
-			},
-			"OutputL1CuratedFileWriteMode": {
-				"type": "string"
-			},
-			"OutputEntityStaging": {
-				"type": "string",
-				"defaultValue": "stg.SF_Account"
-			},
-			"LookupColumns": {
-				"type": "string",
-				"defaultValue": "Id"
-			},
-			"OutputEntityName": {
-				"type": "string",
-				"defaultValue": "dta.SF_Account"
-			},
-			"OutputEntityWriteMode": {
-				"type": "string",
-				"defaultValue": "append"
-			},
-			"ReRunL1TransformFlag": {
-				"type": "bool",
-				"defaultValue": false
-			},
 			"MaxRetries": {
 				"type": "int",
 				"defaultValue": 3
-			},
-			"DeltaName": {
-				"type": "string"
-			},
-			"CustomParameters": {
-				"type": "string"
 			}
 		},
 		"folder": {
