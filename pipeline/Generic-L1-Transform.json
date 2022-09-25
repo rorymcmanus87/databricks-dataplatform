@@ -1,0 +1,9 @@
+{
+	"name": "Generic-L1-Transform",
+	"properties": {
+		"folder": {
+			"name": "Transform Pipelines/L1Transform"
+		},
+		"annotations": []
+	}
+}
