@@ -253,6 +253,12 @@
 			},
 			"NotebookParameters": {
 				"type": "string"
+			},
+			"OutputL1CuratedFileWriteMode": {
+				"type": "string"
+			},
+			"ReRunL1TransformFlag": {
+				"type": "string"
 			}
 		},
 		"folder": {
