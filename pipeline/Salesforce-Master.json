@@ -312,7 +312,29 @@
 												"referenceName": "Generic-L1-Transform",
 												"type": "PipelineReference"
 											},
-											"waitOnCompletion": true
+											"waitOnCompletion": true,
+											"parameters": {
+												"L1TransformInstanceID": {
+													"value": "@item().L1TransformInstanceID",
+													"type": "Expression"
+												},
+												"L1TransformID": {
+													"value": "@item().L1TransformID",
+													"type": "Expression"
+												},
+												"IngestID": {
+													"value": "@item().IngestID",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												}
+											}
 										}
 									}
 								]
