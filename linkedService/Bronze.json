@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://dlsdatamasterydev01.dfs.core.windows.net/"
+			"url": "https://dlsdatamasterydev02.dfs.core.windows.net/"
 		}
 	}
 }
