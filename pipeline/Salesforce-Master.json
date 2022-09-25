@@ -333,6 +333,14 @@
 												"NotebookParameters": {
 													"value": "@item().NotebookParameters",
 													"type": "Expression"
+												},
+												"OutputDWTableWriteMode": {
+													"value": "@item().OutputDWTableWriteMode",
+													"type": "Expression"
+												},
+												"ReRunL1TransformFlag": {
+													"value": "@item().ReRunL1TransformFlag",
+													"type": "Expression"
 												}
 											}
 										}
