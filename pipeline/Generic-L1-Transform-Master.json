@@ -257,7 +257,7 @@
 			}
 		},
 		"folder": {
-			"name": "Common/L1Transform"
+			"name": "Transform Pipelines/L1Transform"
 		},
 		"annotations": []
 	},
