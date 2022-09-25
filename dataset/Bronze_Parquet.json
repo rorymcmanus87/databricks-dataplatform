@@ -2,7 +2,7 @@
 	"name": "Bronze_Parquet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Bronze",
+			"referenceName": "Raw",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -23,7 +23,7 @@
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
+				"type": "AzureBlobStorageLocation",
 				"fileName": {
 					"value": "@dataset().File",
 					"type": "Expression"
@@ -32,7 +32,7 @@
 					"value": "@dataset().Folder",
 					"type": "Expression"
 				},
-				"fileSystem": {
+				"container": {
 					"value": "@dataset().FileSystem",
 					"type": "Expression"
 				}
