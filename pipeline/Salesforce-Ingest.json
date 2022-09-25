@@ -423,9 +423,9 @@
 										},
 										"type": "String"
 									},
-									"OutputEntityStaging": {
+									"OutputDWStagingTable": {
 										"value": {
-											"value": "@item().OutputEntityStaging",
+											"value": "@item().OutputDWStagingTable",
 											"type": "Expression"
 										},
 										"type": "String"
@@ -437,16 +437,16 @@
 										},
 										"type": "String"
 									},
-									"OutputEntityName": {
+									"OutputDWTable": {
 										"value": {
-											"value": "@item().OutputEntityName",
+											"value": "@item().OutputDWTable",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputEntityWriteMode": {
+									"OutputDWTableWriteMode": {
 										"value": {
-											"value": "@item().OutputEntityWriteMode",
+											"value": "@item().OutputDWTableWriteMode",
 											"type": "Expression"
 										},
 										"type": "String"
