@@ -298,41 +298,7 @@
 					"expression": {
 						"value": "@and(equals(pipeline().parameters.OutputEntityWriteMode,'append'),equals(pipeline().parameters.ReRunL1TransformFlag,true))",
 						"type": "Expression"
-					},
-					"ifTrueActivities": [
-						{
-							"name": "Delete-Existing",
-							"type": "SqlServerStoredProcedure",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"storedProcedureName": "[Common].[DeleteExisting]",
-								"storedProcedureParameters": {
-									"DWTable": {
-										"value": {
-											"value": "@pipeline().parameters.OutputEntityName",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"SOURCE_FILE": {
-										"value": {
-											"value": "@pipeline().parameters.InputRawFile",
-											"type": "Expression"
-										},
-										"type": "String"
-									}
-								}
-							}
-						}
-					]
+					}
 				}
 			}
 		],
