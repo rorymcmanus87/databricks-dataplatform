@@ -423,6 +423,13 @@
 										},
 										"type": "String"
 									},
+									"DeltaPath": {
+										"value": {
+											"value": "@item().DeltaPath",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
 									"OutputDWStagingTable": {
 										"value": {
 											"value": "@item().OutputDWStagingTable",
