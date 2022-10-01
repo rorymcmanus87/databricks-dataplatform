@@ -43,6 +43,10 @@
 						},
 						"partitionOption": "None"
 					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
@@ -106,6 +110,10 @@
 										}
 									},
 									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
 								}
 							}
 						},
@@ -134,6 +142,10 @@
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L1-Transform",
+												"type": "PipelineReference"
+											},
 											"waitOnCompletion": true,
 											"parameters": {
 												"L1TransformInstanceID": {
@@ -148,88 +160,28 @@
 													"value": "@item().IngestID",
 													"type": "Expression"
 												},
-												"NotebookName": {
-													"value": "@item().NotebookName",
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
 													"type": "Expression"
 												},
-												"NotebookPath": {
-													"value": "@item().NotebookPath",
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
 													"type": "Expression"
 												},
-												"InputRawFileSystem": {
-													"value": "@item().InputRawFileSystem",
-													"type": "Expression"
-												},
-												"InputRawFileFolder": {
-													"value": "@item().InputRawFileFolder",
-													"type": "Expression"
-												},
-												"InputRawFile": {
-													"value": "@item().InputRawFile",
-													"type": "Expression"
-												},
-												"InputRawFileDelimiter": {
-													"value": "@item().InputRawFileDelimiter",
-													"type": "Expression"
-												},
-												"InputFileHeaderFlag": {
-													"value": "@item().InputFileHeaderFlag",
-													"type": "Expression"
-												},
-												"OutputL1CurateFileSystem": {
-													"value": "@item().OutputL1CurateFileSystem",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFolder": {
-													"value": "@item().OutputL1CuratedFolder",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFile": {
-													"value": "@item().OutputL1CuratedFile",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFileDelimiter": {
-													"value": "@item().OutputL1CuratedFileDelimiter",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFileFormat": {
-													"value": "@item().OutputL1CuratedFileFormat",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFileWriteMode": {
-													"value": "@item().OutputL1CuratedFileWriteMode",
-													"type": "Expression"
-												},
-												"OutputEntityStaging": {
-													"value": "@item().OutputEntityStaging",
-													"type": "Expression"
-												},
-												"LookupColumns": {
-													"value": "@item().LookupColumns",
-													"type": "Expression"
-												},
-												"OutputEntityName": {
-													"value": "@item().OutputEntityName",
-													"type": "Expression"
-												},
-												"OutputEntityWriteMode": {
-													"value": "@item().OutputEntityWriteMode",
+												"OutputDWTableWriteMode": {
+													"value": "@item().OutputDWTableWriteMode",
 													"type": "Expression"
 												},
 												"ReRunL1TransformFlag": {
 													"value": "@item().ReRunL1TransformFlag",
 													"type": "Expression"
 												},
-												"MaxRetries": {
-													"value": "@item().MaxRetries",
+												"NotebookName": {
+													"value": "@item().NotebookName",
 													"type": "Expression"
 												},
-												"DeltaName": {
-													"value": "@item().DeltaName",
-													"type": "Expression"
-												},
-												"CustomParameters": {
-													"value": "@item().CustomParameters",
+												"NotebookPath": {
+													"value": "@item().NotebookPath",
 													"type": "Expression"
 												}
 											}
