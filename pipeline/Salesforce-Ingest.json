@@ -423,7 +423,7 @@
 										},
 										"type": "String"
 									},
-									"DeltaPath": {
+									"OutputDLPath": {
 										"value": {
 											"value": "@item().DeltaPath",
 											"type": "Expression"
