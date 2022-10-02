@@ -453,7 +453,7 @@
 									},
 									"OutputL1CuratedFile": {
 										"value": {
-											"value": "@replace(item().OutputL1CuratedFile,'GUID',variables('_ADFIngestPipelineRunID'))",
+											"value": "@replace(coalesce(item().OutputL1CuratedFile, ''),'GUID',variables('_ADFIngestPipelineRunID'))",
 											"type": "Expression"
 										},
 										"type": "String"
