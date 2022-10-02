@@ -197,7 +197,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Salesforce - Schools"
+				"defaultValue": "Salesforce"
 			},
 			"StreamName": {
 				"type": "string",
