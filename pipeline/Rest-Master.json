@@ -1,0 +1,9 @@
+{
+	"name": "Rest-Master",
+	"properties": {
+		"folder": {
+			"name": "REST API Pipelines"
+		},
+		"annotations": []
+	}
+}
