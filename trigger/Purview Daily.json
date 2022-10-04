@@ -7,7 +7,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "Master ELT REST API",
+					"referenceName": "Rest Master",
 					"type": "PipelineReference"
 				},
 				"parameters": {
