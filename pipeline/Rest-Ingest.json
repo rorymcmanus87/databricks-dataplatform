@@ -1,9 +1,0 @@
-{
-	"name": "Rest-Ingest",
-	"properties": {
-		"folder": {
-			"name": "Rest API"
-		},
-		"annotations": []
-	}
-}
