@@ -1,6 +1,29 @@
 {
 	"name": "Ingest Rest V2",
 	"properties": {
+		"activities": [
+			{
+				"name": "ADFPipelineRunID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ADFPipelineRunID",
+					"value": {
+						"value": "@{if(empty(pipeline().parameters.ADFPipelineRunID),pipeline().RunId,pipeline().parameters.ADFPipelineRunID)}",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"varADFPipelineRunID": {
+				"type": "String"
+			},
+			"varDestinationRawFile": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "REST API Pipelines"
 		},
