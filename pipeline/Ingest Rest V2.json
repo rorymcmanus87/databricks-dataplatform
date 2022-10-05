@@ -148,12 +148,12 @@
 						}
 					},
 					"sink": {
-						"type": "JsonSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
-							"type": "JsonWriteSettings"
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -176,7 +176,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Raw_JSON",
+						"referenceName": "Raw_Parquet",
 						"type": "DatasetReference",
 						"parameters": {
 							"FileSystem": {
