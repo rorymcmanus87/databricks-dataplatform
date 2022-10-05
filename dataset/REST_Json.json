@@ -1,0 +1,15 @@
+{
+	"name": "REST_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Rest Anonymous",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "weather?q=London,uk&APPID=d7fe1a78534a3f8fa2edce320a06b440"
+		},
+		"schema": []
+	}
+}
