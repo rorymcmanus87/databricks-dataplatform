@@ -3,132 +3,9 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ADFPipelineRunID",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "varADFPipelineRunID",
-					"value": {
-						"value": "@{if(empty(pipeline().parameters.ADFPipelineRunID),pipeline().RunId,pipeline().parameters.ADFPipelineRunID)}",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Set-DestinationRawFile",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "ADFPipelineRunID",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "varDestinationRawFile",
-					"value": {
-						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('varADFPipelineRunID'))",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Ingest Running",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Set-DestinationRawFile",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[ELT].[InsertIngestInstance]",
-					"storedProcedureParameters": {
-						"ADFPipelineRunID": {
-							"value": {
-								"value": "@variables('varADFPipelineRunID')",
-								"type": "Expression"
-							},
-							"type": "Guid"
-						},
-						"DestinationRawFile": {
-							"value": {
-								"value": "@pipeline().parameters.DestinationRawFile",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"DestinationRawFileSystem": {
-							"value": {
-								"value": "@pipeline().parameters.DestinationRawFileSystem",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"DestinationRawFolder": {
-							"value": {
-								"value": "@pipeline().parameters.DestinationRawFolder",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"IngestID": {
-							"value": {
-								"value": "@pipeline().parameters.IngestID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						},
-						"ReloadFlag": {
-							"value": {
-								"value": "@pipeline().parameters.ReloadFlag",
-								"type": "Expression"
-							},
-							"type": "Boolean"
-						},
-						"SourceFileDropFile": {
-							"value": null,
-							"type": "String"
-						},
-						"SourceFileDropFileSystem": {
-							"value": null,
-							"type": "String"
-						},
-						"SourceFileDropFolder": {
-							"value": null,
-							"type": "String"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "ControlDB",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Ingest Running",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -139,12 +16,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "RestSource",
-						"httpRequestTimeout": "00:01:40",
-						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET",
-						"paginationRules": {
-							"": "true"
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
 						}
 					},
 					"sink": {
@@ -160,15 +38,15 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "RestAnonymous",
+						"referenceName": "HTTP_Json",
 						"type": "DatasetReference",
 						"parameters": {
-							"KeyVaultBaseURL": {
-								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
-								"type": "Expression"
-							},
 							"EntityName": {
 								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							},
+							"KeyVaultBaseURL": {
+								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
 								"type": "Expression"
 							}
 						}
