@@ -910,10 +910,12 @@
 				"defaultValue": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID="
 			},
 			"DeltaName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "1"
 			},
 			"LastDeltaDate": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "1"
 			},
 			"DataFromTimestamp": {
 				"type": "string",
@@ -924,28 +926,36 @@
 				"defaultValue": "2022-10-05 15:12:47.0000000"
 			},
 			"LastDeltaNumber": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			},
 			"DataFromNumber": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			},
 			"DataToNumber": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			},
 			"DataFormat": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "None"
 			},
 			"SourceStructure": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "None"
 			},
 			"MaxIntervalMinutes": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": "None"
 			},
 			"MaxIntervalNumber": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			},
 			"DataMapping": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "None"
 			},
 			"RunSequence": {
 				"type": "int",
@@ -984,10 +994,12 @@
 				"defaultValue": "weather_daily_20221005.json"
 			},
 			"SourceSQL": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "None"
 			},
 			"StatSQL": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "None"
 			},
 			"ReloadFlag": {
 				"type": "bool",
