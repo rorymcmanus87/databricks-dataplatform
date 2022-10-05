@@ -238,7 +238,7 @@
 			},
 			"ADFPipelineRunID": {
 				"type": "string",
-				"defaultValue": "9999"
+				"defaultValue": "25D3CEC2-53AD-464B-8BB6-C30A46532462"
 			},
 			"KeyVaultSecretBaseURL": {
 				"type": "string",
