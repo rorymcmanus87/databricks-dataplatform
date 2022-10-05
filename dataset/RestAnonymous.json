@@ -1,0 +1,12 @@
+{
+	"name": "RestAnonymous",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Rest Anonymous",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}

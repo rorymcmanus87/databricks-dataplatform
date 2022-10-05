@@ -7,7 +7,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "Rest Master",
+					"referenceName": "REST Master",
 					"type": "PipelineReference"
 				},
 				"parameters": {
