@@ -953,23 +953,23 @@
 			},
 			"ActiveFlag": {
 				"type": "bool",
-				"defaultValue": "True"
+				"defaultValue": true
 			},
 			"L1TransformationReqdFlag": {
 				"type": "string",
-				"defaultValue": "True"
+				"defaultValue": "true"
 			},
 			"L2TransformationReqdFlag": {
 				"type": "string",
-				"defaultValue": "True"
+				"defaultValue": "true"
 			},
 			"DelayL1TransformationFlag": {
 				"type": "bool",
-				"defaultValue": "True"
+				"defaultValue": true
 			},
 			"DelayL2TransformationFlag": {
 				"type": "bool",
-				"defaultValue": "True"
+				"defaultValue": true
 			},
 			"DestinationRawFileSystem": {
 				"type": "string",
@@ -991,7 +991,7 @@
 			},
 			"ReloadFlag": {
 				"type": "bool",
-				"defaultValue": "0"
+				"defaultValue": true
 			},
 			"ADFPipelineRunID": {
 				"type": "string",
