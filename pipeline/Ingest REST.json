@@ -953,23 +953,23 @@
 			},
 			"ActiveFlag": {
 				"type": "bool",
-				"defaultValue": "1"
+				"defaultValue": "True"
 			},
 			"L1TransformationReqdFlag": {
 				"type": "string",
-				"defaultValue": "1"
+				"defaultValue": "True"
 			},
 			"L2TransformationReqdFlag": {
 				"type": "string",
-				"defaultValue": "1"
+				"defaultValue": "True"
 			},
 			"DelayL1TransformationFlag": {
 				"type": "bool",
-				"defaultValue": "0"
+				"defaultValue": "True"
 			},
 			"DelayL2TransformationFlag": {
 				"type": "bool",
-				"defaultValue": "1"
+				"defaultValue": "True"
 			},
 			"DestinationRawFileSystem": {
 				"type": "string",
