@@ -5,8 +5,8 @@
 			"referenceName": "Rest Anonymous",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"KeyVaultSecret-URL": {
-					"value": "@dataset().KeyVaultSecretURL",
+				"KeyVaultSecret-APIKey": {
+					"value": "@dataset().KeyVaultSecretAPIKey",
 					"type": "Expression"
 				}
 			}
