@@ -92,7 +92,7 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "_ADFPipelineRunID",
+					"variableName": "ADFPipelineRunID",
 					"value": {
 						"value": "@{if(empty(pipeline().parameters.ADFPipelineRunID),pipeline().RunId,pipeline().parameters.ADFPipelineRunID)}",
 						"type": "Expression"
@@ -1021,7 +1021,7 @@
 			}
 		},
 		"variables": {
-			"_ADFPipelineRunID": {
+			"ADFPipelineRunID": {
 				"type": "String"
 			},
 			"_DestinationRawFile": {
