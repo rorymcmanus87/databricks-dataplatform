@@ -13,11 +13,7 @@
 				"parameters": {
 					"SourceSystemName": "Purview",
 					"StreamName": "%",
-					"MaxIngestInstance": "50",
-					"BaseURL": "https://ba-purview02-aug-pubpreview.purview.azure.com",
-					"ServicePrincipalID": "5e07b142-92b4-4671-83c0-e824bc93da6c",
-					"TenantID": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-					"AADResource": "https://purview.azure.net"
+					"MaxIngestInstance": "50"
 				}
 			}
 		],

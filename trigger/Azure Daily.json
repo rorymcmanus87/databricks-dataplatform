@@ -13,11 +13,7 @@
 				"parameters": {
 					"SourceSystemName": "Azure",
 					"StreamName": "%",
-					"MaxIngestInstance": "100",
-					"BaseURL": "https://management.azure.com",
-					"ServicePrincipalID": "5e07b142-92b4-4671-83c0-e824bc93da6c",
-					"TenantID": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-					"AADResource": "https://management.azure.com"
+					"MaxIngestInstance": "100"
 				}
 			}
 		],
