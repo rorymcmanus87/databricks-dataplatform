@@ -1,5 +1,5 @@
 {
-	"name": "Ingest REST-Backup",
+	"name": "Ingest REST",
 	"properties": {
 		"description": "Generic Pipeline to ingest data from any REST API",
 		"activities": [
