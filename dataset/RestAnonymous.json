@@ -3,10 +3,30 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Rest Anonymous",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"KeyVaultSecret-URL": {
+					"value": "@dataset().KeyVaultSecretURL",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"KeyVaultSecretAPIKey": {
+				"type": "string"
+			},
+			"APIURL": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "@concat(dataset().APIURL, dataset().KeyVaultSecretAPIKey)",
+				"type": "Expression"
+			}
+		},
 		"schema": []
 	}
 }
