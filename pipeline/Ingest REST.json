@@ -131,6 +131,10 @@
 						"referenceName": "RestAnonymous",
 						"type": "DatasetReference",
 						"parameters": {
+							"KeyVaultBaseURL": {
+								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
+								"type": "Expression"
+							},
 							"EntityName": {
 								"value": "@pipeline().parameters.EntityName",
 								"type": "Expression"
