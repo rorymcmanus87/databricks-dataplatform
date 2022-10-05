@@ -213,7 +213,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Purview"
+				"defaultValue": "Open Weather API"
 			},
 			"StreamName": {
 				"type": "string",
@@ -224,7 +224,8 @@
 				"defaultValue": "20"
 			},
 			"KeyVaultSecretAPIKey": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "OpenWeather-APIKey"
 			}
 		},
 		"folder": {
