@@ -117,6 +117,83 @@
 					"referenceName": "ControlDB",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Copy-RawZone",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Ingest Running",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "RestAnonymous",
+						"type": "DatasetReference",
+						"parameters": {
+							"KeyVaultBaseURL": {
+								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
+								"type": "Expression"
+							},
+							"EntityName": {
+								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Raw_JSON",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"File": {
+								"value": "@variables('varDestinationRawFile')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"parameters": {
