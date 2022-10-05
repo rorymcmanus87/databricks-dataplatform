@@ -36,7 +36,8 @@
 					"value": "@dataset().FileSystem",
 					"type": "Expression"
 				}
-			}
+			},
+			"encodingName": "UTF-8"
 		},
 		"schema": {}
 	}
