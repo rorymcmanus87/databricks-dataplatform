@@ -1,14 +1,14 @@
 {
 	"name": "Rest Anonymous",
 	"properties": {
+		"type": "RestService",
 		"description": "Rest Anonymous",
 		"parameters": {
-			"KeyVaultSecret-APIKey": {
+			"KeyVaultSecret-URL": {
 				"type": "string"
 			}
 		},
 		"annotations": [],
-		"type": "RestService",
 		"typeProperties": {
 			"url": {
 				"type": "AzureKeyVaultSecret",
@@ -17,7 +17,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": {
-					"value": "@linkedService().KeyVaultSecret-APIKey",
+					"value": "@linkedService().KeyVaultSecret-URL",
 					"type": "Expression"
 				}
 			},
