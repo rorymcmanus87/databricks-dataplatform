@@ -124,11 +124,7 @@
 							"type": "ParquetWriteSettings"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"value": "@json(pipeline().parameters.DataMapping)",
-						"type": "Expression"
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
