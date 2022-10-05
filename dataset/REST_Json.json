@@ -5,10 +5,18 @@
 			"referenceName": "Rest Anonymous",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"EntityName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "weather?q=London,uk&APPID=d7fe1a78534a3f8fa2edce320a06b440"
+			"relativeUrl": {
+				"value": "@dataset().EntityName",
+				"type": "Expression"
+			}
 		},
 		"schema": []
 	}
