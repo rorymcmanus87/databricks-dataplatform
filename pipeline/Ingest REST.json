@@ -1,5 +1,5 @@
 {
-	"name": "IngestREST",
+	"name": "Ingest REST",
 	"properties": {
 		"description": "Generic Pipeline to ingest data from any REST API",
 		"activities": [
@@ -384,11 +384,7 @@
 					},
 					"dataset": {
 						"referenceName": "ControlDB_Dataset",
-						"type": "DatasetReference",
-						"parameters": {
-							"Table": "NotApplicable",
-							"Schema": "NotApplicable"
-						}
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
@@ -441,11 +437,7 @@
 					},
 					"dataset": {
 						"referenceName": "ControlDB_Dataset",
-						"type": "DatasetReference",
-						"parameters": {
-							"Table": "NotApplicable",
-							"Schema": "NotApplicable"
-						}
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
