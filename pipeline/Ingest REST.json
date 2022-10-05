@@ -947,7 +947,7 @@
 			},
 			"MaxIntervalMinutes": {
 				"type": "int",
-				"defaultValue": "None"
+				"defaultValue": 1
 			},
 			"MaxIntervalNumber": {
 				"type": "int",
