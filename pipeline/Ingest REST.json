@@ -133,7 +133,17 @@
 				"inputs": [
 					{
 						"referenceName": "RestAnonymous",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"KeyVaultSecretAPIKey": {
+								"value": "@pipeline().parameters.KeyVaultSecretAPIKey",
+								"type": "Expression"
+							},
+							"APIURL": {
+								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
