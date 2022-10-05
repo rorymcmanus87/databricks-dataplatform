@@ -869,7 +869,21 @@
 				"outputs": [
 					{
 						"referenceName": "Raw_JSON",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"File": {
+								"value": "@variables('_DestinationRawFile')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -888,7 +902,7 @@
 				"typeProperties": {
 					"variableName": "_DestinationRawFile",
 					"value": {
-						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('_ADFPipelineRunID'))",
+						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('ADFPipelineRunID'))",
 						"type": "Expression"
 					}
 				}
