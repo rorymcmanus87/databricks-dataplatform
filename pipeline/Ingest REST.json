@@ -131,11 +131,7 @@
 						"referenceName": "RestAnonymous",
 						"type": "DatasetReference",
 						"parameters": {
-							"KeyVaultSecretAPIKey": {
-								"value": "@pipeline().parameters.KeyVaultSecretAPIKey",
-								"type": "Expression"
-							},
-							"APIURL": {
+							"EntityName": {
 								"value": "@pipeline().parameters.EntityName",
 								"type": "Expression"
 							}
@@ -1009,7 +1005,7 @@
 				"type": "string",
 				"defaultValue": "9999"
 			},
-			"KeyVaultSecretAPIKey": {
+			"KeyVaultSecretURL": {
 				"type": "string",
 				"defaultValue": "d7fe1a78534a3f8fa2edce320a06b440"
 			}
