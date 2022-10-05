@@ -203,8 +203,8 @@
 										"value": "@item().ADFPipelineRunID",
 										"type": "Expression"
 									},
-									"KeyVaultSecretAPIKey": {
-										"value": "@pipeline().parameters.KeyVaultSecretAPIKey",
+									"KeyVaultSecretBaseURL": {
+										"value": "@item().KeyVaultSecretBaseURL",
 										"type": "Expression"
 									}
 								}
