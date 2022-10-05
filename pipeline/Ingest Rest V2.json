@@ -1,0 +1,9 @@
+{
+	"name": "Ingest Rest V2",
+	"properties": {
+		"folder": {
+			"name": "REST API Pipelines"
+		},
+		"annotations": []
+	}
+}
