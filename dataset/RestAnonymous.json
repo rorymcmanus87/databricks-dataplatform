@@ -5,18 +5,20 @@
 			"referenceName": "Rest Anonymous",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"KeyVaultSecret-APIKey": {
-					"value": "@dataset().KeyVaultSecretBaseURL",
+				"KeyVaultSecret-URL": {
+					"value": "@dataset().KeyVaultBaseURL",
 					"type": "Expression"
 				}
 			}
 		},
 		"parameters": {
 			"KeyVaultBaseURL": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "OpenWeather-URL"
 			},
 			"EntityName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "/weather?q=London,uk&APPID=d7fe1a78534a3f8fa2edce320a06b440"
 			}
 		},
 		"annotations": [],
