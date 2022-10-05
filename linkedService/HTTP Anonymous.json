@@ -2,6 +2,11 @@
 	"name": "HTTP Anonymous",
 	"properties": {
 		"description": "HTTP Anonymous",
+		"parameters": {
+			"KeyVaultSecret-URL": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
