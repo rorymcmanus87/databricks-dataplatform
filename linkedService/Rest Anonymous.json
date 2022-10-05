@@ -17,7 +17,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": {
-					"value": "@linkedService().KeyVaultSecret-URL",
+					"value": "@linkedService().KeyVaultSecret-APIKey",
 					"type": "Expression"
 				}
 			},
