@@ -147,6 +147,15 @@
 							"supportRFC5988": "true"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
@@ -160,6 +169,26 @@
 							},
 							"EntityName": {
 								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Raw_JSON",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"File": {
+								"value": "@variables('varDestinationRawFile')",
 								"type": "Expression"
 							}
 						}
