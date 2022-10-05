@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Rest Anonymous",
 		"parameters": {
-			"KeyVaultSecretName": {
+			"KeyVaultSecret-URL": {
 				"type": "string"
 			}
 		},
@@ -17,7 +17,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": {
-					"value": "@linkedService().KeyVaultSecretName",
+					"value": "@linkedService().KeyVaultSecret-URL",
 					"type": "Expression"
 				}
 			},
