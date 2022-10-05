@@ -5,9 +5,17 @@
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "f",
-			"enableServerCertificateValidation": true,
-			"authenticationType": "Anonymous"
+			"url": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().KeyVaultSecret-URL",
+					"type": "Expression"
+				}
+			}
 		}
 	}
 }
