@@ -658,7 +658,7 @@
 									},
 									"IngestCount": {
 										"value": {
-											"value": "@activity('Source To Datalake Bronze Zone').output.rowsCopied",
+											"value": "@activity('Copy-RawZone').output.rowsCopied",
 											"type": "Expression"
 										},
 										"type": "Int32"
