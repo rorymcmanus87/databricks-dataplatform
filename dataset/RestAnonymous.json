@@ -6,25 +6,24 @@
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"KeyVaultSecret-APIKey": {
-					"value": "@dataset().KeyVaultSecretAPIKey",
+					"value": "@dataset().KeyVaultSecretBaseURL",
 					"type": "Expression"
 				}
 			}
 		},
 		"parameters": {
-			"KeyVaultSecretAPIKey": {
+			"KeyVaultBaseURL": {
 				"type": "string"
 			},
-			"APIURL": {
-				"type": "string",
-				"defaultValue": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID="
+			"EntityName": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat('http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID=', dataset().KeyVaultSecretAPIKey)",
+				"value": "@dataset().EntityName",
 				"type": "Expression"
 			}
 		},
