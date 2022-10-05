@@ -132,30 +132,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "REST_API",
-						"type": "DatasetReference",
-						"parameters": {
-							"BaseURL": {
-								"value": "@pipeline().parameters.BaseURL",
-								"type": "Expression"
-							},
-							"ServicePrincipalID": {
-								"value": "@pipeline().parameters.ServicePrincipalID",
-								"type": "Expression"
-							},
-							"TenantID": {
-								"value": "@pipeline().parameters.TenantID",
-								"type": "Expression"
-							},
-							"AADResource": {
-								"value": "@pipeline().parameters.AADResource",
-								"type": "Expression"
-							},
-							"RelativeURL": {
-								"value": "@pipeline().parameters.SourceSQL",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "RestAnonymous",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
