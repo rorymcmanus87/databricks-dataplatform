@@ -34,6 +34,89 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Ingest Running",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Set-DestinationRawFile",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[InsertIngestInstance]",
+					"storedProcedureParameters": {
+						"ADFPipelineRunID": {
+							"value": {
+								"value": "@variables('varADFPipelineRunID')",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"DestinationRawFile": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationRawFile",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"DestinationRawFileSystem": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"DestinationRawFolder": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"IngestID": {
+							"value": {
+								"value": "@pipeline().parameters.IngestID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ReloadFlag": {
+							"value": {
+								"value": "@pipeline().parameters.ReloadFlag",
+								"type": "Expression"
+							},
+							"type": "Boolean"
+						},
+						"SourceFileDropFile": {
+							"value": null,
+							"type": "String"
+						},
+						"SourceFileDropFileSystem": {
+							"value": null,
+							"type": "String"
+						},
+						"SourceFileDropFolder": {
+							"value": null,
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
