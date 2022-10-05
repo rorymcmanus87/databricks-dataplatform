@@ -1,0 +1,13 @@
+{
+	"name": "HTTP Anonymous",
+	"properties": {
+		"description": "HTTP Anonymous",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "f",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
