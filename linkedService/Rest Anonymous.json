@@ -10,7 +10,17 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID=0f489c487538ece38df8f763a19030bb",
+			"url": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().KeyVaultSecretName",
+					"type": "Expression"
+				}
+			},
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
