@@ -87,83 +87,6 @@
 				}
 			},
 			{
-				"name": "Source To Datalake Bronze Zone",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Ingest Running",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "RestSource",
-						"httpRequestTimeout": "00:01:40",
-						"requestInterval": "00.00:00:00.010",
-						"requestMethod": "GET",
-						"paginationRules": {
-							"supportRFC5988": "true"
-						}
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "RestAnonymous",
-						"type": "DatasetReference",
-						"parameters": {
-							"KeyVaultBaseURL": {
-								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
-								"type": "Expression"
-							},
-							"EntityName": {
-								"value": "@pipeline().parameters.EntityName",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Bronze_Parquet",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileSystem": {
-								"value": "@pipeline().parameters.DestinationRawFileSystem",
-								"type": "Expression"
-							},
-							"Folder": {
-								"value": "@pipeline().parameters.DestinationRawFolder",
-								"type": "Expression"
-							},
-							"File": {
-								"value": "@pipeline().parameters.DestinationRawFile",
-								"type": "Expression"
-							}
-						}
-					}
-				]
-			},
-			{
 				"name": "ADFPipelineRunID",
 				"type": "SetVariable",
 				"dependsOn": [],
@@ -179,14 +102,7 @@
 			{
 				"name": "Ingest Success",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Source To Datalake Bronze Zone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -256,14 +172,7 @@
 			{
 				"name": "Ingest Failure",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Source To Datalake Bronze Zone",
-						"dependencyConditions": [
-							"Failed"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
