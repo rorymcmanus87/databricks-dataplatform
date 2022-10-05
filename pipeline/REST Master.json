@@ -202,22 +202,6 @@
 									"ADFPipelineRunID": {
 										"value": "@item().ADFPipelineRunID",
 										"type": "Expression"
-									},
-									"BaseURL": {
-										"value": "@pipeline().parameters.BaseURL",
-										"type": "Expression"
-									},
-									"ServicePrincipalID": {
-										"value": "@pipeline().parameters.ServicePrincipalID",
-										"type": "Expression"
-									},
-									"TenantID": {
-										"value": "@pipeline().parameters.TenantID",
-										"type": "Expression"
-									},
-									"AADResource": {
-										"value": "@pipeline().parameters.AADResource",
-										"type": "Expression"
 									}
 								}
 							}
