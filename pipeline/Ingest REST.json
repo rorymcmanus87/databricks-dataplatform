@@ -1005,7 +1005,7 @@
 				"type": "string",
 				"defaultValue": "9999"
 			},
-			"KeyVaultSecretURL": {
+			"KeyVaultSecretBaseURL": {
 				"type": "string",
 				"defaultValue": "d7fe1a78534a3f8fa2edce320a06b440"
 			}

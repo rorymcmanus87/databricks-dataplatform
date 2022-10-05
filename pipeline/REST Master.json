@@ -227,9 +227,9 @@
 				"type": "string",
 				"defaultValue": "20"
 			},
-			"KeyVaultSecretAPIKey": {
+			"KeyVaultSecretBaseURL": {
 				"type": "string",
-				"defaultValue": "OpenWeather-APIKey"
+				"defaultValue": "OpenWeather-URL"
 			}
 		},
 		"folder": {
