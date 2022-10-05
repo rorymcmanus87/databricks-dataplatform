@@ -1,0 +1,18 @@
+{
+	"name": "Rest Anonymous",
+	"properties": {
+		"description": "Rest Anonymous",
+		"parameters": {
+			"KeyVaultSecretName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID=0f489c487538ece38df8f763a19030bb",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
