@@ -8,7 +8,7 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "ADFPipelineRunID",
+					"variableName": "varADFPipelineRunID",
 					"value": {
 						"value": "@{if(empty(pipeline().parameters.ADFPipelineRunID),pipeline().RunId,pipeline().parameters.ADFPipelineRunID)}",
 						"type": "Expression"
@@ -16,6 +16,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"IngestID": {
+				"type": "int"
+			},
+			"SourceSystemName": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"varADFPipelineRunID": {
 				"type": "String"
