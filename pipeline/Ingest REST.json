@@ -888,7 +888,7 @@
 				"typeProperties": {
 					"variableName": "_DestinationRawFile",
 					"value": {
-						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('_ADFIngestPipelineRunID'))",
+						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('ADFPipelineRunID'))",
 						"type": "Expression"
 					}
 				}
@@ -1021,7 +1021,7 @@
 			}
 		},
 		"variables": {
-			"ADFPipelineRunID": {
+			"_ADFPipelineRunID": {
 				"type": "String"
 			},
 			"_DestinationRawFile": {
