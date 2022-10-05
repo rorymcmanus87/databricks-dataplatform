@@ -14,14 +14,152 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Set-DestinationRawFile",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ADFPipelineRunID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varDestinationRawFile",
+					"value": {
+						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('varADFPipelineRunID'))",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
 			"IngestID": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 7
 			},
 			"SourceSystemName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Open Weather API"
+			},
+			"StreamName": {
+				"type": "string",
+				"defaultValue": "Daily Weather"
+			},
+			"Backend": {
+				"type": "string",
+				"defaultValue": "Rest - Anonymous"
+			},
+			"EntityName": {
+				"type": "string",
+				"defaultValue": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID="
+			},
+			"DeltaName": {
+				"type": "string",
+				"defaultValue": "1"
+			},
+			"LastDeltaDate": {
+				"type": "string",
+				"defaultValue": "1"
+			},
+			"DataFromTimestamp": {
+				"type": "string",
+				"defaultValue": "1900-01-01 00:00:00.0000000"
+			},
+			"DataToTimestamp": {
+				"type": "string",
+				"defaultValue": "2022-10-05 15:12:47.0000000"
+			},
+			"LastDeltaNumber": {
+				"type": "int",
+				"defaultValue": 1
+			},
+			"DataFromNumber": {
+				"type": "int",
+				"defaultValue": 1
+			},
+			"DataToNumber": {
+				"type": "int",
+				"defaultValue": 1
+			},
+			"DataFormat": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"SourceStructure": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"MaxIntervalMinutes": {
+				"type": "int",
+				"defaultValue": 1
+			},
+			"MaxIntervalNumber": {
+				"type": "int",
+				"defaultValue": 1
+			},
+			"DataMapping": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"RunSequence": {
+				"type": "int",
+				"defaultValue": 100
+			},
+			"ActiveFlag": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"L1TransformationReqdFlag": {
+				"type": "string",
+				"defaultValue": "true"
+			},
+			"L2TransformationReqdFlag": {
+				"type": "string",
+				"defaultValue": "true"
+			},
+			"DelayL1TransformationFlag": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"DelayL2TransformationFlag": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"DestinationRawFileSystem": {
+				"type": "string",
+				"defaultValue": "raw-bronze"
+			},
+			"DestinationRawFolder": {
+				"type": "string",
+				"defaultValue": "weather/daily/2022-10"
+			},
+			"DestinationRawFile": {
+				"type": "string",
+				"defaultValue": "weather_daily_20221005.json"
+			},
+			"SourceSQL": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"StatSQL": {
+				"type": "string",
+				"defaultValue": "None"
+			},
+			"ReloadFlag": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"ADFPipelineRunID": {
+				"type": "string",
+				"defaultValue": "9999"
+			},
+			"KeyVaultSecretBaseURL": {
+				"type": "string",
+				"defaultValue": "d7fe1a78534a3f8fa2edce320a06b440"
 			}
 		},
 		"variables": {
