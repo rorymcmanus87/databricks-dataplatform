@@ -1,0 +1,35 @@
+{
+	"name": "HTTP_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HTTP Anonymous",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"KeyVaultSecret-URL": {
+					"value": "@dataset().KeyVaultBaseURL",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"EntityName": {
+				"type": "string"
+			},
+			"KeyVaultBaseURL": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().EntityName",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}
