@@ -890,19 +890,24 @@
 		],
 		"parameters": {
 			"IngestID": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 7
 			},
 			"SourceSystemName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Open Weather API"
 			},
 			"StreamName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Daily Weather"
 			},
 			"Backend": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Rest - Anonymous"
 			},
 			"EntityName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID="
 			},
 			"DeltaName": {
 				"type": "string"
@@ -911,10 +916,12 @@
 				"type": "string"
 			},
 			"DataFromTimestamp": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "1900-01-01 00:00:00.0000000"
 			},
 			"DataToTimestamp": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "2022-10-05 15:12:47.0000000"
 			},
 			"LastDeltaNumber": {
 				"type": "int"
@@ -941,31 +948,40 @@
 				"type": "string"
 			},
 			"RunSequence": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 100
 			},
 			"ActiveFlag": {
-				"type": "bool"
+				"type": "bool",
+				"defaultValue": "1"
 			},
 			"L1TransformationReqdFlag": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "1"
 			},
 			"L2TransformationReqdFlag": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "1"
 			},
 			"DelayL1TransformationFlag": {
-				"type": "bool"
+				"type": "bool",
+				"defaultValue": "0"
 			},
 			"DelayL2TransformationFlag": {
-				"type": "bool"
+				"type": "bool",
+				"defaultValue": "1"
 			},
 			"DestinationRawFileSystem": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "raw-bronze"
 			},
 			"DestinationRawFolder": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "weather/daily/2022-10"
 			},
 			"DestinationRawFile": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "weather_daily_20221005.json"
 			},
 			"SourceSQL": {
 				"type": "string"
@@ -974,13 +990,16 @@
 				"type": "string"
 			},
 			"ReloadFlag": {
-				"type": "bool"
+				"type": "bool",
+				"defaultValue": "0"
 			},
 			"ADFPipelineRunID": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "9999"
 			},
 			"KeyVaultSecretAPIKey": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "d7fe1a78534a3f8fa2edce320a06b440"
 			}
 		},
 		"variables": {
