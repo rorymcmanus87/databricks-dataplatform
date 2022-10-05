@@ -238,6 +238,9 @@
 			"MaxIngestInstance": {
 				"type": "string",
 				"defaultValue": "20"
+			},
+			"KeyVaultSecretAPIKey": {
+				"type": "string"
 			}
 		},
 		"folder": {
