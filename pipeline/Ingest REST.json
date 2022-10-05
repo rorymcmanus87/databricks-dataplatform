@@ -92,7 +92,7 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "ADFPipelineRunID",
+					"variableName": "_ADFPipelineRunID",
 					"value": {
 						"value": "@{if(empty(pipeline().parameters.ADFPipelineRunID),pipeline().RunId,pipeline().parameters.ADFPipelineRunID)}",
 						"type": "Expression"
@@ -888,7 +888,7 @@
 				"typeProperties": {
 					"variableName": "_DestinationRawFile",
 					"value": {
-						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('ADFPipelineRunID'))",
+						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('_ADFPipelineRunID'))",
 						"type": "Expression"
 					}
 				}
