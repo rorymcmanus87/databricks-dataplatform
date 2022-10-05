@@ -16,14 +16,15 @@
 				"type": "string"
 			},
 			"APIURL": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID="
 			}
 		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat(dataset().APIURL, dataset().KeyVaultSecretAPIKey)",
+				"value": "@concat('http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID=', dataset().KeyVaultSecretAPIKey)",
 				"type": "Expression"
 			}
 		},
