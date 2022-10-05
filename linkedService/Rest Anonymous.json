@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Rest Anonymous",
 		"parameters": {
-			"KeyVaultSecret-URL": {
+			"KeyVaultSecret-APIKey": {
 				"type": "string"
 			}
 		},
