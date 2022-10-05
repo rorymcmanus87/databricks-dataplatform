@@ -972,6 +972,9 @@
 			},
 			"ADFPipelineRunID": {
 				"type": "string"
+			},
+			"KeyVaultSecretAPIKey": {
+				"type": "string"
 			}
 		},
 		"variables": {
