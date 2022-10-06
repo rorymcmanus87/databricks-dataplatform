@@ -9,7 +9,17 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "http://api.openweathermap.org/data/2.5",
+			"url": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().EnvironmentUrl",
+					"type": "Expression"
+				}
+			},
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
