@@ -1,6 +1,11 @@
 {
 	"name": "Rest Anonymous",
 	"properties": {
+		"parameters": {
+			"KeyVaultBaseURL": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
