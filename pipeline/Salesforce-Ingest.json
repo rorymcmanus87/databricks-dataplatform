@@ -451,44 +451,16 @@
 										},
 										"type": "String"
 									},
-									"OutputDWTable": {
+									"OutputEntityName": {
 										"value": {
 											"value": "@item().OutputDWTable",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputDWTableWriteMode": {
+									"OutputEntityWriteMode": {
 										"value": {
 											"value": "@item().OutputDWTableWriteMode",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFile": {
-										"value": {
-											"value": "@replace(coalesce(item().OutputL1CuratedFile, ''),'GUID',variables('_ADFIngestPipelineRunID'))",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFileDelimiter": {
-										"value": {
-											"value": "@item().OutputL1CuratedFileDelimiter",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFileFormat": {
-										"value": {
-											"value": "@item().OutputL1CuratedFileFormat",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFileWriteMode": {
-										"value": {
-											"value": "@item().OutputL1CuratedFileWriteMode",
 											"type": "Expression"
 										},
 										"type": "String"
