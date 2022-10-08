@@ -168,8 +168,8 @@
 													"value": "@item().NotebookParameters",
 													"type": "Expression"
 												},
-												"OutputDWTableWriteMode": {
-													"value": "@item().OutputDWTableWriteMode",
+												"OutputEntityWriteMode": {
+													"value": "@item().OutputEntityWriteMode",
 													"type": "Expression"
 												},
 												"ReRunL1TransformFlag": {
