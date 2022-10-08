@@ -423,27 +423,6 @@
 										},
 										"type": "String"
 									},
-									"OutputDLFileSystem": {
-										"value": {
-											"value": "@item().OutputDLFileSystem",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputDLFolder": {
-										"value": {
-											"value": "@item().OutputDLFolder",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputDWStagingTable": {
-										"value": {
-											"value": "@item().OutputDWStagingTable",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
 									"LookupColumns": {
 										"value": {
 											"value": "@item().LookupColumns",
