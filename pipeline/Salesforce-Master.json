@@ -368,7 +368,7 @@
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "%"
+				"defaultValue": "Account"
 			},
 			"MaxIngestInstance": {
 				"type": "int",
