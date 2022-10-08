@@ -432,14 +432,14 @@
 									},
 									"OutputEntityName": {
 										"value": {
-											"value": "@item().OutputDWTable",
+											"value": "@item().OutputEntityName",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
 									"OutputEntityWriteMode": {
 										"value": {
-											"value": "@item().OutputDWTableWriteMode",
+											"value": "@item().OutputEntityWriteMode",
 											"type": "Expression"
 										},
 										"type": "String"
