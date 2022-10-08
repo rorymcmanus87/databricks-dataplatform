@@ -228,7 +228,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@and(equals(pipeline().parameters.OutputDWTableWriteMode,'append'),equals(pipeline().parameters.ReRunL1TransformFlag,true))",
+						"value": "@and(equals(pipeline().parameters.OutputEntityWriteMode,'append'),equals(pipeline().parameters.ReRunL1TransformFlag,true))",
 						"type": "Expression"
 					}
 				}
@@ -254,7 +254,7 @@
 			"NotebookParameters": {
 				"type": "string"
 			},
-			"OutputDWTableWriteMode": {
+			"OutputEntityWriteMode": {
 				"type": "string"
 			},
 			"ReRunL1TransformFlag": {
