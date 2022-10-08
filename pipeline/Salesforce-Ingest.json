@@ -451,9 +451,9 @@
 										},
 										"type": "String"
 									},
-									"OutputL1CurateFileSystem": {
+									"OutputL1CuratedFileSystem": {
 										"value": {
-											"value": "@item().OutputL1CurateFileSystem",
+											"value": "@item().OutputL1CuratedFileSystem",
 											"type": "Expression"
 										},
 										"type": "String"
