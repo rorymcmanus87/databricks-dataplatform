@@ -677,9 +677,9 @@
 										},
 										"type": "Int32"
 									},
-									"InputDWTable": {
+									"InputEntityName": {
 										"value": {
-											"value": "@item().InputDWTable",
+											"value": "@item().InputEntityName",
 											"type": "Expression"
 										},
 										"type": "String"
