@@ -334,10 +334,6 @@
 													"value": "@item().NotebookParameters",
 													"type": "Expression"
 												},
-												"ReRunL1TransformFlag": {
-													"value": "@item().ReRunL1TransformFlag",
-													"type": "Expression"
-												},
 												"NotebookName": {
 													"value": "@item().NotebookName",
 													"type": "Expression"
