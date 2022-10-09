@@ -164,6 +164,7 @@
 			},
 			{
 				"name": "Update-L1-TransformInstance",
+				"description": "Update",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
