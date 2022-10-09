@@ -7,7 +7,7 @@
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "DeleteIfExists",
+						"activity": "Update-L1-TransformInstance",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -212,25 +212,6 @@
 				"linkedServiceName": {
 					"referenceName": "ControlDB",
 					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "DeleteIfExists",
-				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "Update-L1-TransformInstance",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"expression": {
-						"value": "@and(equals(pipeline().parameters.OutputEntityWriteMode,'append'),equals(pipeline().parameters.ReRunL1TransformFlag,true))",
-						"type": "Expression"
-					}
 				}
 			}
 		],
