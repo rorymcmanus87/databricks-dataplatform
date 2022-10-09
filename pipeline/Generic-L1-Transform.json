@@ -235,12 +235,6 @@
 			"NotebookParameters": {
 				"type": "string"
 			},
-			"OutputEntityWriteMode": {
-				"type": "string"
-			},
-			"ReRunL1TransformFlag": {
-				"type": "string"
-			},
 			"NotebookName": {
 				"type": "string"
 			},
