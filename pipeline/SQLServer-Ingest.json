@@ -496,12 +496,9 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SalesforceSource",
-						"query": {
-							"value": "@pipeline().parameters.SourceQuery",
-							"type": "Expression"
-						},
-						"readBehavior": "query"
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "ParquetSink",
@@ -517,30 +514,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Salesforce_Dataset",
-						"type": "DatasetReference",
-						"parameters": {
-							"ObjectName": {
-								"value": "@pipeline().parameters.EntityName",
-								"type": "Expression"
-							},
-							"KeyVaultEnvironmentURL": {
-								"value": "@pipeline().parameters.KeyVaultEnvironmentURL",
-								"type": "Expression"
-							},
-							"KeyVaultUserName": {
-								"value": "@pipeline().parameters.KeyVaultUserName",
-								"type": "Expression"
-							},
-							"KeyVaultPassword": {
-								"value": "@pipeline().parameters.KeyVaultPassword",
-								"type": "Expression"
-							},
-							"KeyVaultSecurityToken": {
-								"value": "@pipeline().parameters.KeyVaultSecurityToken",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "SQLServer_Table",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -880,6 +855,18 @@
 						}
 					}
 				}
+			},
+			{
+				"name": "SetTableName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
 		"parameters": {
@@ -986,6 +973,12 @@
 				"type": "String"
 			},
 			"_MaxDeltaDate": {
+				"type": "String"
+			},
+			"_SchemaName": {
+				"type": "String"
+			},
+			"_TableName": {
 				"type": "String"
 			}
 		},
