@@ -1,0 +1,17 @@
+{
+	"name": "SQLServer_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQL Server",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
