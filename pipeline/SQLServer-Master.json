@@ -76,7 +76,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "Salesforce-Ingest",
+									"referenceName": "SQLServer-Ingest",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
