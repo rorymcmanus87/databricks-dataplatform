@@ -6,13 +6,16 @@
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"KeyVaultBaseURL": {
-					"value": "@dataset().EntityName",
+					"value": "@dataset().KeyVaultSecretBaseURL",
 					"type": "Expression"
 				}
 			}
 		},
 		"parameters": {
 			"EntityName": {
+				"type": "string"
+			},
+			"KeyVaultSecretBaseURL": {
 				"type": "string"
 			}
 		},
