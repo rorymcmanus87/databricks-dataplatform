@@ -31,18 +31,6 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
-					},
-					{
-						"activity": "Set-SchemaName",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Set-TableName",
-						"dependencyConditions": [
-							"Succeeded"
-						]
 					}
 				],
 				"policy": {
@@ -877,18 +865,6 @@
 						}
 					}
 				}
-			},
-			{
-				"name": "Set-SchemaName",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": []
-			},
-			{
-				"name": "Set-TableName",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": []
 			}
 		],
 		"parameters": {
