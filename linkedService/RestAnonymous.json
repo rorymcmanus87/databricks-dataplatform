@@ -1,0 +1,13 @@
+{
+	"name": "RestAnonymous",
+	"properties": {
+		"description": "Rest Anonymous",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "http://api.openweathermap.org/data/2.5",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
