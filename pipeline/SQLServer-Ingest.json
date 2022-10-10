@@ -527,7 +527,17 @@
 				"inputs": [
 					{
 						"referenceName": "SQLServer_Table",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": {
+								"value": "@{split(pipeline().parameters.EntityName, '.')[0]}",
+								"type": "Expression"
+							},
+							"TableName": {
+								"value": "@replace(substring(pipeline().parameters.EntityName, indexof(pipeline().parameters.EntityName,'.'), sub(length(pipeline().parameters.EntityName), indexof(pipeline().parameters.EntityName,'.'))), '.', '')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
