@@ -446,14 +446,14 @@
 									},
 									"OutputEntityFolder": {
 										"value": {
-											"value": "@item().OutputL1CuratedFolder",
+											"value": "@item().OutputEntityFolder",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
 									"OutputEntityFileSystem": {
 										"value": {
-											"value": "@item().OutputL1CuratedFileSystem",
+											"value": "@item().OutputEntityFileSystem",
 											"type": "Expression"
 										},
 										"type": "String"
