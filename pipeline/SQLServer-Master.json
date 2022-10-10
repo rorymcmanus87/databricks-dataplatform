@@ -356,11 +356,11 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Salesforce"
+				"defaultValue": "Adventureworks"
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "Account"
+				"defaultValue": "%"
 			},
 			"MaxIngestInstance": {
 				"type": "int",
