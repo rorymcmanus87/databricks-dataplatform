@@ -1,0 +1,22 @@
+{
+	"name": "SQL Server",
+	"properties": {
+		"description": "SQl Server - On Prem",
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "Adventureworks-SQLServer-ConnString"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SelfHostedIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
