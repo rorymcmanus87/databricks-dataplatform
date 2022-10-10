@@ -444,14 +444,14 @@
 										},
 										"type": "String"
 									},
-									"OutputL1CuratedFolder": {
+									"OutputEntityFolder": {
 										"value": {
 											"value": "@item().OutputL1CuratedFolder",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputL1CuratedFileSystem": {
+									"OutputEntityFileSystem": {
 										"value": {
 											"value": "@item().OutputL1CuratedFileSystem",
 											"type": "Expression"
