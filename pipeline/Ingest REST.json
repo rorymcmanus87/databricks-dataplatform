@@ -271,7 +271,7 @@
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L1]",
 						"storedProcedureParameters": {
-							"DeltaDate": {
+							"WatermarkDate": {
 								"type": "DateTime",
 								"value": {
 									"value": "@pipeline().parameters.DataFromTimestamp",
@@ -320,7 +320,7 @@
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L2]",
 						"storedProcedureParameters": {
-							"DeltaDate": {
+							"WatermarkDate": {
 								"type": "DateTime",
 								"value": {
 									"value": "@pipeline().parameters.DataFromTimestamp",
@@ -418,9 +418,9 @@
 										},
 										"type": "DateTime"
 									},
-									"DeltaName": {
+									"WatermarkName": {
 										"value": {
-											"value": "@item().DeltaName",
+											"value": "@item().WatermarkName",
 											"type": "Expression"
 										},
 										"type": "String"
@@ -499,11 +499,11 @@
 										},
 										"type": "Int32"
 									},
-									"LastDeltaDate": {
+									"LastWatermarkDate": {
 										"value": null,
 										"type": "DateTime"
 									},
-									"LastDeltaNumber": {
+									"LastWatermarkNumber": {
 										"value": null,
 										"type": "Int32"
 									},
@@ -929,11 +929,11 @@
 				"type": "string",
 				"defaultValue": "http://api.openweathermap.org/data/2.5/weather?q=Sydney&APPID="
 			},
-			"DeltaName": {
+			"WatermarkName": {
 				"type": "string",
 				"defaultValue": "1"
 			},
-			"LastDeltaDate": {
+			"LastWatermarkDate": {
 				"type": "string",
 				"defaultValue": "1"
 			},
@@ -945,7 +945,7 @@
 				"type": "string",
 				"defaultValue": "2022-10-05 15:12:47.0000000"
 			},
-			"LastDeltaNumber": {
+			"LastWatermarkNumber": {
 				"type": "int",
 				"defaultValue": 1
 			},
