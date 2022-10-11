@@ -103,12 +103,12 @@
 										"value": "@item().EntityName",
 										"type": "Expression"
 									},
-									"DeltaName": {
-										"value": "@item().DeltaName",
+									"WatermarkName": {
+										"value": "@item().WatermarkName",
 										"type": "Expression"
 									},
-									"LastDeltaDate": {
-										"value": "@item().LastDeltaDate",
+									"LastWatermarkDate": {
+										"value": "@item().LastWatermarkDate",
 										"type": "Expression"
 									},
 									"DataFromTimestamp": {
@@ -119,8 +119,8 @@
 										"value": "@item().DataToTimestamp",
 										"type": "Expression"
 									},
-									"LastDeltaNumber": {
-										"value": "@item().LastDeltaNumber",
+									"LastWatermarkNumber": {
+										"value": "@item().LastWatermarkNumber",
 										"type": "Expression"
 									},
 									"DataFromNumber": {
