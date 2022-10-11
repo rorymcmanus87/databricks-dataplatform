@@ -1,6 +1,7 @@
 {
 	"name": "RestAnonymous",
 	"properties": {
+		"type": "RestService",
 		"description": "Rest Anonymous",
 		"parameters": {
 			"KeyVaultBaseURL": {
@@ -8,7 +9,6 @@
 			}
 		},
 		"annotations": [],
-		"type": "RestService",
 		"typeProperties": {
 			"url": {
 				"type": "AzureKeyVaultSecret",
