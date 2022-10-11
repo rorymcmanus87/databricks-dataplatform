@@ -852,13 +852,9 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "RestAnonymous",
+						"referenceName": "REST_Json",
 						"type": "DatasetReference",
 						"parameters": {
-							"KeyVaultBaseURL": {
-								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
-								"type": "Expression"
-							},
 							"EntityName": {
 								"value": "@pipeline().parameters.EntityName",
 								"type": "Expression"
