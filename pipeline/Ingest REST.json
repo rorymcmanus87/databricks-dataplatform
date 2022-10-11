@@ -1013,11 +1013,11 @@
 				"type": "string",
 				"defaultValue": "weather_daily_20221005.json"
 			},
-			"SourceSQL": {
+			"SourceQuery": {
 				"type": "string",
 				"defaultValue": "None"
 			},
-			"StatSQL": {
+			"StatQuery": {
 				"type": "string",
 				"defaultValue": "None"
 			},
