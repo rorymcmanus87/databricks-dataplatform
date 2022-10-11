@@ -2,7 +2,7 @@
 	"name": "REST_Json",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Rest Anonymous",
+			"referenceName": "RestAnonymous",
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"KeyVaultBaseURL": {
