@@ -2,6 +2,11 @@
 	"name": "RestAnonymous",
 	"properties": {
 		"description": "Rest Anonymous",
+		"parameters": {
+			"KeyVaultBaseURL": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
@@ -12,7 +17,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": {
-					"value": "@linkedService().KeyVaultConnString",
+					"value": "@linkedService().KeyVaultBaseURL",
 					"type": "Expression"
 				}
 			},
