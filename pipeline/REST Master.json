@@ -187,12 +187,12 @@
 										"value": "@item().DestinationRawFile",
 										"type": "Expression"
 									},
-									"SourceSQL": {
-										"value": "@item().SourceSQL",
+									"SourceQuery": {
+										"value": "@item().SourceQuery",
 										"type": "Expression"
 									},
-									"StatSQL": {
-										"value": "@item().StatSQL",
+									"StatQuery": {
+										"value": "@item().StatQuery",
 										"type": "Expression"
 									},
 									"ReloadFlag": {
