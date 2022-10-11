@@ -2,6 +2,11 @@
 	"name": "SQL Server",
 	"properties": {
 		"description": "SQl Server - On Prem",
+		"parameters": {
+			"KeyVaultConnString": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
@@ -11,12 +16,11 @@
 					"referenceName": "KeyVault01",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "Adventureworks-SQLServer-ConnString"
+				"secretName": {
+					"value": "@linkedService().KeyVaultConnString",
+					"type": "Expression"
+				}
 			}
-		},
-		"connectVia": {
-			"referenceName": "SelfHostedIntegrationRuntime",
-			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
