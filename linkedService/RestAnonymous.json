@@ -11,7 +11,10 @@
 					"referenceName": "KeyVault01",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "OpenWeather-URL"
+				"secretName": {
+					"value": "@linkedService().KeyVaultConnString",
+					"type": "Expression"
+				}
 			},
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
