@@ -204,7 +204,7 @@
 										"type": "Expression"
 									},
 									"KeyVaultSecretBaseURL": {
-										"value": "@item().KeyVaultSecretBaseURL",
+										"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
 										"type": "Expression"
 									}
 								}
