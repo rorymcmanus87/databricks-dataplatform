@@ -858,6 +858,10 @@
 							"EntityName": {
 								"value": "@pipeline().parameters.EntityName",
 								"type": "Expression"
+							},
+							"KeyVaultSecretBaseURL": {
+								"value": "@pipeline().parameters.KeyVaultSecretBaseURL",
+								"type": "Expression"
 							}
 						}
 					}
