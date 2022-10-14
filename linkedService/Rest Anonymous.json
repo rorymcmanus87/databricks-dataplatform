@@ -1,13 +1,14 @@
 {
 	"name": "Rest Anonymous",
 	"properties": {
+		"type": "RestService",
+		"description": "Rest Anonymous",
 		"parameters": {
 			"KeyVaultBaseURL": {
 				"type": "string"
 			}
 		},
 		"annotations": [],
-		"type": "RestService",
 		"typeProperties": {
 			"url": {
 				"type": "AzureKeyVaultSecret",
@@ -16,7 +17,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"secretName": {
-					"value": "@linkedService().EnvironmentUrl",
+					"value": "@linkedService().KeyVaultBaseURL",
 					"type": "Expression"
 				}
 			},
