@@ -417,7 +417,7 @@
 			},
 			"KeyVaultSecretBaseURL": {
 				"type": "string",
-				"defaultValue": "OpenWeather-URL"
+				"defaultValue": "OpenWeather-BaseURL"
 			}
 		},
 		"folder": {
