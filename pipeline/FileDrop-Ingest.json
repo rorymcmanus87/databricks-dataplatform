@@ -514,23 +514,14 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "DelimitedTextSource",
+									"type": "JsonSource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"recursive": false,
+										"recursive": true,
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "ParquetSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "ParquetWriteSettings"
+										"type": "JsonReadSettings"
 									}
 								},
 								"enableStaging": false,
@@ -538,7 +529,13 @@
 									"value": "@if(equals(pipeline().parameters.DataMapping, null), null, json(pipeline().parameters.DataMapping))",
 									"type": "Expression"
 								}
-							}
+							},
+							"inputs": [
+								{
+									"referenceName": "Drop_JSON",
+									"type": "DatasetReference"
+								}
+							]
 						},
 						{
 							"name": "Update-Success-IngestInstance-TXT",
