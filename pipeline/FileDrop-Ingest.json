@@ -268,7 +268,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Bronze_JSON",
+									"referenceName": "Drop_JSON",
 									"type": "DatasetReference"
 								}
 							],
