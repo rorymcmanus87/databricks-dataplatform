@@ -1,0 +1,9 @@
+{
+	"name": "FileDrop-Master",
+	"properties": {
+		"folder": {
+			"name": "Drop File"
+		},
+		"annotations": []
+	}
+}
