@@ -561,7 +561,21 @@
 							"inputs": [
 								{
 									"referenceName": "Drop_JSON",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"FileSystem": {
+											"value": "@pipeline().parameters.SourceFileDropFileSystem",
+											"type": "Expression"
+										},
+										"Folder": {
+											"value": "@pipeline().parameters.SourceFileDropFolder",
+											"type": "Expression"
+										},
+										"File": {
+											"value": "@variables('_DestinationRawFile')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						},
