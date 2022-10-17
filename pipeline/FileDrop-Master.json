@@ -50,6 +50,10 @@
 							}
 						},
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
 					}
 				}
 			},
@@ -66,73 +70,11 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"waitOnCompletion": true,
-					"parameters": {
-						"IngestID": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.IngestID",
-							"type": "Expression"
-						},
-						"SourceSystemName": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceSystemName",
-							"type": "Expression"
-						},
-						"StreamName": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.StreamName",
-							"type": "Expression"
-						},
-						"SourceFileDropFileSystem": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFileSystem",
-							"type": "Expression"
-						},
-						"SourceFileDropFolder": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFolder",
-							"type": "Expression"
-						},
-						"SourceFileDropFile": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFile",
-							"type": "Expression"
-						},
-						"DestinationRawFileSystem": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFileSystem",
-							"type": "Expression"
-						},
-						"DestinationRawFolder": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFolder",
-							"type": "Expression"
-						},
-						"DestinationRawFile": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFile",
-							"type": "Expression"
-						},
-						"ReloadFlag": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.ReloadFlag",
-							"type": "Expression"
-						},
-						"L1TransformationReqdFlag": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.L1TransformationReqdFlag",
-							"type": "Expression"
-						},
-						"L2TransformationReqdFlag": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.L2TransformationReqdFlag",
-							"type": "Expression"
-						},
-						"DataFormat": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataFormat",
-							"type": "Expression"
-						},
-						"SourceFileDelimiter": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDelimiter",
-							"type": "Expression"
-						},
-						"SourceFileHeaderFlag": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileHeaderFlag",
-							"type": "Expression"
-						},
-						"DataMapping": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataMapping",
-							"type": "Expression"
-						}
-					}
+					"pipeline": {
+						"referenceName": "FileDrop-Ingest",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			},
 			{
@@ -179,6 +121,10 @@
 							}
 						},
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
@@ -244,6 +190,10 @@
 									},
 									"partitionOption": "None"
 								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
+								},
 								"firstRowOnly": true
 							}
 						},
@@ -290,88 +240,16 @@
 													"value": "@item().IngestID",
 													"type": "Expression"
 												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												},
 												"NotebookName": {
 													"value": "@item().NotebookName",
 													"type": "Expression"
 												},
 												"NotebookPath": {
 													"value": "@item().NotebookPath",
-													"type": "Expression"
-												},
-												"InputRawFileSystem": {
-													"value": "@item().InputRawFileSystem",
-													"type": "Expression"
-												},
-												"InputRawFileFolder": {
-													"value": "@item().InputRawFileFolder",
-													"type": "Expression"
-												},
-												"InputRawFile": {
-													"value": "@item().InputRawFile",
-													"type": "Expression"
-												},
-												"InputRawFileDelimiter": {
-													"value": "@item().InputRawFileDelimiter",
-													"type": "Expression"
-												},
-												"InputFileHeaderFlag": {
-													"value": "@item().InputFileHeaderFlag",
-													"type": "Expression"
-												},
-												"OutputL1CurateFileSystem": {
-													"value": "@item().OutputL1CurateFileSystem",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFolder": {
-													"value": "@item().OutputL1CuratedFolder",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFile": {
-													"value": "@item().OutputL1CuratedFile",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFileDelimiter": {
-													"value": "@item().OutputL1CuratedFileDelimiter",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFileFormat": {
-													"value": "@item().OutputL1CuratedFileFormat",
-													"type": "Expression"
-												},
-												"OutputL1CuratedFileWriteMode": {
-													"value": "@item().OutputL1CuratedFileWriteMode",
-													"type": "Expression"
-												},
-												"OutputDWStagingTable": {
-													"value": "@item().OutputDWStagingTable",
-													"type": "Expression"
-												},
-												"LookupColumns": {
-													"value": "@item().LookupColumns",
-													"type": "Expression"
-												},
-												"OutputDWTable": {
-													"value": "@item().OutputDWTable",
-													"type": "Expression"
-												},
-												"OutputDWTableWriteMode": {
-													"value": "@item().OutputDWTableWriteMode",
-													"type": "Expression"
-												},
-												"ReRunL1TransformFlag": {
-													"value": "@item().ReRunL1TransformFlag",
-													"type": "Expression"
-												},
-												"MaxRetries": {
-													"value": "@item().MaxRetries",
-													"type": "Expression"
-												},
-												"DeltaName": {
-													"value": "@item().DeltaName",
-													"type": "Expression"
-												},
-												"CustomParameters": {
-													"value": "@item().CustomParameters",
 													"type": "Expression"
 												}
 											}
@@ -978,6 +856,10 @@
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
 				}
