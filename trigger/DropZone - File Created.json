@@ -10,6 +10,15 @@
 					"referenceName": "FileDrop-Master",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"SourceSystemName": "@triggerBody().folderPath"
+				}
 			}
 		],
 		"type": "BlobEventsTrigger",
