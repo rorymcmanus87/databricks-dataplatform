@@ -260,6 +260,16 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Set-SourceSystemName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varSourceSystemName",
+					"value": ""
+				}
 			}
 		],
 		"parameters": {
@@ -281,6 +291,14 @@
 			},
 			"SecretName": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"varSourceSystemName": {
+				"type": "String"
+			},
+			"varStreamName": {
+				"type": "String"
 			}
 		},
 		"folder": {
