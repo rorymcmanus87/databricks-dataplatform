@@ -294,7 +294,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "varStreamName",
-					"value": ""
+					"value": {
+						"value": "@{split(pipeline().parameters.SourceFile, '_')[1]}",
+						"type": "Expression"
+					}
 				}
 			}
 		],
