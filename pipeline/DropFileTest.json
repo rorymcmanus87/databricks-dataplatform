@@ -1,0 +1,31 @@
+{
+	"name": "DropFileTest",
+	"properties": {
+		"activities": [
+			{
+				"name": "setSourceSystemName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varSourceSystemName",
+					"value": {
+						"value": "@pipeline().parameters.SourceSystemName",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"SourceSystemName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"varSourceSystemName": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
