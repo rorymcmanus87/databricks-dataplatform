@@ -1,0 +1,26 @@
+{
+	"name": "DropZone - File Created",
+	"properties": {
+		"description": "Event based trigger to load and process generic CSV",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "FileDrop-Master",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/drop-zone/blobs/Manual",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/0050b161-81d7-4cad-ab40-279ecb440b43/resourceGroups/rg-datamastery-dev-01/providers/Microsoft.Storage/storageAccounts/dlsdatamasterydev01",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
