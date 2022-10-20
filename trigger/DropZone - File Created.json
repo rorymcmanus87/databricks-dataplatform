@@ -13,7 +13,7 @@
 			},
 			{
 				"pipelineReference": {
-					"referenceName": "",
+					"referenceName": "DropFileTest",
 					"type": "PipelineReference"
 				},
 				"parameters": {
