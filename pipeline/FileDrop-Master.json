@@ -296,14 +296,6 @@
 			}
 		],
 		"parameters": {
-			"SourceSystemName": {
-				"type": "string",
-				"defaultValue": "RAG"
-			},
-			"StreamName": {
-				"type": "string",
-				"defaultValue": "Devices"
-			},
 			"SourceFolder": {
 				"type": "string",
 				"defaultValue": "RAG/Devices"
