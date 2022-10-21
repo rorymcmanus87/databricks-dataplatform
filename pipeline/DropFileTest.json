@@ -10,7 +10,7 @@
 				"typeProperties": {
 					"variableName": "varSourceSystemName",
 					"value": {
-						"value": "@{pipeline().parameters.PipelineParamaters.SourceFileDropFile}",
+						"value": "@{pipeline().parameters.PipelineParamaters.SourceFileDropFile.value}",
 						"type": "Expression"
 					}
 				}
