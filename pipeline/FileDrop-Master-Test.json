@@ -111,7 +111,7 @@
 				"typeProperties": {
 					"variableName": "varStreamName",
 					"value": {
-						"value": "@{split(pipeline().parameters.SourceFile, '_')[1]}",
+						"value": "@split(split(pipeline().parameters.SourceFile, '_')[1], '.')[0]",
 						"type": "Expression"
 					}
 				}
