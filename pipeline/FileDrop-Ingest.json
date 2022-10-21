@@ -573,15 +573,15 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"container": {
-											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"value": "@pipeline().parameters.SourceFileDropFileSystem",
 											"type": "Expression"
 										},
 										"folder": {
-											"value": "@pipeline().parameters.DestinationRawFolder",
+											"value": "@pipeline().parameters.SourceFileDropFolder",
 											"type": "Expression"
 										},
 										"file": {
-											"value": "@pipeline().parameters.DestinationRawFile",
+											"value": "@pipeline().parameters.SourceFileDropFile",
 											"type": "Expression"
 										},
 										"colDelimiter": {
