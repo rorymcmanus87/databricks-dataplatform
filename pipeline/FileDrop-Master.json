@@ -314,11 +314,11 @@
 		"parameters": {
 			"SourceFolder": {
 				"type": "string",
-				"defaultValue": "RAG/Devices"
+				"defaultValue": "Manual"
 			},
 			"SourceFile": {
 				"type": "string",
-				"defaultValue": "Devices.csv"
+				"defaultValue": "ManualCRM_Customers_20221021.csv"
 			},
 			"SecretName": {
 				"type": "string"
