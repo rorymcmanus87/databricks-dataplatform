@@ -1,0 +1,23 @@
+{
+	"name": "DropZone_DelimitedText",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DropZone",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Azure/Datalake"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
