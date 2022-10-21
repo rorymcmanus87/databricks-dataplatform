@@ -570,7 +570,29 @@
 							"inputs": [
 								{
 									"referenceName": "DropZone_DelimitedText",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"container": {
+											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"type": "Expression"
+										},
+										"folder": {
+											"value": "@pipeline().parameters.DestinationRawFolder",
+											"type": "Expression"
+										},
+										"file": {
+											"value": "@pipeline().parameters.DestinationRawFile",
+											"type": "Expression"
+										},
+										"colDelimiter": {
+											"value": "@pipeline().parameters.SourceFileDelimiter",
+											"type": "Expression"
+										},
+										"headerFlag": {
+											"value": "@pipeline().parameters.SourceFileHeaderFlag",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
