@@ -208,7 +208,7 @@
 				"typeProperties": {
 					"variableName": "_DestinationRawFile",
 					"value": {
-						"value": "@pipeline().parameters.SourceFileDropFile",
+						"value": "@replace(pipeline().parameters.DestinationRawFile, 'GUID', pipeline().RunId)",
 						"type": "Expression"
 					}
 				}
