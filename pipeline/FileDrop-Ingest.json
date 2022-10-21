@@ -601,11 +601,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
-											"value": "@pipeline().parameters.SourceFileDropFileSystem",
+											"value": "@pipeline().parameters.DestinationRawFileSystem",
 											"type": "Expression"
 										},
 										"Folder": {
-											"value": "@pipeline().parameters.SourceFileDropFolder",
+											"value": "@pipeline().parameters.DestinationRawFolder",
 											"type": "Expression"
 										},
 										"File": {
