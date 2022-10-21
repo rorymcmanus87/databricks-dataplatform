@@ -208,7 +208,7 @@
 				"typeProperties": {
 					"variableName": "_DestinationRawFile",
 					"value": {
-						"value": "@pipeline().parameters.PipelineParameters.value[0].SourceFileDropFile",
+						"value": "@pipeline().parameters.PipelineParameters.value.SourceFileDropFile",
 						"type": "Expression"
 					}
 				}
