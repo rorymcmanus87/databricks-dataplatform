@@ -1306,9 +1306,6 @@
 			},
 			"DataMapping": {
 				"type": "string"
-			},
-			"PipelineParameters": {
-				"type": "object"
 			}
 		},
 		"variables": {
