@@ -10,7 +10,7 @@
 				"typeProperties": {
 					"variableName": "varSourceSystemName",
 					"value": {
-						"value": "@json(pipeline().parameters.PipelineParamaters)",
+						"value": "@{json(pipeline().parameters.PipelineParamaters)}",
 						"type": "Expression"
 					}
 				}
