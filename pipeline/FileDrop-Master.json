@@ -87,7 +87,13 @@
 						"referenceName": "FileDrop-Ingest",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true
+					"waitOnCompletion": true,
+					"parameters": {
+						"PipelineParameters": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.PipelineParameters",
+							"type": "Expression"
+						}
+					}
 				}
 			},
 			{
