@@ -10,7 +10,7 @@
 				"typeProperties": {
 					"variableName": "varSourceSystemName",
 					"value": {
-						"value": "@{json(pipeline().parameters.PipelineParamaters).SourceFileDropFile.value[0]}",
+						"value": "@{json(pipeline().parameters.PipelineParamaters.SourceFileDropFile.value)}",
 						"type": "Expression"
 					}
 				}
@@ -18,7 +18,7 @@
 		],
 		"parameters": {
 			"PipelineParamaters": {
-				"type": "string"
+				"type": "object"
 			}
 		},
 		"variables": {
