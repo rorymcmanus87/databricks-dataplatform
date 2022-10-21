@@ -49,6 +49,9 @@
 				}
 			}
 		},
+		"folder": {
+			"name": "Sandbox"
+		},
 		"annotations": []
 	}
 }
