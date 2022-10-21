@@ -30,7 +30,7 @@
 				"typeProperties": {
 					"variableName": "varFinal",
 					"value": {
-						"value": "@json(variables('varSourceSystemName')).value",
+						"value": "@{json(variables('varSourceSystemName')).value}",
 						"type": "Expression"
 					}
 				}
