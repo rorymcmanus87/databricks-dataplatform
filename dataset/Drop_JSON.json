@@ -2,7 +2,7 @@
 	"name": "Drop_JSON",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Bronze",
+			"referenceName": "DropZone",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
