@@ -553,12 +553,12 @@
 									}
 								},
 								"sink": {
-									"type": "JsonSink",
+									"type": "ParquetSink",
 									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
+										"type": "AzureBlobStorageWriteSettings"
 									},
 									"formatSettings": {
-										"type": "JsonWriteSettings"
+										"type": "ParquetWriteSettings"
 									}
 								},
 								"enableStaging": false,
@@ -597,15 +597,15 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "Bronze_JSON",
+									"referenceName": "Bronze_Parquet",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
-											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"value": "@pipeline().parameters.SourceFileDropFileSystem",
 											"type": "Expression"
 										},
 										"Folder": {
-											"value": "@pipeline().parameters.DestinationRawFolder",
+											"value": "@pipeline().parameters.SourceFileDropFolder",
 											"type": "Expression"
 										},
 										"File": {
