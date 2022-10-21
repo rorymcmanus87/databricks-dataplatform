@@ -89,6 +89,70 @@
 					},
 					"waitOnCompletion": true,
 					"parameters": {
+						"IngestID": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.IngestID",
+							"type": "Expression"
+						},
+						"SourceSystemName": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceSystemName",
+							"type": "Expression"
+						},
+						"StreamName": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.StreamName",
+							"type": "Expression"
+						},
+						"SourceFileDropFileSystem": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFileSystem",
+							"type": "Expression"
+						},
+						"SourceFileDropFolder": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFolder",
+							"type": "Expression"
+						},
+						"SourceFileDropFile": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFile",
+							"type": "Expression"
+						},
+						"DestinationRawFileSystem": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFileSystem",
+							"type": "Expression"
+						},
+						"DestinationRawFolder": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFolder",
+							"type": "Expression"
+						},
+						"DestinationRawFile": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFile",
+							"type": "Expression"
+						},
+						"ReloadFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.ReloadFlag",
+							"type": "Expression"
+						},
+						"L1TransformationReqdFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.L1TransformationReqdFlag",
+							"type": "Expression"
+						},
+						"L2TransformationReqdFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.L2TransformationReqdFlag",
+							"type": "Expression"
+						},
+						"DataFormat": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataFormat",
+							"type": "Expression"
+						},
+						"SourceFileDelimiter": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDelimiter",
+							"type": "Expression"
+						},
+						"SourceFileHeaderFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileHeaderFlag",
+							"type": "Expression"
+						},
+						"DataMapping": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataMapping",
+							"type": "Expression"
+						},
 						"PipelineParameters": {
 							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.PipelineParameters",
 							"type": "Expression"
