@@ -14,6 +14,26 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "setSourceSystemName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varFinal",
+					"value": {
+						"value": "@json(variables('varSourceSystemName')).value",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -23,6 +43,9 @@
 		},
 		"variables": {
 			"varSourceSystemName": {
+				"type": "String"
+			},
+			"varFinal": {
 				"type": "String"
 			}
 		},
