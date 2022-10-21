@@ -1,6 +1,27 @@
 {
 	"name": "MasterPipeline",
 	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "DropFileTest",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"PipelineParamaters": {
+							"value": "@json(pipeline().parameters.PipelineParameters)",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
 		"parameters": {
 			"PipelineParameters": {
 				"type": "string",
