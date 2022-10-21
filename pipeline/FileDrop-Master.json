@@ -90,7 +90,7 @@
 					"waitOnCompletion": true,
 					"parameters": {
 						"PipelineParameters": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.PipelineParameters",
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.PipelineParameters",
 							"type": "Expression"
 						}
 					}
