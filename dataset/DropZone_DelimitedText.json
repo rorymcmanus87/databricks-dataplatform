@@ -2,6 +2,10 @@
 	"name": "DropZone_DelimitedText",
 	"properties": {
 		"description": "Generic dataset used to ingest csv, tab separated or any delimited text file from drop zone",
+		"linkedServiceName": {
+			"referenceName": "DropZone",
+			"type": "LinkedServiceReference"
+		},
 		"parameters": {
 			"container": {
 				"type": "string"
