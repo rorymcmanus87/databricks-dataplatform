@@ -15,9 +15,6 @@
 				"pipelineReference": {
 					"referenceName": "DropFileTest",
 					"type": "PipelineReference"
-				},
-				"parameters": {
-					"SourceSystemName": "@triggerBody().folderPath"
 				}
 			}
 		],
