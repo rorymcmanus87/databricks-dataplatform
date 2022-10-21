@@ -1,6 +1,33 @@
 {
 	"name": "MasterPipeline",
 	"properties": {
+		"parameters": {
+			"PipelineParameters": {
+				"type": "string",
+				"defaultValue": {
+					"IngestID": 12,
+					"SourceSystemName": "ManualCRM",
+					"StreamName": "Customers",
+					"Backend": "CSV",
+					"DataFormat": null,
+					"SourceFileDropFileSystem": "drop-zone",
+					"SourceFileDropFolder": "Manual",
+					"SourceFileDropFile": "ManualCRM_Customers_20221021.csv",
+					"SourceFileDelimiter": ",",
+					"SourceFileHeaderFlag": true,
+					"DestinationRawFileSystem": "raw-zone",
+					"DestinationRawFolder": "manual/customers/2022-10",
+					"DestinationRawFile": "customers_20221021_GUID.json",
+					"DataMapping": null,
+					"ReloadFlag": false,
+					"L1TransformationReqdFlag": true,
+					"L2TransformationReqdFlag": true,
+					"DelayL1TransformationFlag": false,
+					"DelayL2TransformationFlag": true,
+					"ADFPipelineRunID": null
+				}
+			}
+		},
 		"annotations": []
 	}
 }
