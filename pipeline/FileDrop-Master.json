@@ -152,10 +152,6 @@
 						"DataMapping": {
 							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataMapping",
 							"type": "Expression"
-						},
-						"PipelineParameters": {
-							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.PipelineParameters",
-							"type": "Expression"
 						}
 					}
 				}
