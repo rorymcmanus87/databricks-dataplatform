@@ -124,7 +124,7 @@
 			},
 			"SourceFile": {
 				"type": "string",
-				"defaultValue": "ManualCRM_Customers.csv"
+				"defaultValue": "ManualCRM_Customers_20221021.csv"
 			},
 			"SecretName": {
 				"type": "string"
