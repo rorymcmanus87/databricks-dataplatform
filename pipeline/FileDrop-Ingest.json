@@ -130,7 +130,7 @@
 						"type": "AzureSqlSource",
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L1]",
 						"storedProcedureParameters": {
-							"DeltaDate": {
+							"WatermarkDate": {
 								"type": "DateTime",
 								"value": null
 							},
