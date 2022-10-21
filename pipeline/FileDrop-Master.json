@@ -257,6 +257,10 @@
 													"value": "@item().MaxRetries",
 													"type": "Expression"
 												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												},
 												"NotebookName": {
 													"value": "@item().NotebookName",
 													"type": "Expression"
