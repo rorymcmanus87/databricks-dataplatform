@@ -15,7 +15,7 @@
 					"waitOnCompletion": true,
 					"parameters": {
 						"PipelineParamaters": {
-							"value": "@json(pipeline().parameters.PipelineParameters)",
+							"value": "@pipeline().parameters.PipelineParameters",
 							"type": "Expression"
 						}
 					}
