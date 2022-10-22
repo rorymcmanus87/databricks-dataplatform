@@ -953,13 +953,6 @@
 										},
 										"type": "String"
 									},
-									"OutputEntityTable": {
-										"value": {
-											"value": "@item().OutputDWStagingTable",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
 									"OutputEntityName": {
 										"value": {
 											"value": "@item().OutputDWTable",
