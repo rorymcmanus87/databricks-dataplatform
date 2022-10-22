@@ -953,63 +953,35 @@
 										},
 										"type": "String"
 									},
-									"OutputDWStagingTable": {
+									"OutputEntityTable": {
 										"value": {
 											"value": "@item().OutputDWStagingTable",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputDWTable": {
+									"OutputEntityName": {
 										"value": {
 											"value": "@item().OutputDWTable",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputDWTableWriteMode": {
+									"OutputEntityWriteMode": {
 										"value": {
 											"value": "@item().OutputDWTableWriteMode",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputL1CuratedFile": {
-										"value": {
-											"value": "@replace(item().OutputL1CuratedFile,'GUID', pipeline().RunId)",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFileDelimiter": {
-										"value": {
-											"value": "@item().OutputL1CuratedFileDelimiter",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFileFormat": {
-										"value": {
-											"value": "@item().OutputL1CuratedFileFormat",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFileWriteMode": {
-										"value": {
-											"value": "@item().OutputL1CuratedFileWriteMode",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OutputL1CuratedFolder": {
+									"OutputEntityFolder": {
 										"value": {
 											"value": "@item().OutputL1CuratedFolder",
 											"type": "Expression"
 										},
 										"type": "String"
 									},
-									"OutputL1CurateFileSystem": {
+									"OutputEntityFileSystem": {
 										"value": {
 											"value": "@item().OutputL1CurateFileSystem",
 											"type": "Expression"
