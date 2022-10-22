@@ -24,7 +24,7 @@
 			}
 		},
 		"folder": {
-			"name": "Azure"
+			"name": "Azure/Datalake"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
