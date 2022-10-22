@@ -1,6 +1,10 @@
 {
 	"name": "REST_API",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RestAnonymous",
+			"type": "LinkedServiceReference"
+		},
 		"parameters": {
 			"BaseURL": {
 				"type": "string"
