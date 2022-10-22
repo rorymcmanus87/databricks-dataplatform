@@ -189,7 +189,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Salesforce"
+				"defaultValue": "ManualCRM"
 			},
 			"StreamName": {
 				"type": "string",
