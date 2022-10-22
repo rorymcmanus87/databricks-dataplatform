@@ -1,10 +1,6 @@
 {
 	"name": "Bronze_Parquet",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "Raw",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"FileSystem": {
 				"type": "string"

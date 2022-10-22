@@ -1,10 +1,6 @@
 {
 	"name": "Silver_JSON",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "Raw",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"FileSystem": {
 				"type": "string"
