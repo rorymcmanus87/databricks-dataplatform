@@ -807,7 +807,7 @@
 					"sink": {
 						"type": "JsonSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "JsonWriteSettings"
@@ -833,7 +833,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Raw_JSON",
+						"referenceName": "Bronze_JSON",
 						"type": "DatasetReference",
 						"parameters": {
 							"FileSystem": {
