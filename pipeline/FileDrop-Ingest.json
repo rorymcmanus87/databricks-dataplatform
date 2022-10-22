@@ -288,7 +288,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "Bronze_JSON",
+									"referenceName": "Raw_JSON",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
