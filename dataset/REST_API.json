@@ -3,7 +3,13 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "RestAnonymous",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"KeyVaultBaseURL": {
+					"value": "@dataset().BaseURL",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"BaseURL": {
