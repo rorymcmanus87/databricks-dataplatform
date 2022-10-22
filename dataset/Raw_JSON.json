@@ -2,7 +2,7 @@
 	"name": "Raw_JSON",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Raw",
+			"referenceName": "Bronze",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -23,7 +23,7 @@
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": {
 					"value": "@dataset().File",
 					"type": "Expression"
@@ -32,7 +32,7 @@
 					"value": "@dataset().Folder",
 					"type": "Expression"
 				},
-				"container": {
+				"fileSystem": {
 					"value": "@dataset().FileSystem",
 					"type": "Expression"
 				}
