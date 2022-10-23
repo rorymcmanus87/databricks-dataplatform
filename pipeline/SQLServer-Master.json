@@ -355,7 +355,8 @@
 				"defaultValue": 30
 			},
 			"KeyVault-SQL-ConnString": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Adventureworks-SQLServer-ConnString"
 			}
 		},
 		"folder": {
