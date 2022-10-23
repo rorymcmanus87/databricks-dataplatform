@@ -43,10 +43,6 @@
 							"value": "@string(coalesce(pipeline().parameters.L1TransformID, ''))",
 							"type": "Expression"
 						},
-						"ReRunL2TransformFlag": {
-							"value": "@pipeline().parameters.ReRunL2TransformFlag",
-							"type": "Expression"
-						},
 						"MaxRetries": {
 							"value": "@pipeline().parameters.MaxRetries",
 							"type": "Expression"
