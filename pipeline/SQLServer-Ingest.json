@@ -875,27 +875,27 @@
 			},
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "MBS"
+				"defaultValue": "Adventureworks"
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "Contract"
+				"defaultValue": "Person Address"
 			},
 			"EntityName": {
 				"type": "string",
-				"defaultValue": "Contacts"
+				"defaultValue": "Person.Address"
 			},
 			"DataFromTimestamp": {
 				"type": "string",
-				"defaultValue": "2019-07-15 00:00:01.0000000"
+				"defaultValue": "1900-01-01 00:00:00.0000000"
 			},
 			"DataToTimestamp": {
 				"type": "string",
-				"defaultValue": "2019-07-16 00:00:00.0000000"
+				"defaultValue": "2022-10-23 13:16:16.0000000"
 			},
 			"RunSequence": {
 				"type": "string",
-				"defaultValue": "1"
+				"defaultValue": "100"
 			},
 			"L1TransformationReqdFlag": {
 				"type": "bool",
@@ -907,23 +907,23 @@
 			},
 			"DestinationRawFileSystem": {
 				"type": "string",
-				"defaultValue": "raw-zone"
+				"defaultValue": "raw-bronze"
 			},
 			"DestinationRawFolder": {
 				"type": "string",
-				"defaultValue": "mbs/contract/2019/07/15"
+				"defaultValue": "adventureworks/personaddress/1900-01"
 			},
 			"DestinationRawFile": {
 				"type": "string",
-				"defaultValue": "mbs_contract_20190715_00_GUID.parquet"
+				"defaultValue": "person_address_19000101_GUID.parquet"
 			},
 			"SourceQuery": {
 				"type": "string",
-				"defaultValue": "select * from Contacts"
+				"defaultValue": "SELECT * FROM Person.Address WHERE ModifiedDate > '1900-01-01 00:00:00.000' AND ModifiedDate<='2022-10-23 13:16:16'"
 			},
 			"StatQuery": {
 				"type": "string",
-				"defaultValue": "SELECT MIN(LAST_UPDATED) AS DataFromTimestamp, MAX(LAST_UPDATED) AS DataToTimestamp, count(1) as SourceCount FROM MBS.VWMBMDW_CONTRACT WHERE LAST_UPDATED BETWEEN '2019-07-15 00:00:00' AND '2019-07-16 00:00:00' WITH UR"
+				"defaultValue": "SELECT MIN(ModifiedDate) AS DataFromTimestamp, MAX(ModifiedDate) AS DataToTimestamp, count(1) as SourceCount FROM Person.Address WHERE ModifiedDate > '1900-01-01 00:00:00.000' AND ModifiedDate <= '2022-10-23 13:16:16'"
 			},
 			"ReloadFlag": {
 				"type": "bool",
