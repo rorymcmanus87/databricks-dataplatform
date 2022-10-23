@@ -42,6 +42,34 @@
 						"L1TransformID": {
 							"value": "@string(coalesce(pipeline().parameters.L1TransformID, ''))",
 							"type": "Expression"
+						},
+						"ReRunL2TransformFlag": {
+							"value": "@pipeline().parameters.ReRunL2TransformFlag",
+							"type": "Expression"
+						},
+						"MaxRetries": {
+							"value": "@pipeline().parameters.MaxRetries",
+							"type": "Expression"
+						},
+						"NotebookParameters": {
+							"value": "@pipeline().parameters.NotebookParameters",
+							"type": "Expression"
+						},
+						"DataFromNumber": {
+							"value": "@pipeline().parameters.DataFromNumber",
+							"type": "Expression"
+						},
+						"DataToNumber": {
+							"value": "@pipeline().parameters.DataToNumber",
+							"type": "Expression"
+						},
+						"DataFromTimestamp": {
+							"value": "@pipeline().parameters.DataFromTimestamp",
+							"type": "Expression"
+						},
+						"DataToTimestamp": {
+							"value": "@pipeline().parameters.DataToTimestamp",
+							"type": "Expression"
 						}
 					}
 				},
