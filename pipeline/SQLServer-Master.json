@@ -364,16 +364,26 @@
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
 						"storedProcedureParameters": {
 							"SourceSystemName": {
-								"type": "String"
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.SourceSystemName",
+									"type": "Expression"
+								}
 							},
 							"StreamName": {
-								"type": "String"
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.StreamName",
+									"type": "Expression"
+								}
 							},
 							"DelayL2TransformationFlag": {
-								"type": "Int32"
+								"type": "Int32",
+								"value": "0"
 							},
 							"InputType": {
-								"type": "String"
+								"type": "String",
+								"value": "Raw"
 							}
 						},
 						"queryTimeout": "02:00:00",
