@@ -187,6 +187,26 @@
 												"MaxRetries": {
 													"value": "@item().MaxRetries",
 													"type": "Expression"
+												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												},
+												"DataFromNumber": {
+													"value": "@item().DataFromNumber",
+													"type": "Expression"
+												},
+												"DataToNumber": {
+													"value": "@item().DataToNumber",
+													"type": "Expression"
+												},
+												"DataFromTimestamp": {
+													"value": "@item().DataFromTimestamp",
+													"type": "Expression"
+												},
+												"DataToTimestamp": {
+													"value": "@item().DataToTimestamp",
+													"type": "Expression"
 												}
 											}
 										}
