@@ -462,6 +462,26 @@
 									"type": "DatasetReference"
 								}
 							}
+						},
+						{
+							"name": "If-L2-Transform-Pipeline",
+							"description": "If Lookup returns a row continue",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Check-L2-Instance-Status-Raw",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@not(equals(activity('Check-L2-Instance-Status-Raw').output?.firstRow, null)) ",
+									"type": "Expression"
+								}
+							}
 						}
 					]
 				}
