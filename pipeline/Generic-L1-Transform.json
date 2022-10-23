@@ -237,6 +237,9 @@
 			},
 			"NotebookPath": {
 				"type": "string"
+			},
+			"MaxRetries": {
+				"type": "int"
 			}
 		},
 		"folder": {
