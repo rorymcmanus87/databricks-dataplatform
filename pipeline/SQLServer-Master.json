@@ -513,30 +513,6 @@
 												"NotebookName": {
 													"value": "@item().NotebookName",
 													"type": "Expression"
-												},
-												"NotebookPath": {
-													"value": "@item().NotebookPath",
-													"type": "Expression"
-												},
-												"InputFileSystem": {
-													"value": "@item().InputFileSystem",
-													"type": "Expression"
-												},
-												"InputFileFolder": {
-													"value": "@item().InputFileFolder",
-													"type": "Expression"
-												},
-												"InputFile": {
-													"value": "@item().InputFile",
-													"type": "Expression"
-												},
-												"InputFileDelimiter": {
-													"value": "@item().InputFileDelimiter",
-													"type": "Expression"
-												},
-												"InputFileHeaderFlag": {
-													"value": "@item().InputFileHeaderFlag",
-													"type": "Expression"
 												}
 											}
 										}
