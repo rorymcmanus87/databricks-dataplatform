@@ -1,9 +1,565 @@
 {
 	"name": "Generic-L2-Transform",
 	"properties": {
+		"activities": [
+			{
+				"name": "GenericL2TransformNotebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "DeleteIfExists",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": {
+						"value": "@concat('/', pipeline().parameters.NotebookPath, '/', pipeline().parameters.NotebookName)",
+						"type": "Expression"
+					},
+					"baseParameters": {
+						"L2TransformInstanceID": {
+							"value": "@string(pipeline().parameters.L2TransformInstanceID)",
+							"type": "Expression"
+						},
+						"L2TransformID": {
+							"value": "@string(coalesce(pipeline().parameters.L2TransformID, ''))",
+							"type": "Expression"
+						},
+						"IngestID": {
+							"value": "@string(coalesce(pipeline().parameters.IngestID, ''))",
+							"type": "Expression"
+						},
+						"L1TransformID": {
+							"value": "@string(coalesce(pipeline().parameters.L1TransformID, ''))",
+							"type": "Expression"
+						},
+						"InputFileSystem": {
+							"value": "@coalesce(pipeline().parameters.InputFileSystem, '')",
+							"type": "Expression"
+						},
+						"InputFileFolder": {
+							"value": "@coalesce(pipeline().parameters.InputFileFolder, '')",
+							"type": "Expression"
+						},
+						"InputFile": {
+							"value": "@coalesce(pipeline().parameters.InputFile, '')",
+							"type": "Expression"
+						},
+						"InputFileDelimiter": {
+							"value": "@coalesce(pipeline().parameters.InputFileDelimiter, '')",
+							"type": "Expression"
+						},
+						"InputFileHeaderFlag": {
+							"value": "@{pipeline().parameters.InputFileHeaderFlag}",
+							"type": "Expression"
+						},
+						"InputDWTable": {
+							"value": "@{pipeline().parameters.InputDWTable}",
+							"type": "Expression"
+						},
+						"DeltaName": {
+							"value": "@coalesce(pipeline().parameters.DeltaName, '')",
+							"type": "Expression"
+						},
+						"DataFromTimestamp": {
+							"value": "@coalesce(pipeline().parameters.DataFromTimeStamp, '')",
+							"type": "Expression"
+						},
+						"DataToTimestamp": {
+							"value": "@coalesce(pipeline().parameters.DataToTimestamp, '')",
+							"type": "Expression"
+						},
+						"DataFromNumber": {
+							"value": "@coalesce(pipeline().parameters.DataFromNumber, '')",
+							"type": "Expression"
+						},
+						"DataToNumber": {
+							"value": "@coalesce(pipeline().parameters.DataToNumber, '')",
+							"type": "Expression"
+						},
+						"OutputL2CurateFileSystem": {
+							"value": "@coalesce(pipeline().parameters.OutputL2CurateFileSystem, '')",
+							"type": "Expression"
+						},
+						"OutputL2CuratedFolder": {
+							"value": "@coalesce(pipeline().parameters.OutputL2CuratedFolder, '')",
+							"type": "Expression"
+						},
+						"OutputL2CuratedFile": {
+							"value": "@coalesce(pipeline().parameters.OutputL2CuratedFile, '')",
+							"type": "Expression"
+						},
+						"OutputL2CuratedFileDelimiter": {
+							"value": "@coalesce(pipeline().parameters.OutputL2CuratedFileDelimiter, '')",
+							"type": "Expression"
+						},
+						"OutputL2CuratedFileFormat": {
+							"value": "@coalesce(pipeline().parameters.OutputL2CuratedFileFormat, '')",
+							"type": "Expression"
+						},
+						"OutputL2CuratedFileWriteMode": {
+							"value": "@coalesce(pipeline().parameters.OutputL2CuratedFileWriteMode, '')",
+							"type": "Expression"
+						},
+						"OutputEntityStaging": {
+							"value": "@coalesce(pipeline().parameters.OutputEntityStaging, '')",
+							"type": "Expression"
+						},
+						"LookupColumns": {
+							"value": "@coalesce(pipeline().parameters.LookupColumns, '')",
+							"type": "Expression"
+						},
+						"OutputEntityName": {
+							"value": "@coalesce(pipeline().parameters.OutputEntityName, '')",
+							"type": "Expression"
+						},
+						"OutputEntityWriteMode": {
+							"value": "@coalesce(pipeline().parameters.OutputEntityWriteMode, '')",
+							"type": "Expression"
+						},
+						"CustomParameters": {
+							"value": "@coalesce(pipeline().parameters.CustomParameters, '')",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Update-L2-TransformInstance-Failure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "GenericL2TransformNotebook",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateTransformInstance_L2]",
+					"storedProcedureParameters": {
+						"L2TransformADFPipelineRunID": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"L2TransformInstanceId": {
+							"value": {
+								"value": "@pipeline().parameters.L2TransformInstanceID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"L2TransformStatus": {
+							"value": "Failure",
+							"type": "String"
+						},
+						"MaxRetries": {
+							"value": {
+								"value": "@pipeline().parameters.MaxRetries",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update-L2-TransformInstance-Success",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "GenericL2TransformNotebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateTransformInstance_L2]",
+					"storedProcedureParameters": {
+						"DataFromNumber": {
+							"value": {
+								"value": "@pipeline().parameters.DataFromNumber",
+								"type": "Expression"
+							},
+							"type": "Int64"
+						},
+						"DataFromTimestamp": {
+							"value": {
+								"value": "@pipeline().parameters.DataFromTimestamp",
+								"type": "Expression"
+							},
+							"type": "Datetimeoffset"
+						},
+						"DataToNumber": {
+							"value": {
+								"value": "@pipeline().parameters.DataToNumber",
+								"type": "Expression"
+							},
+							"type": "Int64"
+						},
+						"DataToTimestamp": {
+							"value": {
+								"value": "@pipeline().parameters.DataToTimestamp",
+								"type": "Expression"
+							},
+							"type": "Datetimeoffset"
+						},
+						"L2TransformADFPipelineRunID": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"L2TransformCount": {
+							"value": {
+								"value": "@activity('GenericL2TransformNotebook').output.runOutput.l2TransformCount",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"L2TransformInstanceId": {
+							"value": {
+								"value": "@pipeline().parameters.L2TransformInstanceID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"L2TransformStatus": {
+							"value": "Success",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update-L2-TransformInstance",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateTransformInstance_L2]",
+					"storedProcedureParameters": {
+						"L2TransformADFPipelineRunID": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"L2TransformInstanceId": {
+							"value": {
+								"value": "@pipeline().parameters.L2TransformInstanceID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"L2TransformStatus": {
+							"value": "Running",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "DeleteIfExists",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Update-L2-TransformInstance",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@and(equals(pipeline().parameters.OutputEntityWriteMode,'append'),equals(pipeline().parameters.ReRunL2TransformFlag,true))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Delete-Existing",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[Common].[DeleteExisting]",
+								"storedProcedureParameters": {
+									"DWTable": {
+										"value": {
+											"value": "@pipeline().parameters.OutputEntityName",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"SOURCE_FILE": {
+										"value": {
+											"value": "@pipeline().parameters.InputFile",
+											"type": "Expression"
+										},
+										"type": "String"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Update-L2-TransformDefinition-Success",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Update-L2-TransformInstance-Success",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateTransformDefinition_L2]",
+					"storedProcedureParameters": {
+						"L2TransformID": {
+							"value": {
+								"value": "@pipeline().parameters.L2TransformID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"LastDeltaDate": {
+							"value": {
+								"value": "@pipeline().parameters.DataToTimestamp",
+								"type": "Expression"
+							},
+							"type": "Datetimeoffset"
+						},
+						"LastDeltaNumber": {
+							"value": {
+								"value": "@pipeline().parameters.DataToNumber",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update-L2-TransformDefinition-Failure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Update-L2-TransformInstance-Failure",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateTransformDefinition_L2]",
+					"storedProcedureParameters": {
+						"L2TransformID": {
+							"value": {
+								"value": "@pipeline().parameters.L2TransformID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"LastDeltaDate": {
+							"value": {
+								"value": "@pipeline().parameters.DataFromTimestamp",
+								"type": "Expression"
+							},
+							"type": "Datetimeoffset"
+						},
+						"LastDeltaNumber": {
+							"value": {
+								"value": "@pipeline().parameters.DataFromNumber",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"L2TransformInstanceID": {
+				"type": "int"
+			},
+			"L2TransformID": {
+				"type": "string"
+			},
+			"IngestID": {
+				"type": "int"
+			},
+			"L1TransformID": {
+				"type": "int"
+			},
+			"NotebookName": {
+				"type": "string"
+			},
+			"NotebookPath": {
+				"type": "string"
+			},
+			"InputFileSystem": {
+				"type": "string"
+			},
+			"InputFileFolder": {
+				"type": "string"
+			},
+			"InputFile": {
+				"type": "string"
+			},
+			"InputFileDelimiter": {
+				"type": "string"
+			},
+			"InputFileHeaderFlag": {
+				"type": "bool"
+			},
+			"InputDWTable": {
+				"type": "string"
+			},
+			"DeltaName": {
+				"type": "string"
+			},
+			"DataFromTimestamp": {
+				"type": "string"
+			},
+			"DataToTimestamp": {
+				"type": "string"
+			},
+			"DataFromNumber": {
+				"type": "int"
+			},
+			"DataToNumber": {
+				"type": "int"
+			},
+			"OutputL2CurateFileSystem": {
+				"type": "string"
+			},
+			"OutputL2CuratedFolder": {
+				"type": "string"
+			},
+			"OutputL2CuratedFile": {
+				"type": "string"
+			},
+			"OutputL2CuratedFileDelimiter": {
+				"type": "string"
+			},
+			"OutputL2CuratedFileFormat": {
+				"type": "string"
+			},
+			"OutputL2CuratedFileWriteMode": {
+				"type": "string"
+			},
+			"OutputEntityStaging": {
+				"type": "string"
+			},
+			"LookupColumns": {
+				"type": "string"
+			},
+			"OutputEntityName": {
+				"type": "string"
+			},
+			"OutputEntityWriteMode": {
+				"type": "string"
+			},
+			"ReRunL2TransformFlag": {
+				"type": "bool"
+			},
+			"MaxRetries": {
+				"type": "int"
+			},
+			"CustomParameters": {
+				"type": "string"
+			}
+		},
 		"folder": {
-			"name": "Transform Pipelines/L2Transform"
+			"name": "Common/L2Transform"
 		},
 		"annotations": []
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
