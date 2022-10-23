@@ -528,6 +528,10 @@
 							"TableName": {
 								"value": "@replace(substring(pipeline().parameters.EntityName, indexof(pipeline().parameters.EntityName,'.'), sub(length(pipeline().parameters.EntityName), indexof(pipeline().parameters.EntityName,'.'))), '.', '')",
 								"type": "Expression"
+							},
+							"SQLServerConnectionString": {
+								"value": "@pipeline().parameters.KeyVault-SQL-ConnString",
+								"type": "Expression"
 							}
 						}
 					}
@@ -853,6 +857,10 @@
 							},
 							"TableName": {
 								"value": "@replace(substring(pipeline().parameters.EntityName, indexof(pipeline().parameters.EntityName,'.'), sub(length(pipeline().parameters.EntityName), indexof(pipeline().parameters.EntityName,'.'))), '.', '')",
+								"type": "Expression"
+							},
+							"SQLServerConnectionString": {
+								"value": "@pipeline().parameters.KeyVault-SQL-ConnString",
 								"type": "Expression"
 							}
 						}
