@@ -11,6 +11,9 @@
 			},
 			"TableName": {
 				"type": "string"
+			},
+			"SQLServerConnectionString": {
+				"type": "string"
 			}
 		},
 		"folder": {
