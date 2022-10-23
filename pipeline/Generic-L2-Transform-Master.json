@@ -305,7 +305,7 @@
 			}
 		},
 		"folder": {
-			"name": "Common/L2Transform"
+			"name": "Transform Pipelines/L2Transform"
 		},
 		"annotations": []
 	}
