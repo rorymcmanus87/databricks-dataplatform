@@ -180,104 +180,12 @@
 													"value": "@item().NotebookPath",
 													"type": "Expression"
 												},
-												"InputFileSystem": {
-													"value": "@item().InputFileSystem",
-													"type": "Expression"
-												},
-												"InputFileFolder": {
-													"value": "@item().InputFileFolder",
-													"type": "Expression"
-												},
-												"InputFile": {
-													"value": "@item().InputFile",
-													"type": "Expression"
-												},
-												"InputFileDelimiter": {
-													"value": "@item().InputFileDelimiter",
-													"type": "Expression"
-												},
-												"InputFileHeaderFlag": {
-													"value": "@item().InputFileHeaderFlag",
-													"type": "Expression"
-												},
-												"InputDWTable": {
-													"value": "@item().InputDWTable",
-													"type": "Expression"
-												},
-												"DeltaName": {
-													"value": "@item().DeltaName",
-													"type": "Expression"
-												},
-												"DataFromTimestamp": {
-													"value": "@item().DataFromTimestamp",
-													"type": "Expression"
-												},
-												"DataToTimestamp": {
-													"value": "@item().DataToTimestamp",
-													"type": "Expression"
-												},
-												"DataFromNumber": {
-													"value": "@item().DataFromNumber",
-													"type": "Expression"
-												},
-												"DataToNumber": {
-													"value": "@item().DataToNumber",
-													"type": "Expression"
-												},
-												"OutputL2CurateFileSystem": {
-													"value": "@item().OutputL2CurateFileSystem",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFolder": {
-													"value": "@item().OutputL2CuratedFolder",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFile": {
-													"value": "@item().OutputL2CuratedFile",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFileDelimiter": {
-													"value": "@item().OutputL2CuratedFileDelimiter",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFileFormat": {
-													"value": "@item().OutputL2CuratedFileFormat",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFileWriteMode": {
-													"value": "@item().OutputL2CuratedFileWriteMode",
-													"type": "Expression"
-												},
-												"OutputEntityStaging": {
-													"value": "@item().OutputEntityStaging",
-													"type": "Expression"
-												},
-												"LookupColumns": {
-													"value": "@item().LookupColumns",
-													"type": "Expression"
-												},
-												"OutputEntityName": {
-													"value": "@item().OutputEntityName",
-													"type": "Expression"
-												},
-												"OutputEntityWriteMode": {
-													"value": "@item().OutputEntityWriteMode",
-													"type": "Expression"
-												},
 												"ReRunL2TransformFlag": {
 													"value": "@item().ReRunL2TransformFlag",
 													"type": "Expression"
 												},
 												"MaxRetries": {
 													"value": "@item().MaxRetries",
-													"type": "Expression"
-												},
-												"resourceNameDW": {
-													"value": "@pipeline().parameters.resourceNameDW",
-													"type": "Expression"
-												},
-												"CustomParameters": {
-													"value": "@item().CustomParameters",
 													"type": "Expression"
 												}
 											}
