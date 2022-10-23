@@ -483,7 +483,7 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "Execute Pipeline1",
+										"name": "Generic-L2-Transform",
 										"type": "ExecutePipeline",
 										"dependsOn": [],
 										"userProperties": [],
