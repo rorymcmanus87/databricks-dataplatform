@@ -530,7 +530,7 @@
 								"type": "Expression"
 							},
 							"SQLServerConnectionString": {
-								"value": "@pipeline().parameters.KeyVault-SQL-ConnString",
+								"value": "@pipeline().parameters.KeyVaultSQLConnString",
 								"type": "Expression"
 							}
 						}
@@ -860,7 +860,7 @@
 								"type": "Expression"
 							},
 							"SQLServerConnectionString": {
-								"value": "@pipeline().parameters.KeyVault-SQL-ConnString",
+								"value": "@pipeline().parameters.KeyVaultSQLConnString",
 								"type": "Expression"
 							}
 						}
