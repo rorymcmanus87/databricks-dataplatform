@@ -920,6 +920,9 @@
 			"ReloadFlag": {
 				"type": "bool",
 				"defaultValue": false
+			},
+			"KeyVault-SQL-ConnString": {
+				"type": "string"
 			}
 		},
 		"variables": {
