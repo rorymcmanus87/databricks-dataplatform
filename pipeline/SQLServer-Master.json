@@ -140,6 +140,10 @@
 									"ReloadFlag": {
 										"value": "@item().ReloadFlag",
 										"type": "Expression"
+									},
+									"KeyVault-SQL-ConnString": {
+										"value": "@pipeline().parameters.KeyVault-SQL-ConnString",
+										"type": "Expression"
 									}
 								}
 							}
@@ -349,6 +353,9 @@
 			"MaxIngestInstance": {
 				"type": "int",
 				"defaultValue": 30
+			},
+			"KeyVault-SQL-ConnString": {
+				"type": "string"
 			}
 		},
 		"folder": {
