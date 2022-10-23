@@ -1,0 +1,312 @@
+{
+	"name": "Generic-L2-Transform-Master",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get-TransformInstances-L2",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+						"storedProcedureParameters": {
+							"MaxTransformInstance": {
+								"type": "Int32",
+								"value": {
+									"value": "@pipeline().parameters.MaxTransformInstance",
+									"type": "Expression"
+								}
+							},
+							"SourceSystemName": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.SourceSystemName",
+									"type": "Expression"
+								}
+							},
+							"StreamName": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.StreamName",
+									"type": "Expression"
+								}
+							},
+							"InputType": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.InputType",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Transform-L2",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get-TransformInstances-L2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get-TransformInstances-L2').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Check-L2-Instance-Status",
+							"description": "Check the current L2 Instance is not running or completed.",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+									"storedProcedureParameters": {
+										"L2TransformInstanceId": {
+											"type": "Int32",
+											"value": {
+												"value": "@item().L2TransformInstanceID",
+												"type": "Expression"
+											}
+										},
+										"SourceSystemName": {
+											"type": "String",
+											"value": {
+												"value": "@pipeline().parameters.SourceSystemName",
+												"type": "Expression"
+											}
+										},
+										"StreamName": {
+											"type": "String",
+											"value": {
+												"value": "@pipeline().parameters.StreamName",
+												"type": "Expression"
+											}
+										}
+									},
+									"partitionOption": "None"
+								}
+							}
+						},
+						{
+							"name": "If-L2-Transform-Pipeline",
+							"description": "If Lookup returns a row continue",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Check-L2-Instance-Status",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@not(equals(activity('Check-L2-Instance-Status').output?.firstRow, null)) ",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Generic-L2Transform",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L2-Transform",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"L2TransformInstanceID": {
+													"value": "@item().L2TransformInstanceID",
+													"type": "Expression"
+												},
+												"L2TransformID": {
+													"value": "@item().L2TransformID",
+													"type": "Expression"
+												},
+												"IngestID": {
+													"value": "@item().IngestID",
+													"type": "Expression"
+												},
+												"L1TransformID": {
+													"value": "@item().L1TransformID",
+													"type": "Expression"
+												},
+												"NotebookName": {
+													"value": "@item().NotebookName",
+													"type": "Expression"
+												},
+												"NotebookPath": {
+													"value": "@item().NotebookPath",
+													"type": "Expression"
+												},
+												"InputFileSystem": {
+													"value": "@item().InputFileSystem",
+													"type": "Expression"
+												},
+												"InputFileFolder": {
+													"value": "@item().InputFileFolder",
+													"type": "Expression"
+												},
+												"InputFile": {
+													"value": "@item().InputFile",
+													"type": "Expression"
+												},
+												"InputFileDelimiter": {
+													"value": "@item().InputFileDelimiter",
+													"type": "Expression"
+												},
+												"InputFileHeaderFlag": {
+													"value": "@item().InputFileHeaderFlag",
+													"type": "Expression"
+												},
+												"InputDWTable": {
+													"value": "@item().InputDWTable",
+													"type": "Expression"
+												},
+												"DeltaName": {
+													"value": "@item().DeltaName",
+													"type": "Expression"
+												},
+												"DataFromTimestamp": {
+													"value": "@item().DataFromTimestamp",
+													"type": "Expression"
+												},
+												"DataToTimestamp": {
+													"value": "@item().DataToTimestamp",
+													"type": "Expression"
+												},
+												"DataFromNumber": {
+													"value": "@item().DataFromNumber",
+													"type": "Expression"
+												},
+												"DataToNumber": {
+													"value": "@item().DataToNumber",
+													"type": "Expression"
+												},
+												"OutputL2CurateFileSystem": {
+													"value": "@item().OutputL2CurateFileSystem",
+													"type": "Expression"
+												},
+												"OutputL2CuratedFolder": {
+													"value": "@item().OutputL2CuratedFolder",
+													"type": "Expression"
+												},
+												"OutputL2CuratedFile": {
+													"value": "@item().OutputL2CuratedFile",
+													"type": "Expression"
+												},
+												"OutputL2CuratedFileDelimiter": {
+													"value": "@item().OutputL2CuratedFileDelimiter",
+													"type": "Expression"
+												},
+												"OutputL2CuratedFileFormat": {
+													"value": "@item().OutputL2CuratedFileFormat",
+													"type": "Expression"
+												},
+												"OutputL2CuratedFileWriteMode": {
+													"value": "@item().OutputL2CuratedFileWriteMode",
+													"type": "Expression"
+												},
+												"OutputEntityStaging": {
+													"value": "@item().OutputEntityStaging",
+													"type": "Expression"
+												},
+												"LookupColumns": {
+													"value": "@item().LookupColumns",
+													"type": "Expression"
+												},
+												"OutputEntityName": {
+													"value": "@item().OutputEntityName",
+													"type": "Expression"
+												},
+												"OutputEntityWriteMode": {
+													"value": "@item().OutputEntityWriteMode",
+													"type": "Expression"
+												},
+												"ReRunL2TransformFlag": {
+													"value": "@item().ReRunL2TransformFlag",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												},
+												"resourceNameDW": {
+													"value": "@pipeline().parameters.resourceNameDW",
+													"type": "Expression"
+												},
+												"CustomParameters": {
+													"value": "@item().CustomParameters",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"SourceSystemName": {
+				"type": "string",
+				"defaultValue": "Salesforce"
+			},
+			"StreamName": {
+				"type": "string",
+				"defaultValue": "Contact"
+			},
+			"MaxTransformInstance": {
+				"type": "string",
+				"defaultValue": "10"
+			},
+			"resourceNameDW": {
+				"type": "string",
+				"defaultValue": "ag-bip-dev-sql01-dtw01"
+			},
+			"InputType": {
+				"type": "string",
+				"defaultValue": "%"
+			}
+		},
+		"folder": {
+			"name": "Common/L2Transform"
+		},
+		"annotations": []
+	}
+}
