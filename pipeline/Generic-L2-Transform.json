@@ -534,7 +534,7 @@
 			"OutputL2CuratedFileWriteMode": {
 				"type": "string"
 			},
-			"LookupColumns": {
+			"OutputEntityName": {
 				"type": "string"
 			},
 			"OutputEntityFileSystem": {
@@ -543,13 +543,10 @@
 			"OutputEntityFolder": {
 				"type": "string"
 			},
-			"OutputEntityName": {
-				"type": "string"
-			},
-			"OutputEntityStaging": {
-				"type": "string"
-			},
 			"OutputEntityWriteMode": {
+				"type": "string"
+			},
+			"LookupColumns": {
 				"type": "string"
 			},
 			"ReRunL2TransformFlag": {
