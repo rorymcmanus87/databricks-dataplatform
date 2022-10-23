@@ -142,7 +142,7 @@
 										"type": "Expression"
 									},
 									"KeyVault-SQL-ConnString": {
-										"value": "@pipeline().parameters.KeyVault-SQL-ConnString",
+										"value": "@pipeline().parameters.KeyVaultSQLConnString",
 										"type": "Expression"
 									}
 								}
@@ -354,7 +354,7 @@
 				"type": "int",
 				"defaultValue": 30
 			},
-			"KeyVault-SQL-ConnString": {
+			"KeyVaultSQLConnString": {
 				"type": "string",
 				"defaultValue": "Adventureworks-SQLServer-ConnString"
 			}
