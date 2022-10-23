@@ -534,13 +534,19 @@
 			"OutputL2CuratedFileWriteMode": {
 				"type": "string"
 			},
-			"OutputEntityStaging": {
-				"type": "string"
-			},
 			"LookupColumns": {
 				"type": "string"
 			},
+			"OutputEntityFileSystem": {
+				"type": "string"
+			},
+			"OutputEntityFolder": {
+				"type": "string"
+			},
 			"OutputEntityName": {
+				"type": "string"
+			},
+			"OutputEntityStaging": {
 				"type": "string"
 			},
 			"OutputEntityWriteMode": {
