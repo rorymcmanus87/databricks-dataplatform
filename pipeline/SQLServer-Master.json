@@ -412,7 +412,58 @@
 						"value": "@activity('Get-L2-Transform-Raw').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Check-L2-Instance-Status-Raw",
+							"description": "Check the current L2 Instance is not running or completed.",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+									"storedProcedureParameters": {
+										"L2TransformInstanceId": {
+											"type": "Int32",
+											"value": {
+												"value": "@item().L2TransformInstanceID",
+												"type": "Expression"
+											}
+										},
+										"SourceSystemName": {
+											"type": "String",
+											"value": {
+												"value": "@pipeline().parameters.SourceSystemName",
+												"type": "Expression"
+											}
+										},
+										"StreamName": {
+											"type": "String",
+											"value": {
+												"value": "@pipeline().parameters.StreamName",
+												"type": "Expression"
+											}
+										}
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
