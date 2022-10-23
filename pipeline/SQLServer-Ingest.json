@@ -929,7 +929,7 @@
 				"type": "bool",
 				"defaultValue": false
 			},
-			"KeyVault-SQL-ConnString": {
+			"KeyVaultSQLConnString": {
 				"type": "string",
 				"defaultValue": "Adventureworks-SQLServer-ConnString"
 			}
