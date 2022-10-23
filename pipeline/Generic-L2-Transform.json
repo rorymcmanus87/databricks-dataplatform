@@ -498,7 +498,7 @@
 			"InputFileHeaderFlag": {
 				"type": "bool"
 			},
-			"EntityName": {
+			"InputEntityName": {
 				"type": "string"
 			},
 			"DeltaName": {
