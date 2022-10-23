@@ -338,6 +338,45 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Get-L2-Transform-Raw",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+						"storedProcedureParameters": {
+							"SourceSystemName": {
+								"type": "String"
+							},
+							"StreamName": {
+								"type": "String"
+							},
+							"DelayL2TransformationFlag": {
+								"type": "Int32"
+							},
+							"InputType": {
+								"type": "String"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"concurrency": 7,
