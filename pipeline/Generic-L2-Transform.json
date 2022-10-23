@@ -491,6 +491,18 @@
 			},
 			"NotebookParameters": {
 				"type": "string"
+			},
+			"DataFromNumber": {
+				"type": "string"
+			},
+			"DataToNumber": {
+				"type": "string"
+			},
+			"DataFromTimestamp": {
+				"type": "string"
+			},
+			"DataToTimestamp": {
+				"type": "string"
 			}
 		},
 		"folder": {
