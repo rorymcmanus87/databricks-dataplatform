@@ -360,7 +360,7 @@
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "Account"
+				"defaultValue": "Contact"
 			},
 			"MaxIngestInstance": {
 				"type": "int",
