@@ -501,7 +501,7 @@
 			"InputEntityName": {
 				"type": "string"
 			},
-			"DeltaName": {
+			"WatermarkName": {
 				"type": "string"
 			},
 			"DataFromTimestamp": {
