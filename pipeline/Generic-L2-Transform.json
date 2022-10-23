@@ -483,79 +483,13 @@
 			"NotebookPath": {
 				"type": "string"
 			},
-			"InputFileSystem": {
-				"type": "string"
-			},
-			"InputFileFolder": {
-				"type": "string"
-			},
-			"InputFile": {
-				"type": "string"
-			},
-			"InputFileDelimiter": {
-				"type": "string"
-			},
-			"InputFileHeaderFlag": {
-				"type": "bool"
-			},
-			"InputEntityName": {
-				"type": "string"
-			},
-			"WatermarkName": {
-				"type": "string"
-			},
-			"DataFromTimestamp": {
-				"type": "string"
-			},
-			"DataToTimestamp": {
-				"type": "string"
-			},
-			"DataFromNumber": {
-				"type": "int"
-			},
-			"DataToNumber": {
-				"type": "int"
-			},
-			"OutputL2CurateFileSystem": {
-				"type": "string"
-			},
-			"OutputL2CuratedFolder": {
-				"type": "string"
-			},
-			"OutputL2CuratedFile": {
-				"type": "string"
-			},
-			"OutputL2CuratedFileDelimiter": {
-				"type": "string"
-			},
-			"OutputL2CuratedFileFormat": {
-				"type": "string"
-			},
-			"OutputL2CuratedFileWriteMode": {
-				"type": "string"
-			},
-			"OutputEntityName": {
-				"type": "string"
-			},
-			"OutputEntityFileSystem": {
-				"type": "string"
-			},
-			"OutputEntityFolder": {
-				"type": "string"
-			},
-			"OutputEntityWriteMode": {
-				"type": "string"
-			},
-			"LookupColumns": {
-				"type": "string"
-			},
 			"ReRunL2TransformFlag": {
 				"type": "bool"
 			},
 			"MaxRetries": {
 				"type": "int"
 			},
-			"CustomParameters": {
+			"NotebookParameters": {
 				"type": "string"
 			}
 		},
