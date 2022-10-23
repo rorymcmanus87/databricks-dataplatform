@@ -480,7 +480,22 @@
 								"expression": {
 									"value": "@not(equals(activity('Check-L2-Instance-Status-Raw').output?.firstRow, null)) ",
 									"type": "Expression"
-								}
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Execute Pipeline1",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L2-Transform",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true
+										}
+									}
+								]
 							}
 						}
 					]
