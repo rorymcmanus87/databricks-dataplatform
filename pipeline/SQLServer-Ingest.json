@@ -920,22 +920,6 @@
 			"ReloadFlag": {
 				"type": "bool",
 				"defaultValue": false
-			},
-			"KeyVaultEnvironmentURL": {
-				"type": "string",
-				"defaultValue": "Salesforce-EnvironmentURL"
-			},
-			"KeyVaultUserName": {
-				"type": "string",
-				"defaultValue": "Salesforce-UserName"
-			},
-			"KeyVaultPassword": {
-				"type": "string",
-				"defaultValue": "Salesforce-Password"
-			},
-			"KeyVaultSecurityToken": {
-				"type": "string",
-				"defaultValue": "Salesforce-SecurityToken"
 			}
 		},
 		"variables": {
