@@ -7,12 +7,6 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Set-DestinationRawFile",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
 						"activity": "Set-ADFIngestPipelineRunID",
 						"dependencyConditions": [
 							"Succeeded"
@@ -198,19 +192,6 @@
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
-				}
-			},
-			{
-				"name": "Set-DestinationRawFile",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "_DestinationRawFile",
-					"value": {
-						"value": "@replace(pipeline().parameters.DestinationRawFile, 'GUID', pipeline().RunId)",
-						"type": "Expression"
-					}
 				}
 			},
 			{
