@@ -1042,7 +1042,7 @@
 									},
 									"InputFile": {
 										"value": {
-											"value": "@variables('_DestinationRawFile')",
+											"value": "@pipeline().parameters.SourceFileDropFile",
 											"type": "Expression"
 										},
 										"type": "String"
