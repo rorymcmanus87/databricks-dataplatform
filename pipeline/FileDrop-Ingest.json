@@ -281,7 +281,7 @@
 											"type": "Expression"
 										},
 										"File": {
-											"value": "@variables('_DestinationRawFile')",
+											"value": "@pipeline().parameters.SourceFileDropFile",
 											"type": "Expression"
 										}
 									}
