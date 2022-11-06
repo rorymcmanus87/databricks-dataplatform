@@ -831,28 +831,20 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"sqlReaderQuery": {
+						"type": "AzureDataExplorerSource",
+						"query": {
 							"value": "@pipeline().parameters.StatQuery",
 							"type": "Expression"
 						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"queryTimeout": "00:10:00",
+						"noTruncation": false
 					},
 					"dataset": {
-						"referenceName": "SQLServer_Table",
+						"referenceName": "ADX_Table",
 						"type": "DatasetReference",
 						"parameters": {
-							"SchemaName": {
-								"value": "@{split(pipeline().parameters.EntityName, '.')[0]}",
-								"type": "Expression"
-							},
 							"TableName": {
-								"value": "@replace(substring(pipeline().parameters.EntityName, indexof(pipeline().parameters.EntityName,'.'), sub(length(pipeline().parameters.EntityName), indexof(pipeline().parameters.EntityName,'.'))), '.', '')",
-								"type": "Expression"
-							},
-							"SQLServerConnectionString": {
-								"value": "@pipeline().parameters.KeyVaultSQLConnString",
+								"value": "@pipeline().parameters.EntityName",
 								"type": "Expression"
 							}
 						}
