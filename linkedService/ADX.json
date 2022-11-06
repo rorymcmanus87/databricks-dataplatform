@@ -1,0 +1,12 @@
+{
+	"name": "ADX",
+	"properties": {
+		"description": "Azure Data Explorer",
+		"annotations": [],
+		"type": "AzureDataExplorer",
+		"typeProperties": {
+			"endpoint": "https://adxdatamasterydev01.australiaeast.kusto.windows.net",
+			"database": "Datawarehouse"
+		}
+	}
+}
