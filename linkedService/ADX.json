@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureDataExplorer",
 		"typeProperties": {
-			"endpoint": "https://adxdatamasterydev01.australiaeast.kusto.windows.net",
-			"database": "Datawarehouse"
+			"endpoint": "https://datamastery.australiaeast.kusto.windows.net",
+			"database": "MyDatabase"
 		}
 	}
 }
