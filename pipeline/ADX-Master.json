@@ -524,7 +524,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Adventureworks"
+				"defaultValue": "DataExplorer"
 			},
 			"StreamName": {
 				"type": "string",
