@@ -537,7 +537,7 @@
 			},
 			"KeyVaultSQLConnString": {
 				"type": "string",
-				"defaultValue": "Adventureworks-SQLServer-ConnString"
+				"defaultValue": "ADX-Datawarehouse"
 			}
 		},
 		"folder": {
