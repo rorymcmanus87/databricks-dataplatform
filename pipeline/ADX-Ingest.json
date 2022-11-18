@@ -133,14 +133,14 @@
 								"value": "@pipeline().parameters.DataFromTimestamp",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"DataToTimestamp": {
 							"value": {
 								"value": "@if(equals(activity('Get-Stats').output.firstRow.DATATOTIMESTAMP, NULL),pipeline().parameters.DataToTimestamp,activity('Get-Stats').output.firstRow.DATATOTIMESTAMP)",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"IngestCount": {
 							"value": {
