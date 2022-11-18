@@ -912,6 +912,9 @@
 			"ReloadFlag": {
 				"type": "bool",
 				"defaultValue": false
+			},
+			"PipelineParameters": {
+				"type": "string"
 			}
 		},
 		"variables": {
