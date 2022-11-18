@@ -405,7 +405,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get-L2-Transform-Raw').output",
+						"value": "@activity('Get-L2-Transform-Raw').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
