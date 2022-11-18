@@ -133,14 +133,14 @@
 								"value": "@pipeline().parameters.DataFromTimestamp",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"DataToTimestamp": {
 							"value": {
 								"value": "@if(equals(activity('Get-Stats').output.firstRow.DATATOTIMESTAMP, NULL),pipeline().parameters.DataToTimestamp,activity('Get-Stats').output.firstRow.DATATOTIMESTAMP)",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"IngestCount": {
 							"value": {
@@ -214,11 +214,11 @@
 								"value": "@pipeline().parameters.DataFromTimestamp",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"DataToTimestamp": {
 							"value": null,
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"IngestStatus": {
 							"value": "Failure",
@@ -303,7 +303,7 @@
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L1]",
 						"storedProcedureParameters": {
 							"WatermarkDate": {
-								"type": "DateTime",
+								"type": "Datetimeoffset",
 								"value": {
 									"value": "@pipeline().parameters.DataFromTimestamp",
 									"type": "Expression"
@@ -595,7 +595,7 @@
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L2]",
 						"storedProcedureParameters": {
 							"WatermarkDate": {
-								"type": "DateTime",
+								"type": "Datetimeoffset",
 								"value": {
 									"value": "@pipeline().parameters.DataFromTimestamp",
 									"type": "Expression"
@@ -798,7 +798,7 @@
 								"value": "@if(equals(activity('Get-Stats').output.firstRow.DATATOTIMESTAMP, NULL),pipeline().parameters.DataToTimestamp,activity('Get-Stats').output.firstRow.DATATOTIMESTAMP)",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"IngestStatus": {
 							"value": "Success",
