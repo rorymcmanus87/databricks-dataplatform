@@ -1,0 +1,46 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Update-Success-IngestDefinition",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateIngestDefinition]",
+					"storedProcedureParameters": {
+						"IngestID": {
+							"value": "13",
+							"type": "Int32"
+						},
+						"LastWatermarkDate": {
+							"value": "2022-10-01 21:59.9954284",
+							"type": "DateTime"
+						},
+						"IngestStatus": {
+							"value": "Success",
+							"type": "String"
+						},
+						"ReloadFlag": {
+							"value": "0",
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
