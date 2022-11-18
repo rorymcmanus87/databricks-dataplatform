@@ -587,7 +587,7 @@
 						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L2]",
 						"storedProcedureParameters": {
 							"WatermarkDate": {
-								"type": "DateTime",
+								"type": "Datetimeoffset",
 								"value": {
 									"value": "@pipeline().parameters.DataFromTimestamp",
 									"type": "Expression"
