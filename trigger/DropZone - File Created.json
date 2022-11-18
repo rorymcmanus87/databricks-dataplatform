@@ -9,6 +9,10 @@
 				"pipelineReference": {
 					"referenceName": "FileDrop-Master",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"SourceFile": "@triggerBody().folderPath",
+					"SourceFolder": "@triggerBody().fileName"
 				}
 			},
 			{
