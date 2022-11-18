@@ -179,6 +179,10 @@
 									"value": "@pipeline().parameters.IngestID",
 									"type": "Expression"
 								}
+							},
+							"InputType": {
+								"type": "String",
+								"value": "Raw"
 							}
 						},
 						"partitionOption": "None"
