@@ -22,7 +22,7 @@
 							"type": "Int32"
 						},
 						"LastWatermarkDate": {
-							"value": "2022-10-01T21:59.9954284Z",
+							"value": "2022-10-01 21:59:59.9954284",
 							"type": "DateTime"
 						},
 						"IngestStatus": {
