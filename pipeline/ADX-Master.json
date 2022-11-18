@@ -310,10 +310,6 @@
 													"value": "@item().IngestID",
 													"type": "Expression"
 												},
-												"MaxRetries": {
-													"value": "@item().MaxRetries",
-													"type": "Expression"
-												},
 												"NotebookParameters": {
 													"value": "@item().NotebookParameters",
 													"type": "Expression"
@@ -324,6 +320,10 @@
 												},
 												"NotebookPath": {
 													"value": "@item().NotebookPath",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
 													"type": "Expression"
 												}
 											}
@@ -509,6 +509,38 @@
 												},
 												"NotebookName": {
 													"value": "@item().NotebookName",
+													"type": "Expression"
+												},
+												"NotebookPath": {
+													"value": "@item().NotebookPath",
+													"type": "Expression"
+												},
+												"ReRunL2TransformFlag": {
+													"value": "@item().ReRunL2TransformFlag",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												},
+												"DataFromNumber": {
+													"value": "@item().DataFromNumber",
+													"type": "Expression"
+												},
+												"DataToNumber": {
+													"value": "@item().DataToNumber",
+													"type": "Expression"
+												},
+												"DataFromTimestamp": {
+													"value": "@item().DataFromTimestamp",
+													"type": "Expression"
+												},
+												"DataToTimestamp": {
+													"value": "@item().DataToTimestamp",
 													"type": "Expression"
 												}
 											}
