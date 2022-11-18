@@ -388,7 +388,8 @@
 					"dataset": {
 						"referenceName": "ControlDB_Dataset",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
