@@ -23,7 +23,7 @@
 						},
 						"LastWatermarkDate": {
 							"value": "2022-10-01 21:59:59.9954284Z",
-							"type": "Timespan"
+							"type": "Datetimeoffset"
 						},
 						"IngestStatus": {
 							"value": "Success",
