@@ -214,11 +214,11 @@
 								"value": "@pipeline().parameters.DataFromTimestamp",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"DataToTimestamp": {
 							"value": null,
-							"type": "DateTime"
+							"type": "Datetimeoffset"
 						},
 						"IngestStatus": {
 							"value": "Failure",
