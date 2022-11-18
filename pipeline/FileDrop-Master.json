@@ -915,7 +915,7 @@
 										"StreamName": {
 											"type": "String",
 											"value": {
-												"value": "@variables('varSourceSystemName')",
+												"value": "@variables('varStreamName')",
 												"type": "Expression"
 											}
 										}
