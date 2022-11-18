@@ -336,7 +336,7 @@
 							},
 							"InputType": {
 								"type": "String",
-								"value": null
+								"value": "Raw"
 							}
 						},
 						"queryTimeout": "02:00:00",
