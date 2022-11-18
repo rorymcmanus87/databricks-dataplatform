@@ -1023,11 +1023,11 @@
 			}
 		],
 		"parameters": {
-			"SourceSystemName": {
+			"SourceFile": {
 				"type": "string",
 				"defaultValue": "Manual"
 			},
-			"StreamName": {
+			"SourceFolder": {
 				"type": "string",
 				"defaultValue": "ManualCRM_Sales_20221021.csv"
 			},
