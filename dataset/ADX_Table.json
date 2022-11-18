@@ -11,7 +11,7 @@
 			}
 		},
 		"folder": {
-			"name": "Azure"
+			"name": "Azure/Cloud"
 		},
 		"annotations": [],
 		"type": "AzureDataExplorerTable",
