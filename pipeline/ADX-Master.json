@@ -887,6 +887,10 @@
 									},
 									"partitionOption": "None"
 								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
+								},
 								"firstRowOnly": true
 							}
 						},
@@ -945,40 +949,16 @@
 													"value": "@item().NotebookPath",
 													"type": "Expression"
 												},
-												"InputFileSystem": {
-													"value": "@item().InputFileSystem",
+												"ReRunL2TransformFlag": {
+													"value": "@item().ReRunL2TransformFlag",
 													"type": "Expression"
 												},
-												"InputFileFolder": {
-													"value": "@item().InputFileFolder",
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
 													"type": "Expression"
 												},
-												"InputFile": {
-													"value": "@item().InputFile",
-													"type": "Expression"
-												},
-												"InputFileDelimiter": {
-													"value": "@item().InputFileDelimiter\n",
-													"type": "Expression"
-												},
-												"InputFileHeaderFlag": {
-													"value": "@item().InputFileHeaderFlag",
-													"type": "Expression"
-												},
-												"InputDWTable": {
-													"value": "@item().InputDWTable",
-													"type": "Expression"
-												},
-												"DeltaName": {
-													"value": "@item().DeltaName",
-													"type": "Expression"
-												},
-												"DataFromTimestamp": {
-													"value": "@item().DataFromTimestamp",
-													"type": "Expression"
-												},
-												"DataToTimestamp": {
-													"value": "@item().DataToTimestamp",
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
 													"type": "Expression"
 												},
 												"DataFromNumber": {
@@ -989,80 +969,12 @@
 													"value": "@item().DataToNumber",
 													"type": "Expression"
 												},
-												"OutputL2CurateFileSystem": {
-													"value": "@item().OutputL2CurateFileSystem",
+												"DataFromTimestamp": {
+													"value": "@item().DataFromTimestamp",
 													"type": "Expression"
 												},
-												"OutputL2CuratedFolder": {
-													"value": "@item().OutputL2CuratedFolder",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFile": {
-													"value": "@item().OutputL2CuratedFile",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFileDelimiter": {
-													"value": "@item().OutputL2CuratedFileDelimiter",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFileFormat": {
-													"value": "@item().OutputL2CuratedFileFormat",
-													"type": "Expression"
-												},
-												"OutputL2CuratedFileWriteMode": {
-													"value": "@item().OutputL2CuratedFileWriteMode",
-													"type": "Expression"
-												},
-												"OutputDWStagingTable": {
-													"value": "@item().OutputDWStagingTable",
-													"type": "Expression"
-												},
-												"LookupColumns": {
-													"value": "@item().LookupColumns",
-													"type": "Expression"
-												},
-												"OutputDWTable": {
-													"value": "@item().OutputDWTable",
-													"type": "Expression"
-												},
-												"OutputDWTableWriteMode": {
-													"value": "@item().OutputDWTableWriteMode",
-													"type": "Expression"
-												},
-												"ReRunL2TransformFlag": {
-													"value": "@item().ReRunL2TransformFlag",
-													"type": "Expression"
-												},
-												"MaxRetries": {
-													"value": "@item().MaxRetries",
-													"type": "Expression"
-												},
-												"serviceActionWebhook": {
-													"value": "@pipeline().parameters.serviceActionWebhook",
-													"type": "Expression"
-												},
-												"resourceNameDW": {
-													"value": "@pipeline().parameters.resourceNameDW",
-													"type": "Expression"
-												},
-												"SparkClusterID": {
-													"value": "@pipeline().parameters.SparkClusterID",
-													"type": "Expression"
-												},
-												"RingFenceReqdFlag": {
-													"value": "@item().RingFenceReqdFlag",
-													"type": "Expression"
-												},
-												"NMIColumnName": {
-													"value": "@item().NMIColumnName",
-													"type": "Expression"
-												},
-												"RingFenceDateName": {
-													"value": "@item().RingFenceDateName",
-													"type": "Expression"
-												},
-												"CustomParameters": {
-													"value": "@item().CustomParameters",
+												"DataToTimestamp": {
+													"value": "@item().DataToTimestamp",
 													"type": "Expression"
 												}
 											}
