@@ -912,10 +912,6 @@
 			"ReloadFlag": {
 				"type": "bool",
 				"defaultValue": false
-			},
-			"KeyVaultSQLConnString": {
-				"type": "string",
-				"defaultValue": "Adventureworks-SQLServer-ConnString"
 			}
 		},
 		"variables": {
