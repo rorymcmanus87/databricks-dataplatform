@@ -1,7 +1,7 @@
 {
-	"name": "Ingest REST",
+	"name": "Ingest API",
 	"properties": {
-		"description": "Generic Pipeline to ingest data from any REST API",
+		"description": "Generic Pipeline to ingest data from any API",
 		"activities": [
 			{
 				"name": "Ingest Running",
