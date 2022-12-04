@@ -1,7 +1,7 @@
 {
-	"name": "REST Master",
+	"name": "API Master",
 	"properties": {
-		"description": "Wrapper Pipeline that Extracts, Loads and Transforms data from a REST API data source",
+		"description": "Wrapper Pipeline that Extracts, Loads and Transforms data from a API data source",
 		"activities": [
 			{
 				"name": "Get Ingest Instances",
@@ -78,7 +78,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "Ingest REST",
+									"referenceName": "Ingest API",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
