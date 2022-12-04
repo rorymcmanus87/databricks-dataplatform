@@ -189,7 +189,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "ManualCRM"
+				"defaultValue": "Adventureworks"
 			},
 			"StreamName": {
 				"type": "string",
