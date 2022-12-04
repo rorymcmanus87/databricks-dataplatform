@@ -961,13 +961,6 @@
 											"type": "Expression"
 										},
 										"type": "String"
-									},
-									"CustomParameters": {
-										"value": {
-											"value": "@item().CustomParameters",
-											"type": "Expression"
-										},
-										"type": "String"
 									}
 								}
 							},
