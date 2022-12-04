@@ -70,7 +70,7 @@
 					"isSequential": false,
 					"activities": [
 						{
-							"name": "Salesforce-Ingest",
+							"name": "SQLServer-Ingest",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -139,10 +139,6 @@
 									},
 									"ReloadFlag": {
 										"value": "@item().ReloadFlag",
-										"type": "Expression"
-									},
-									"KeyVault-SQL-ConnString": {
-										"value": "@pipeline().parameters.KeyVaultSQLConnString",
 										"type": "Expression"
 									}
 								}
