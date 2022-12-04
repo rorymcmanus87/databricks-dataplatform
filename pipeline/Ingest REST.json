@@ -642,13 +642,6 @@
 							"typeProperties": {
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L1]",
 								"storedProcedureParameters": {
-									"CustomParameters": {
-										"value": {
-											"value": "@item().CustomParameters",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
 									"IngestADFPipelineRunID": {
 										"value": {
 											"value": "@variables('ADFPipelineRunID')",
