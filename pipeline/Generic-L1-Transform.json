@@ -304,13 +304,6 @@
 										},
 										"type": "Guid"
 									},
-									"IngestID": {
-										"value": {
-											"value": "@item().IngestID",
-											"type": "Expression"
-										},
-										"type": "Int64"
-									},
 									"L2TransformID": {
 										"value": {
 											"value": "@item().L2TransformID",
