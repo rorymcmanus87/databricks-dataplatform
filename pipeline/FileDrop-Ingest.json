@@ -620,18 +620,6 @@
 											"type": "Expression"
 										},
 										"type": "Int32"
-									},
-									"SourceCount": {
-										"value": {
-											"value": "@activity('Copy-DropZone-RawZone-TXT').output.filesRead",
-											"type": "Expression"
-										}
-									},
-									"IngestCount": {
-										"value": {
-											"value": "@activity('Copy-DropZone-RawZone-TXT').output.filesWritten",
-											"type": "Expression"
-										}
 									}
 								}
 							},
