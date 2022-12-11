@@ -1005,19 +1005,77 @@
 							"typeProperties": {
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
 								"storedProcedureParameters": {
-									"L1TransformID": {
-										"value": {
-											"value": "@item().L1TransformID",
-											"type": "Expression"
-										},
-										"type": "Int32"
-									},
 									"L2TransformID": {
-										"value": {
-											"value": "@item().L2TransformID",
-											"type": "Expression"
-										},
-										"type": "Int32"
+										"value": ""
+									},
+									"L1TransformID": {
+										"value": ""
+									},
+									"NotebookName": {
+										"value": ""
+									},
+									"NotebookPath": {
+										"value": ""
+									},
+									"CustomParameters": {
+										"value": ""
+									},
+									"InputType": {
+										"value": ""
+									},
+									"DataFromTimestamp": {
+										"value": ""
+									},
+									"DataToTimestamp": {
+										"value": ""
+									},
+									"DataFromNumber": {
+										"value": ""
+									},
+									"DataToNumber": {
+										"value": ""
+									},
+									"MaxIntervalMinutes": {
+										"value": ""
+									},
+									"MaxIntervalNumber": {
+										"value": ""
+									},
+									"MaxRetries": {
+										"value": ""
+									},
+									"OutputL2CurateFileSystem": {
+										"value": ""
+									},
+									"OutputL2CuratedFolder": {
+										"value": ""
+									},
+									"OutputL2CuratedFile": {
+										"value": ""
+									},
+									"OutputL2CuratedFileDelimiter": {
+										"value": ""
+									},
+									"OutputL2CuratedFileFormat": {
+										"value": ""
+									},
+									"OutputL2CuratedFileWriteMode": {
+										"value": ""
+									},
+									"OutputEntityName": {
+										"value": ""
+									},
+									"OutputEntityFileSystem": {
+										"value": ""
+									},
+									"OutputEntityFolder": {
+										"value": ""
+									},
+									"OutputEntityWriteMode": {
+										"value": ""
+									},
+									"LookupColumns": {
+										"value": ""
 									}
 								},
 								"WatermarkName": {
