@@ -14,12 +14,6 @@
 					"SourceFile": "@triggerBody().folderPath",
 					"SourceFolder": "@triggerBody().fileName"
 				}
-			},
-			{
-				"pipelineReference": {
-					"referenceName": "DropFileTest",
-					"type": "PipelineReference"
-				}
 			}
 		],
 		"type": "BlobEventsTrigger",
