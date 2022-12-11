@@ -297,6 +297,20 @@
 							"typeProperties": {
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
 								"storedProcedureParameters": {
+									"IngestADFPipelineRunID": {
+										"value": {
+											"value": "@variables('_ADFIngestPipelineRunID')",
+											"type": "Expression"
+										},
+										"type": "Guid"
+									},
+									"IngestID": {
+										"value": {
+											"value": "@item().IngestID",
+											"type": "Expression"
+										},
+										"type": "Int64"
+									},
 									"L2TransformID": {
 										"value": {
 											"value": "@item().L2TransformID",
