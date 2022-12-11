@@ -189,7 +189,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Adventureworks"
+				"defaultValue": "Open Weather API"
 			},
 			"StreamName": {
 				"type": "string",
