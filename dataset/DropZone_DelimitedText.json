@@ -48,7 +48,7 @@
 				"value": "@dataset().colDelimiter",
 				"type": "Expression"
 			},
-			"escapeChar": "\\",
+			"escapeChar": "\"",
 			"firstRowAsHeader": {
 				"value": "@dataset().headerFlag",
 				"type": "Expression"
