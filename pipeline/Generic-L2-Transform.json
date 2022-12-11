@@ -254,7 +254,7 @@
 							},
 							"type": "Datetimeoffset"
 						},
-						"LastDeltaNumber": {
+						"LastWatermarkNumber": {
 							"value": {
 								"value": "@pipeline().parameters.DataToNumber",
 								"type": "Expression"
