@@ -678,7 +678,7 @@
 							}
 						},
 						{
-							"name": "If-L2-Transform-Pipeline-DW",
+							"name": "If-L2-Transform-Pipeline-DeltaLake",
 							"description": "If Lookup returns a row continue",
 							"type": "IfCondition",
 							"dependsOn": [
