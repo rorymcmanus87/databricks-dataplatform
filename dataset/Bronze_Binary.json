@@ -20,7 +20,7 @@
 			"name": "Azure/Datalake"
 		},
 		"annotations": [],
-		"type": "Parquet",
+		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
@@ -38,7 +38,6 @@
 				}
 			},
 			"compressionCodec": "snappy"
-		},
-		"schema": []
+		}
 	}
 }
