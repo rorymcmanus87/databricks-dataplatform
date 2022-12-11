@@ -249,7 +249,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Drop_JSON",
+									"referenceName": "DropZone_JSON",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
@@ -540,26 +540,6 @@
 								},
 								"enableStaging": false
 							},
-							"inputs": [
-								{
-									"referenceName": "DropZone_Binary",
-									"type": "DatasetReference",
-									"parameters": {
-										"FileSystem": {
-											"value": "@pipeline().parameters.DestinationRawFileSystem",
-											"type": "Expression"
-										},
-										"Folder": {
-											"value": "@pipeline().parameters.SourceFileDropFolder",
-											"type": "Expression"
-										},
-										"File": {
-											"value": "@pipeline().parameters.SourceFileDropFile",
-											"type": "Expression"
-										}
-									}
-								}
-							],
 							"outputs": [
 								{
 									"referenceName": "Bronze_Binary",

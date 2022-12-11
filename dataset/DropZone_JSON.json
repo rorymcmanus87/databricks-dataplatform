@@ -1,5 +1,5 @@
 {
-	"name": "Drop_JSON",
+	"name": "DropZone_JSON",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "DropZone",

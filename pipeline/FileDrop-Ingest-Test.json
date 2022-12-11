@@ -268,7 +268,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Drop_JSON",
+									"referenceName": "DropZone_JSON",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
@@ -569,7 +569,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Drop_JSON",
+									"referenceName": "DropZone_JSON",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
