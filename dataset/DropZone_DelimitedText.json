@@ -53,7 +53,7 @@
 				"value": "@dataset().headerFlag",
 				"type": "Expression"
 			},
-			"quoteChar": "\""
+			"quoteChar": ""
 		},
 		"schema": [
 			{
