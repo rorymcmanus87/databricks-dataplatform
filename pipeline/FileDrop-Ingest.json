@@ -523,14 +523,13 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "DelimitedTextSource",
+									"type": "BinarySource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
+										"recursive": true
 									},
 									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
+										"type": "BinaryReadSettings"
 									}
 								},
 								"sink": {
@@ -543,30 +542,8 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DropZone_DelimitedText",
-									"type": "DatasetReference",
-									"parameters": {
-										"container": {
-											"value": "@pipeline().parameters.SourceFileDropFileSystem",
-											"type": "Expression"
-										},
-										"folder": {
-											"value": "@pipeline().parameters.SourceFileDropFolder",
-											"type": "Expression"
-										},
-										"file": {
-											"value": "@pipeline().parameters.SourceFileDropFile",
-											"type": "Expression"
-										},
-										"colDelimiter": {
-											"value": "@pipeline().parameters.SourceFileDelimiter",
-											"type": "Expression"
-										},
-										"headerFlag": {
-											"value": "@pipeline().parameters.SourceFileHeaderFlag",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "DropZone_Binary",
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
