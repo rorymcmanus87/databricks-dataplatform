@@ -645,7 +645,7 @@
 				}
 			},
 			{
-				"name": "L2-Transform-DeltaLake_Raw",
+				"name": "L2-Transform-Raw",
 				"type": "ForEach",
 				"dependsOn": [
 					{
