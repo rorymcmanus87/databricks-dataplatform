@@ -1,5 +1,5 @@
 {
-	"name": "API Master",
+	"name": "API-Master",
 	"properties": {
 		"description": "Wrapper Pipeline that Extracts, Loads and Transforms data from a API data source",
 		"activities": [

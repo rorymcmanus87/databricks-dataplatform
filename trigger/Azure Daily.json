@@ -7,7 +7,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "API Master",
+					"referenceName": "API-Master",
 					"type": "PipelineReference"
 				},
 				"parameters": {
