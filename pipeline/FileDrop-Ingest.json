@@ -1006,76 +1006,100 @@
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
 								"storedProcedureParameters": {
 									"L2TransformID": {
-										"value": ""
+										"value": "",
+										"type": "Int64"
 									},
 									"L1TransformID": {
-										"value": ""
+										"value": "",
+										"type": "Int64"
 									},
 									"NotebookName": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"NotebookPath": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"CustomParameters": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"InputType": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"DataFromTimestamp": {
-										"value": ""
+										"value": "",
+										"type": "Datetimeoffset"
 									},
 									"DataToTimestamp": {
-										"value": ""
+										"value": "",
+										"type": "Datetimeoffset"
 									},
 									"DataFromNumber": {
-										"value": ""
+										"value": "",
+										"type": "Int64"
 									},
 									"DataToNumber": {
-										"value": ""
+										"value": "",
+										"type": "Int64"
 									},
 									"MaxIntervalMinutes": {
-										"value": ""
+										"value": "",
+										"type": "Int64"
 									},
 									"MaxIntervalNumber": {
-										"value": ""
+										"value": "",
+										"type": "Int64"
 									},
 									"MaxRetries": {
-										"value": ""
+										"value": "",
+										"type": "Int16"
 									},
 									"OutputL2CurateFileSystem": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputL2CuratedFolder": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputL2CuratedFile": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputL2CuratedFileDelimiter": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputL2CuratedFileFormat": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputL2CuratedFileWriteMode": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputEntityName": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputEntityFileSystem": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputEntityFolder": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"OutputEntityWriteMode": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									},
 									"LookupColumns": {
-										"value": ""
+										"value": "",
+										"type": "String"
 									}
 								},
 								"WatermarkName": {
