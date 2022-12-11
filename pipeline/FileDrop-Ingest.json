@@ -1006,7 +1006,10 @@
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
 								"storedProcedureParameters": {
 									"L2TransformID": {
-										"value": "",
+										"value": {
+											"value": "@item().L2TransformID",
+											"type": "Expression"
+										},
 										"type": "Int64"
 									},
 									"L1TransformID": {
