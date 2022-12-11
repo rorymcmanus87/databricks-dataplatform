@@ -31,40 +31,8 @@
 							"value": "@string(pipeline().parameters.L2TransformInstanceID)",
 							"type": "Expression"
 						},
-						"L2TransformID": {
-							"value": "@string(coalesce(pipeline().parameters.L2TransformID, ''))",
-							"type": "Expression"
-						},
-						"IngestID": {
-							"value": "@string(coalesce(pipeline().parameters.IngestID, ''))",
-							"type": "Expression"
-						},
-						"L1TransformID": {
-							"value": "@string(coalesce(pipeline().parameters.L1TransformID, ''))",
-							"type": "Expression"
-						},
-						"MaxRetries": {
-							"value": "@pipeline().parameters.MaxRetries",
-							"type": "Expression"
-						},
 						"NotebookParameters": {
 							"value": "@pipeline().parameters.NotebookParameters",
-							"type": "Expression"
-						},
-						"DataFromNumber": {
-							"value": "@pipeline().parameters.DataFromNumber",
-							"type": "Expression"
-						},
-						"DataToNumber": {
-							"value": "@pipeline().parameters.DataToNumber",
-							"type": "Expression"
-						},
-						"DataFromTimestamp": {
-							"value": "@pipeline().parameters.DataFromTimestamp",
-							"type": "Expression"
-						},
-						"DataToTimestamp": {
-							"value": "@pipeline().parameters.DataToTimestamp",
 							"type": "Expression"
 						}
 					}
