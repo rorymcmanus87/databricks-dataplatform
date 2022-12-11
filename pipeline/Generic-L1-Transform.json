@@ -471,6 +471,13 @@
 											"type": "Expression"
 										},
 										"type": "String"
+									},
+									"IngestID": {
+										"value": {
+											"value": "@item().IngestID",
+											"type": "Expression"
+										},
+										"type": "Int16"
 									}
 								}
 							},
