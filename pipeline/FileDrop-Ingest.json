@@ -825,13 +825,6 @@
 										},
 										"type": "Guid"
 									},
-									"IngestCount": {
-										"value": {
-											"value": "@if(equals(toLower(pipeline().parameters.DataFormat),'json'),activity('Copy-JSON-FileDrop-RawZone').output.filesRead,activity('Copy-DropZone-RawZone-TXT').output.rowsRead)",
-											"type": "Expression"
-										},
-										"type": "Int32"
-									},
 									"IngestID": {
 										"value": {
 											"value": "@item().IngestID",
