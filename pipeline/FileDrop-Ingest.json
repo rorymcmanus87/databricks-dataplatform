@@ -543,7 +543,21 @@
 							"inputs": [
 								{
 									"referenceName": "DropZone_Binary",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"FileSystem": {
+											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"type": "Expression"
+										},
+										"Folder": {
+											"value": "@pipeline().parameters.SourceFileDropFolder",
+											"type": "Expression"
+										},
+										"File": {
+											"value": "@pipeline().parameters.SourceFileDropFile",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
