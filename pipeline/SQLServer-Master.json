@@ -578,7 +578,7 @@
 				}
 			},
 			{
-				"name": "L2-Transform-DW",
+				"name": "L2-Transform-DeltaLake",
 				"type": "ForEach",
 				"dependsOn": [
 					{
