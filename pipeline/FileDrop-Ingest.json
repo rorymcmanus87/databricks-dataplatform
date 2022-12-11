@@ -566,15 +566,15 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
-											"value": "@pipeline().parameters.SourceFileDropFileSystem",
+											"value": "@pipeline().parameters.DestinationRawFileSystem",
 											"type": "Expression"
 										},
 										"Folder": {
-											"value": "@pipeline().parameters.SourceFileDropFolder",
+											"value": "@pipeline().parameters.DestinationRawFileSystem",
 											"type": "Expression"
 										},
 										"File": {
-											"value": "@pipeline().parameters.SourceFileDropFile",
+											"value": "@pipeline().parameters.DestinationRawFile",
 											"type": "Expression"
 										}
 									}
