@@ -553,7 +553,7 @@
 				}
 			},
 			{
-				"name": "Get-L2-Transform-DW",
+				"name": "Get-L2-Transform-DeltaLake",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -610,11 +610,11 @@
 				}
 			},
 			{
-				"name": "L2-Transform-DW",
+				"name": "L2-Transform-DeltaLake",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get-L2-Transform-DW",
+						"activity": "Get-L2-Transform-DeltaLake",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -623,7 +623,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get-L2-Transform-DW').output.value",
+						"value": "@activity('Get-L2-Transform-DeltaLake').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
