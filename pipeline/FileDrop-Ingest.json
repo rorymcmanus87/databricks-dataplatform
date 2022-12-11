@@ -1005,9 +1005,9 @@
 							"typeProperties": {
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
 								"storedProcedureParameters": {
-									"DeltaName": {
+									"WatermarkName": {
 										"value": {
-											"value": "@item().DeltaName",
+											"value": "@item().WatermarkName",
 											"type": "Expression"
 										},
 										"type": "String"
@@ -1026,9 +1026,9 @@
 										},
 										"type": "Int32"
 									},
-									"InputDWTable": {
+									"InputEntityName": {
 										"value": {
-											"value": "@item().InputDWTable",
+											"value": "@item().InputEntityName",
 											"type": "Expression"
 										},
 										"type": "String"
@@ -1082,9 +1082,9 @@
 										},
 										"type": "Int32"
 									},
-									"LastDeltaDate": {
+									"LastWatermarkDate": {
 										"value": {
-											"value": "@item().LastDeltaDate",
+											"value": "@item().LastWatermarkDate",
 											"type": "Expression"
 										},
 										"type": "DateTime"
