@@ -1005,69 +1005,6 @@
 							"typeProperties": {
 								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
 								"storedProcedureParameters": {
-									"WatermarkName": {
-										"value": {
-											"value": "@item().WatermarkName",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"IngestADFPipelineRunID": {
-										"value": {
-											"value": "@variables('_ADFIngestPipelineRunID')",
-											"type": "Expression"
-										},
-										"type": "Guid"
-									},
-									"IngestID": {
-										"value": {
-											"value": "@item().IngestID",
-											"type": "Expression"
-										},
-										"type": "Int32"
-									},
-									"InputEntityName": {
-										"value": {
-											"value": "@item().InputEntityName",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"InputFile": {
-										"value": {
-											"value": "@pipeline().parameters.SourceFileDropFile",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"InputFileDelimiter": {
-										"value": {
-											"value": "@item().InputFileDelimiter",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"InputFileFolder": {
-										"value": {
-											"value": "@item().InputFileFolder",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"InputFileHeaderFlag": {
-										"value": {
-											"value": "@item().InputFileHeaderFlag",
-											"type": "Expression"
-										},
-										"type": "Boolean"
-									},
-									"InputFileSystem": {
-										"value": {
-											"value": "@item().InputFileSystem",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
 									"L1TransformID": {
 										"value": {
 											"value": "@item().L1TransformID",
@@ -1082,6 +1019,69 @@
 										},
 										"type": "Int32"
 									}
+								},
+								"WatermarkName": {
+									"value": {
+										"value": "@item().WatermarkName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"IngestADFPipelineRunID": {
+									"value": {
+										"value": "@variables('_ADFIngestPipelineRunID')",
+										"type": "Expression"
+									},
+									"type": "Guid"
+								},
+								"IngestID": {
+									"value": {
+										"value": "@item().IngestID",
+										"type": "Expression"
+									},
+									"type": "Int32"
+								},
+								"InputEntityName": {
+									"value": {
+										"value": "@item().InputEntityName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"InputFile": {
+									"value": {
+										"value": "@pipeline().parameters.SourceFileDropFile",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"InputFileDelimiter": {
+									"value": {
+										"value": "@item().InputFileDelimiter",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"InputFileFolder": {
+									"value": {
+										"value": "@item().InputFileFolder",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"InputFileHeaderFlag": {
+									"value": {
+										"value": "@item().InputFileHeaderFlag",
+										"type": "Expression"
+									},
+									"type": "Boolean"
+								},
+								"InputFileSystem": {
+									"value": {
+										"value": "@item().InputFileSystem",
+										"type": "Expression"
+									},
+									"type": "String"
 								}
 							},
 							"linkedServiceName": {
