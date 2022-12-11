@@ -247,7 +247,7 @@
 							},
 							"type": "Int32"
 						},
-						"LastDeltaDate": {
+						"LastWatermarkDate": {
 							"value": {
 								"value": "@pipeline().parameters.DataToTimestamp",
 								"type": "Expression"
@@ -297,7 +297,7 @@
 							},
 							"type": "Int32"
 						},
-						"LastDeltaDate": {
+						"LastWatermarkDate": {
 							"value": {
 								"value": "@pipeline().parameters.DataFromTimestamp",
 								"type": "Expression"
