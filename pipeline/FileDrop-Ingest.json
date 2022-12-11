@@ -570,7 +570,7 @@
 											"type": "Expression"
 										},
 										"Folder": {
-											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"value": "@pipeline().parameters.DestinationRawFolder",
 											"type": "Expression"
 										},
 										"File": {
