@@ -534,19 +534,12 @@
 									}
 								},
 								"sink": {
-									"type": "ParquetSink",
+									"type": "BinarySink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "ParquetWriteSettings"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"value": "@if(equals(pipeline().parameters.DataMapping, null), null, json(pipeline().parameters.DataMapping))",
-									"type": "Expression"
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
@@ -578,15 +571,15 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "Bronze_Parquet",
+									"referenceName": "Bronze_Binary",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileSystem": {
-											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"value": "@pipeline().parameters.SourceFileDropFileSystem",
 											"type": "Expression"
 										},
 										"Folder": {
-											"value": "@pipeline().parameters.DestinationRawFolder",
+											"value": "@pipeline().parameters.SourceFileDropFolder",
 											"type": "Expression"
 										},
 										"File": {
