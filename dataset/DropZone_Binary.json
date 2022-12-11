@@ -2,7 +2,7 @@
 	"name": "DropZone_Binary",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Bronze",
+			"referenceName": "DropZone",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
