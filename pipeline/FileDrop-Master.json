@@ -1025,6 +1025,10 @@
 		"parameters": {
 			"SourceFile": {
 				"type": "string",
+				"defaultValue": "ManualCRM_Sales_20221021.csv"
+			},
+			"SourceFolder": {
+				"type": "string",
 				"defaultValue": "Manual"
 			},
 			"SecretName": {
