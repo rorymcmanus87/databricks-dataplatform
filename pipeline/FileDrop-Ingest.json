@@ -523,13 +523,14 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "BinarySource",
+									"type": "JsonSource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"recursive": true
+										"recursive": true,
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "BinaryReadSettings"
+										"type": "JsonReadSettings"
 									}
 								},
 								"sink": {
@@ -540,6 +541,26 @@
 								},
 								"enableStaging": false
 							},
+							"inputs": [
+								{
+									"referenceName": "DropZone_Binary",
+									"type": "DatasetReference",
+									"parameters": {
+										"FileSystem": {
+											"value": "@pipeline().parameters.SourceFileDropFileSystem",
+											"type": "Expression"
+										},
+										"Folder": {
+											"value": "@pipeline().parameters.SourceFileDropFolder",
+											"type": "Expression"
+										},
+										"File": {
+											"value": "@pipeline().parameters.SourceFileDropFile",
+											"type": "Expression"
+										}
+									}
+								}
+							],
 							"outputs": [
 								{
 									"referenceName": "Bronze_Binary",
