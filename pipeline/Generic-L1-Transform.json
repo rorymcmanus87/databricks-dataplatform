@@ -216,7 +216,7 @@
 				}
 			},
 			{
-				"name": "Get-TransformDefinition-L2",
+				"name": "Get-TransformDefinition-L2-DeltaLake",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -252,7 +252,7 @@
 							},
 							"InputType": {
 								"type": "String",
-								"value": "Raw"
+								"value": "DeltaLake"
 							}
 						},
 						"partitionOption": "None"
@@ -269,7 +269,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get-TransformDefinition-L2",
+						"activity": "Get-TransformDefinition-L2-DeltaLake",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -476,7 +476,7 @@
 				}
 			},
 			{
-				"name": "Get-TransformDefinition-L2_copy1",
+				"name": "Get-TransformDefinition-L2-Curated",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -512,7 +512,7 @@
 							},
 							"InputType": {
 								"type": "String",
-								"value": "Raw"
+								"value": "Curated"
 							}
 						},
 						"partitionOption": "None"
@@ -529,7 +529,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get-TransformDefinition-L2_copy1",
+						"activity": "Get-TransformDefinition-L2-Curated",
 						"dependencyConditions": [
 							"Succeeded"
 						]
