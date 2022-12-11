@@ -78,7 +78,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "Ingest API",
+									"referenceName": "API-Ingest",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
