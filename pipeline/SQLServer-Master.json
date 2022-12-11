@@ -597,7 +597,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Check-L2-Instance-Status-DW",
+							"name": "Check-L2-Instance-Status-DeltaLake",
 							"description": "Check the current L2 Instance is not running or completed.",
 							"type": "Lookup",
 							"dependsOn": [],
@@ -646,12 +646,12 @@
 							}
 						},
 						{
-							"name": "If-L2-Transform-Pipeline-DW",
+							"name": "If-L2-Transform-Pipeline-DeltaLake",
 							"description": "If Lookup returns a row continue",
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "Check-L2-Instance-Status-DW",
+									"activity": "Check-L2-Instance-Status-DeltaLake",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -660,7 +660,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@not(equals(activity('Check-L2-Instance-Status-DW').output?.firstRow, null)) ",
+									"value": "@not(equals(activity('Check-L2-Instance-Status-DeltaLake').output?.firstRow, null)) ",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
