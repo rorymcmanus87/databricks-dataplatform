@@ -963,7 +963,7 @@
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "%"
+				"defaultValue": "Product Review"
 			},
 			"MaxIngestInstance": {
 				"type": "int",
