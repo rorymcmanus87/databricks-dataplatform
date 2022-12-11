@@ -612,7 +612,7 @@
 							},
 							"InputType": {
 								"type": "String",
-								"value": "Datawarehouse"
+								"value": "DeltaLake"
 							}
 						},
 						"queryTimeout": "02:00:00",
