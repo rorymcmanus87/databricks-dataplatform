@@ -221,11 +221,11 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Salesforce"
+				"defaultValue": "ManualCRM"
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "%"
+				"defaultValue": "Sales"
 			},
 			"MaxTransformInstance": {
 				"type": "string",
