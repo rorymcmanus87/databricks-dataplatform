@@ -732,7 +732,7 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "Generic-L2Transform-DW_copy1",
+										"name": "Generic-L2Transform-Raw",
 										"type": "ExecutePipeline",
 										"dependsOn": [],
 										"userProperties": [],
