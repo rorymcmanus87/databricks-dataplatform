@@ -565,7 +565,7 @@
 				}
 			},
 			{
-				"name": "Copy-DropZone-RawZone-TXT",
+				"name": "Copy-DropZone-RawZone",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -648,7 +648,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy-DropZone-RawZone-TXT",
+						"activity": "Copy-DropZone-RawZone",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -695,7 +695,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Copy-DropZone-RawZone-TXT",
+						"activity": "Copy-DropZone-RawZone",
 						"dependencyConditions": [
 							"Failed"
 						]
