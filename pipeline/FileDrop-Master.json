@@ -713,7 +713,7 @@
 							}
 						},
 						{
-							"name": "If-L2-Transform-Pipeline-DeltaLake_copy1",
+							"name": "If-L2-Transform-Pipeline-Raw",
 							"description": "If Lookup returns a row continue",
 							"type": "IfCondition",
 							"dependsOn": [
