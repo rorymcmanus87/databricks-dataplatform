@@ -1,26 +1,26 @@
 {
-	"name": "AtlasREST_API",
+	"name": "ADX_Table",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AtlasREST",
+			"referenceName": "ADX",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"RelativeUrl": {
+			"TableName": {
 				"type": "string"
 			}
 		},
 		"folder": {
-			"name": "Azure/REST"
+			"name": "Azure/Cloud"
 		},
 		"annotations": [],
-		"type": "RestResource",
+		"type": "AzureDataExplorerTable",
+		"schema": [],
 		"typeProperties": {
-			"relativeUrl": {
-				"value": "@dataset().RelativeUrl",
+			"table": {
+				"value": "@dataset().TableName",
 				"type": "Expression"
 			}
-		},
-		"schema": []
+		}
 	}
 }

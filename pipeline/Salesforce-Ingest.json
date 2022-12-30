@@ -1,0 +1,984 @@
+{
+	"name": "Salesforce-Ingest",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set-DestinationRawFile",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set-ADFIngestPipelineRunID",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "_DestinationRawFile",
+					"value": {
+						"value": "@replace(pipeline().parameters.DestinationRawFile,'GUID',variables('_ADFIngestPipelineRunID'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Insert-IngestInstance",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Set-DestinationRawFile",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[InsertIngestInstance]",
+					"storedProcedureParameters": {
+						"ADFPipelineRunID": {
+							"value": {
+								"value": "@variables('_ADFIngestPipelineRunID')",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"DestinationRawFile": {
+							"value": {
+								"value": "@variables('_DestinationRawFile')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"DestinationRawFileSystem": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"DestinationRawFolder": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"IngestID": {
+							"value": {
+								"value": "@pipeline().parameters.IngestID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"ReloadFlag": {
+							"value": {
+								"value": "@pipeline().parameters.ReloadFlag",
+								"type": "Expression"
+							},
+							"type": "Boolean"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update-Success-IngestInstance",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy-RawZone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Get-Stats",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateIngestInstance]",
+					"storedProcedureParameters": {
+						"ADFIngestPipelineRunID": {
+							"value": {
+								"value": "@variables('_ADFIngestPipelineRunID')",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"DataFromTimestamp": {
+							"value": {
+								"value": "@pipeline().parameters.DataFromTimestamp",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						},
+						"DataToTimestamp": {
+							"value": {
+								"value": "@if(equals(activity('Get-Stats').output.firstRow.DATATOTIMESTAMP, NULL),pipeline().parameters.DataToTimestamp,activity('Get-Stats').output.firstRow.DATATOTIMESTAMP)",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						},
+						"IngestCount": {
+							"value": {
+								"value": "@activity('Copy-RawZone').output.rowsCopied",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"IngestStatus": {
+							"value": "Success",
+							"type": "String"
+						},
+						"ReloadFlag": {
+							"value": {
+								"value": "@if(equals(pipeline().parameters.ReloadFlag,true),1,0)",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"SourceCount": {
+							"value": {
+								"value": "@activity('Get-Stats').output.firstRow.SourceCount",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update-Failure-IngestInstance",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy-RawZone",
+						"dependencyConditions": [
+							"Failed"
+						]
+					},
+					{
+						"activity": "Get-Stats",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateIngestInstance]",
+					"storedProcedureParameters": {
+						"ADFIngestPipelineRunID": {
+							"value": {
+								"value": "@variables('_ADFIngestPipelineRunID')",
+								"type": "Expression"
+							},
+							"type": "Guid"
+						},
+						"DataFromTimestamp": {
+							"value": {
+								"value": "@pipeline().parameters.DataFromTimestamp",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						},
+						"DataToTimestamp": {
+							"value": null,
+							"type": "DateTime"
+						},
+						"IngestStatus": {
+							"value": "Failure",
+							"type": "String"
+						},
+						"ReloadFlag": {
+							"value": {
+								"value": "@if(equals(pipeline().parameters.ReloadFlag,true),1,0)",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update-Failure-IngestDefinition",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Update-Failure-IngestInstance",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateIngestDefinition]",
+					"storedProcedureParameters": {
+						"IngestID": {
+							"value": {
+								"value": "@pipeline().parameters.IngestID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"IngestStatus": {
+							"value": "Failure",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Get-TransformDefinition-L1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Update-Success-IngestDefinition",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L1]",
+						"storedProcedureParameters": {
+							"WatermarkDate": {
+								"type": "DateTime",
+								"value": {
+									"value": "@pipeline().parameters.DataFromTimestamp",
+									"type": "Expression"
+								}
+							},
+							"IngestID": {
+								"type": "Int32",
+								"value": {
+									"value": "@pipeline().parameters.IngestID",
+									"type": "Expression"
+								}
+							}
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Insert-TransformInstance-L1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get-TransformDefinition-L1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get-TransformDefinition-L1').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Insert-TransformInstance-StoredProc",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[ELT].[InsertTransformInstance_L1]",
+								"storedProcedureParameters": {
+									"IngestADFPipelineRunID": {
+										"value": {
+											"value": "@variables('_ADFIngestPipelineRunID')",
+											"type": "Expression"
+										},
+										"type": "Guid"
+									},
+									"IngestCount": {
+										"value": {
+											"value": "@activity('Copy-RawZone').output.rowsRead",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									},
+									"IngestID": {
+										"value": {
+											"value": "@item().IngestID",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									},
+									"InputRawFile": {
+										"value": {
+											"value": "@variables('_DestinationRawFile')",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"InputRawFileFolder": {
+										"value": {
+											"value": "@pipeline().parameters.DestinationRawFolder",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"InputRawFileSystem": {
+										"value": {
+											"value": "@pipeline().parameters.DestinationRawFileSystem",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"L1TransformID": {
+										"value": {
+											"value": "@item().L1TransformID",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									},
+									"NotebookName": {
+										"value": {
+											"value": "@item().NotebookName",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"NotebookPath": {
+										"value": {
+											"value": "@item().NotebookPath",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"LookupColumns": {
+										"value": {
+											"value": "@item().LookupColumns",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputEntityName": {
+										"value": {
+											"value": "@item().OutputEntityName",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputEntityWriteMode": {
+										"value": {
+											"value": "@item().OutputEntityWriteMode",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputEntityFolder": {
+										"value": {
+											"value": "@item().OutputEntityFolder",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputEntityFileSystem": {
+										"value": {
+											"value": "@item().OutputEntityFileSystem",
+											"type": "Expression"
+										},
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "ControlDB",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Copy-RawZone",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Insert-IngestInstance",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": {
+							"value": "@pipeline().parameters.SourceQuery",
+							"type": "Expression"
+						},
+						"readBehavior": "query"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 32
+				},
+				"inputs": [
+					{
+						"referenceName": "Salesforce_Dataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"ObjectName": {
+								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							},
+							"KeyVaultEnvironmentURL": {
+								"value": "@pipeline().parameters.KeyVaultEnvironmentURL",
+								"type": "Expression"
+							},
+							"KeyVaultUserName": {
+								"value": "@pipeline().parameters.KeyVaultUserName",
+								"type": "Expression"
+							},
+							"KeyVaultPassword": {
+								"value": "@pipeline().parameters.KeyVaultPassword",
+								"type": "Expression"
+							},
+							"KeyVaultSecurityToken": {
+								"value": "@pipeline().parameters.KeyVaultSecurityToken",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Bronze_Parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSystem": {
+								"value": "@pipeline().parameters.DestinationRawFileSystem",
+								"type": "Expression"
+							},
+							"Folder": {
+								"value": "@pipeline().parameters.DestinationRawFolder",
+								"type": "Expression"
+							},
+							"File": {
+								"value": "@variables('_DestinationRawFile')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Set-ADFIngestPipelineRunID",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "_ADFIngestPipelineRunID",
+					"value": {
+						"value": "@pipeline().RunId",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Get-TransformDefinition-L2",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Insert-TransformInstance-L1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformDefinition_L2]",
+						"storedProcedureParameters": {
+							"WatermarkDate": {
+								"type": "DateTime",
+								"value": {
+									"value": "@pipeline().parameters.DataFromTimestamp",
+									"type": "Expression"
+								}
+							},
+							"IngestID": {
+								"type": "Int32",
+								"value": {
+									"value": "@pipeline().parameters.IngestID",
+									"type": "Expression"
+								}
+							},
+							"InputType": {
+								"type": "String",
+								"value": "Raw"
+							}
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Insert-TransformInstance-L2",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get-TransformDefinition-L2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get-TransformDefinition-L2').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Insert-TransformInstance-L2-StoredProc",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[ELT].[InsertTransformInstance_L2]",
+								"storedProcedureParameters": {
+									"IngestADFPipelineRunID": {
+										"value": {
+											"value": "@variables('_ADFIngestPipelineRunID')",
+											"type": "Expression"
+										},
+										"type": "Guid"
+									},
+									"IngestID": {
+										"value": {
+											"value": "@item().IngestID",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									},
+									"InputEntityName": {
+										"value": {
+											"value": "@item().InputEntityName",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"L1TransformID": {
+										"value": {
+											"value": "@item().L1TransformID",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									},
+									"L2TransformID": {
+										"value": {
+											"value": "@item().L2TransformID",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									},
+									"NotebookName": {
+										"value": {
+											"value": "@item().NotebookName",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"NotebookPath": {
+										"value": {
+											"value": "@item().NotebookPath",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputL2CuratedFile": {
+										"value": {
+											"value": "@item().OutputL2CuratedFile",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputL2CuratedFileFormat": {
+										"value": {
+											"value": "@item().OutputL2CuratedFileFormat",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputL2CuratedFileWriteMode": {
+										"value": {
+											"value": "@item().OutputL2CuratedFileWriteMode",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputL2CuratedFolder": {
+										"value": {
+											"value": "@item().OutputL2CuratedFolder",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"OutputL2CurateFileSystem": {
+										"value": {
+											"value": "@item().OutputL2CurateFileSystem",
+											"type": "Expression"
+										},
+										"type": "String"
+									},
+									"MaxRetries": {
+										"value": {
+											"value": "@item().MaxRetries",
+											"type": "Expression"
+										},
+										"type": "Int"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "ControlDB",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Update-Success-IngestDefinition",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Update-Success-IngestInstance",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[ELT].[UpdateIngestDefinition]",
+					"storedProcedureParameters": {
+						"IngestID": {
+							"value": {
+								"value": "@pipeline().parameters.IngestID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"LastWatermarkDate": {
+							"value": {
+								"value": "@if(equals(activity('Get-Stats').output.firstRow.DATATOTIMESTAMP, NULL),pipeline().parameters.DataToTimestamp,activity('Get-Stats').output.firstRow.DATATOTIMESTAMP)",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						},
+						"IngestStatus": {
+							"value": "Success",
+							"type": "String"
+						},
+						"ReloadFlag": {
+							"value": {
+								"value": "@if(equals(pipeline().parameters.ReloadFlag,true),1,0)",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ControlDB",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Get-Stats",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Insert-IngestInstance",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceSource",
+						"query": {
+							"value": "@pipeline().parameters.StatQuery",
+							"type": "Expression"
+						},
+						"readBehavior": "query"
+					},
+					"dataset": {
+						"referenceName": "Salesforce_Dataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"ObjectName": {
+								"value": "@pipeline().parameters.EntityName",
+								"type": "Expression"
+							},
+							"KeyVaultEnvironmentURL": {
+								"value": "@pipeline().parameters.KeyVaultEnvironmentURL",
+								"type": "Expression"
+							},
+							"KeyVaultUserName": {
+								"value": "@pipeline().parameters.KeyVaultUserName",
+								"type": "Expression"
+							},
+							"KeyVaultPassword": {
+								"value": "@pipeline().parameters.KeyVaultPassword",
+								"type": "Expression"
+							},
+							"KeyVaultSecurityToken": {
+								"value": "@pipeline().parameters.KeyVaultSecurityToken",
+								"type": "Expression"
+							}
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"IngestID": {
+				"type": "string",
+				"defaultValue": "4"
+			},
+			"SourceSystemName": {
+				"type": "string",
+				"defaultValue": "MBS"
+			},
+			"StreamName": {
+				"type": "string",
+				"defaultValue": "Contract"
+			},
+			"EntityName": {
+				"type": "string",
+				"defaultValue": "Contacts"
+			},
+			"DataFromTimestamp": {
+				"type": "string",
+				"defaultValue": "2019-07-15 00:00:01.0000000"
+			},
+			"DataToTimestamp": {
+				"type": "string",
+				"defaultValue": "2019-07-16 00:00:00.0000000"
+			},
+			"RunSequence": {
+				"type": "string",
+				"defaultValue": "1"
+			},
+			"L1TransformationReqdFlag": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"L2TransformationReqdFlag": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"DestinationRawFileSystem": {
+				"type": "string",
+				"defaultValue": "raw-zone"
+			},
+			"DestinationRawFolder": {
+				"type": "string",
+				"defaultValue": "mbs/contract/2019/07/15"
+			},
+			"DestinationRawFile": {
+				"type": "string",
+				"defaultValue": "mbs_contract_20190715_00_GUID.parquet"
+			},
+			"SourceQuery": {
+				"type": "string",
+				"defaultValue": "select * from Contacts"
+			},
+			"StatQuery": {
+				"type": "string",
+				"defaultValue": "SELECT MIN(LAST_UPDATED) AS DataFromTimestamp, MAX(LAST_UPDATED) AS DataToTimestamp, count(1) as SourceCount FROM MBS.VWMBMDW_CONTRACT WHERE LAST_UPDATED BETWEEN '2019-07-15 00:00:00' AND '2019-07-16 00:00:00' WITH UR"
+			},
+			"ReloadFlag": {
+				"type": "bool",
+				"defaultValue": false
+			},
+			"KeyVaultEnvironmentURL": {
+				"type": "string",
+				"defaultValue": "Salesforce-EnvironmentURL"
+			},
+			"KeyVaultUserName": {
+				"type": "string",
+				"defaultValue": "Salesforce-UserName"
+			},
+			"KeyVaultPassword": {
+				"type": "string",
+				"defaultValue": "Salesforce-Password"
+			},
+			"KeyVaultSecurityToken": {
+				"type": "string",
+				"defaultValue": "Salesforce-SecurityToken"
+			}
+		},
+		"variables": {
+			"_ADFIngestPipelineRunID": {
+				"type": "String"
+			},
+			"_DestinationRawFile": {
+				"type": "String"
+			},
+			"_StatFileFolder": {
+				"type": "String"
+			},
+			"_StatFile": {
+				"type": "String"
+			},
+			"_StatFileSystem": {
+				"type": "String"
+			},
+			"_DataFromTimestamp": {
+				"type": "String"
+			},
+			"_DataToTimestamp": {
+				"type": "String"
+			},
+			"_SourceCount": {
+				"type": "String"
+			},
+			"_MaxDeltaDate": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Salesforce"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -5,29 +5,11 @@
 			"referenceName": "ControlDB",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"Table": {
-				"type": "string"
-			},
-			"Schema": {
-				"type": "string"
-			}
-		},
 		"folder": {
-			"name": "Azure/Datalake"
+			"name": "Azure/Databases"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": {
-				"value": "@dataset().Schema",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@dataset().Table",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	}
 }
