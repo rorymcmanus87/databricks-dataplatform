@@ -221,7 +221,7 @@
 		"parameters": {
 			"SourceSystemName": {
 				"type": "string",
-				"defaultValue": "Adventureworks"
+				"defaultValue": "Salesforce"
 			},
 			"StreamName": {
 				"type": "string",
