@@ -794,7 +794,7 @@
 			},
 			"StreamName": {
 				"type": "string",
-				"defaultValue": "User"
+				"defaultValue": "%"
 			},
 			"MaxIngestInstance": {
 				"type": "int",
