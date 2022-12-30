@@ -1,9 +1,0 @@
-{
-	"name": "adf-datamastery-dev-01",
-	"location": "australiaeast",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "b9273230-9766-4f04-8e25-9ac095616d2e",
-		"tenantId": "f0f8256c-b841-494a-acce-f0bd875313f1"
-	}
-}
