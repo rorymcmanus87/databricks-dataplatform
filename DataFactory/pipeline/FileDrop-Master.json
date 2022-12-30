@@ -1,0 +1,835 @@
+{
+	"name": "FileDrop-Master",
+	"properties": {
+		"description": "Generic pipeline for files dropped into Drop Zone",
+		"activities": [
+			{
+				"name": "Get-IngestDefinition-FileDrop",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Set-SourceSystemName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set-StreamName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetIngestDefinition_FileDrop]",
+						"storedProcedureParameters": {
+							"SourceFile": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.SourceFile",
+									"type": "Expression"
+								}
+							},
+							"SourceFolder": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.SourceFolder",
+									"type": "Expression"
+								}
+							},
+							"SourceSystemName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varSourceSystemName')",
+									"type": "Expression"
+								}
+							},
+							"StreamName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varStreamName')",
+									"type": "Expression"
+								}
+							}
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "FileDrop-Ingest",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Get-IngestDefinition-FileDrop",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "FileDrop-Ingest",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"IngestID": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.IngestID",
+							"type": "Expression"
+						},
+						"SourceSystemName": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceSystemName",
+							"type": "Expression"
+						},
+						"StreamName": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.StreamName",
+							"type": "Expression"
+						},
+						"SourceFileDropFileSystem": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFileSystem",
+							"type": "Expression"
+						},
+						"SourceFileDropFolder": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFolder",
+							"type": "Expression"
+						},
+						"SourceFileDropFile": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDropFile",
+							"type": "Expression"
+						},
+						"DestinationRawFileSystem": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFileSystem",
+							"type": "Expression"
+						},
+						"DestinationRawFolder": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFolder",
+							"type": "Expression"
+						},
+						"DestinationRawFile": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DestinationRawFile",
+							"type": "Expression"
+						},
+						"ReloadFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.ReloadFlag",
+							"type": "Expression"
+						},
+						"L1TransformationReqdFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.L1TransformationReqdFlag",
+							"type": "Expression"
+						},
+						"L2TransformationReqdFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.L2TransformationReqdFlag",
+							"type": "Expression"
+						},
+						"DataFormat": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataFormat",
+							"type": "Expression"
+						},
+						"SourceFileDelimiter": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileDelimiter",
+							"type": "Expression"
+						},
+						"SourceFileHeaderFlag": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.SourceFileHeaderFlag",
+							"type": "Expression"
+						},
+						"DataMapping": {
+							"value": "@activity('Get-IngestDefinition-FileDrop').output.firstRow.DataMapping",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Get-L1-Transform",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "FileDrop-Ingest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L1]",
+						"storedProcedureParameters": {
+							"DelayL1TransformationFlag": {
+								"type": "Int32",
+								"value": "0"
+							},
+							"SourceSystemName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varSourceSystemName')",
+									"type": "Expression"
+								}
+							},
+							"StreamName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varStreamName')",
+									"type": "Expression"
+								}
+							}
+						},
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "L1-Transform",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get-L1-Transform",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get-L1-Transform').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Check-L1-Instance-Status",
+							"description": "Check the current L1 Instance is not running or completed.",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L1]",
+									"storedProcedureParameters": {
+										"L1TransformInstanceId": {
+											"type": "Int32",
+											"value": {
+												"value": "@item().L1TransformInstanceID",
+												"type": "Expression"
+											}
+										},
+										"SourceSystemName": {
+											"type": "String",
+											"value": {
+												"value": "@variables('varSourceSystemName')",
+												"type": "Expression"
+											}
+										},
+										"StreamName": {
+											"type": "String",
+											"value": {
+												"value": "@variables('varStreamName')",
+												"type": "Expression"
+											}
+										}
+									},
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
+								},
+								"firstRowOnly": true
+							}
+						},
+						{
+							"name": "If-L1-Transform-Pipeline",
+							"description": "If Lookup returns a row continue",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Check-L1-Instance-Status",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@not(equals(activity('Check-L1-Instance-Status').output?.firstRow, null)) ",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Generic-L1Transform",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L1-Transform",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"L1TransformInstanceID": {
+													"value": "@item().L1TransformInstanceID",
+													"type": "Expression"
+												},
+												"L1TransformID": {
+													"value": "@item().L1TransformID",
+													"type": "Expression"
+												},
+												"IngestID": {
+													"value": "@item().IngestID",
+													"type": "Expression"
+												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												},
+												"NotebookName": {
+													"value": "@item().NotebookName",
+													"type": "Expression"
+												},
+												"NotebookPath": {
+													"value": "@item().NotebookPath",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set-SourceSystemName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varSourceSystemName",
+					"value": {
+						"value": "@{split(pipeline().parameters.SourceFile, '_')[0]}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set-StreamName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varStreamName",
+					"value": {
+						"value": "@{split(pipeline().parameters.SourceFile, '_')[1]}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Get-L2-Transform-DeltaLake",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "L1-Transform",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+						"storedProcedureParameters": {
+							"SourceSystemName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varSourceSystemName')",
+									"type": "Expression"
+								}
+							},
+							"StreamName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varStreamName')",
+									"type": "Expression"
+								}
+							},
+							"DelayL2TransformationFlag": {
+								"type": "Int16",
+								"value": "0"
+							},
+							"InputType": {
+								"type": "String",
+								"value": "DeltaLake"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "L2-Transform-DeltaLake",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get-L2-Transform-DeltaLake",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get-L2-Transform-DeltaLake').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Check-L2-Instance-Status-DeltaLake",
+							"description": "Check the current L2 Instance is not running or completed.",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+									"storedProcedureParameters": {
+										"L2TransformInstanceId": {
+											"type": "Int32",
+											"value": {
+												"value": "@item().L2TransformInstanceID",
+												"type": "Expression"
+											}
+										},
+										"SourceSystemName": {
+											"type": "String",
+											"value": {
+												"value": "@variables('varSourceSystemName')",
+												"type": "Expression"
+											}
+										},
+										"StreamName": {
+											"type": "String",
+											"value": {
+												"value": "@variables('varStreamName')",
+												"type": "Expression"
+											}
+										}
+									},
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
+								},
+								"firstRowOnly": true
+							}
+						},
+						{
+							"name": "If-L2-Transform-Pipeline-DeltaLake",
+							"description": "If Lookup returns a row continue",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Check-L2-Instance-Status-DeltaLake",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@not(equals(activity('Check-L2-Instance-Status-DeltaLake').output?.firstRow, null)) ",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Generic-L2Transform-DW",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L2-Transform",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"L2TransformInstanceID": {
+													"value": "@item().L2TransformInstanceID",
+													"type": "Expression"
+												},
+												"L2TransformID": {
+													"value": "@item().L2TransformID",
+													"type": "Expression"
+												},
+												"IngestID": {
+													"value": "@item().IngestID",
+													"type": "Expression"
+												},
+												"L1TransformID": {
+													"value": "@item().L1TransformID",
+													"type": "Expression"
+												},
+												"NotebookName": {
+													"value": "@item().NotebookName",
+													"type": "Expression"
+												},
+												"NotebookPath": {
+													"value": "@item().NotebookPath",
+													"type": "Expression"
+												},
+												"ReRunL2TransformFlag": {
+													"value": "@item().ReRunL2TransformFlag",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												},
+												"DataFromNumber": {
+													"value": "@item().DataFromNumber",
+													"type": "Expression"
+												},
+												"DataToNumber": {
+													"value": "@item().DataToNumber",
+													"type": "Expression"
+												},
+												"DataFromTimestamp": {
+													"value": "@item().DataFromTimestamp",
+													"type": "Expression"
+												},
+												"DataToTimestamp": {
+													"value": "@item().DataToTimestamp",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Get-L2-Transform-Raw",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "FileDrop-Ingest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+						"storedProcedureParameters": {
+							"SourceSystemName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varSourceSystemName')",
+									"type": "Expression"
+								}
+							},
+							"StreamName": {
+								"type": "String",
+								"value": {
+									"value": "@variables('varStreamName')",
+									"type": "Expression"
+								}
+							},
+							"DelayL2TransformationFlag": {
+								"type": "Int16",
+								"value": "0"
+							},
+							"InputType": {
+								"type": "String",
+								"value": "Raw"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ControlDB_Dataset",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "L2-Transform-Raw",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get-L2-Transform-Raw",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get-L2-Transform-Raw').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Check-L2-Instance-Status-Raw",
+							"description": "Check the current L2 Instance is not running or completed.",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderStoredProcedureName": "[ELT].[GetTransformInstance_L2]",
+									"storedProcedureParameters": {
+										"L2TransformInstanceId": {
+											"type": "Int32",
+											"value": {
+												"value": "@item().L2TransformInstanceID",
+												"type": "Expression"
+											}
+										},
+										"SourceSystemName": {
+											"type": "String",
+											"value": {
+												"value": "@variables('varSourceSystemName')",
+												"type": "Expression"
+											}
+										},
+										"StreamName": {
+											"type": "String",
+											"value": {
+												"value": "@variables('varStreamName')",
+												"type": "Expression"
+											}
+										}
+									},
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "ControlDB_Dataset",
+									"type": "DatasetReference"
+								},
+								"firstRowOnly": true
+							}
+						},
+						{
+							"name": "If-L2-Transform-Pipeline-Raw",
+							"description": "If Lookup returns a row continue",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Check-L2-Instance-Status-Raw",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@not(equals(activity('Check-L2-Instance-Status-Raw').output?.firstRow, null)) ",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Generic-L2Transform-Raw",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Generic-L2-Transform",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"L2TransformInstanceID": {
+													"value": "@item().L2TransformInstanceID",
+													"type": "Expression"
+												},
+												"L2TransformID": {
+													"value": "@item().L2TransformID",
+													"type": "Expression"
+												},
+												"IngestID": {
+													"value": "@item().IngestID",
+													"type": "Expression"
+												},
+												"L1TransformID": {
+													"value": "@item().L1TransformID",
+													"type": "Expression"
+												},
+												"NotebookName": {
+													"value": "@item().NotebookName",
+													"type": "Expression"
+												},
+												"NotebookPath": {
+													"value": "@item().NotebookPath",
+													"type": "Expression"
+												},
+												"ReRunL2TransformFlag": {
+													"value": "@item().ReRunL2TransformFlag",
+													"type": "Expression"
+												},
+												"MaxRetries": {
+													"value": "@item().MaxRetries",
+													"type": "Expression"
+												},
+												"NotebookParameters": {
+													"value": "@item().NotebookParameters",
+													"type": "Expression"
+												},
+												"DataFromNumber": {
+													"value": "@item().DataFromNumber",
+													"type": "Expression"
+												},
+												"DataToNumber": {
+													"value": "@item().DataToNumber",
+													"type": "Expression"
+												},
+												"DataFromTimestamp": {
+													"value": "@item().DataFromTimestamp",
+													"type": "Expression"
+												},
+												"DataToTimestamp": {
+													"value": "@item().DataToTimestamp",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"SourceFile": {
+				"type": "string",
+				"defaultValue": "ManualCRM_Sales_20221021.csv"
+			},
+			"SourceFolder": {
+				"type": "string",
+				"defaultValue": "Manual"
+			},
+			"SecretName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"varSourceSystemName": {
+				"type": "String"
+			},
+			"varStreamName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "File Drop"
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

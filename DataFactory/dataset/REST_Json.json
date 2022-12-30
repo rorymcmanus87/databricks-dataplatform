@@ -1,0 +1,35 @@
+{
+	"name": "REST_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RestAnonymous",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"KeyVaultBaseURL": {
+					"value": "@dataset().KeyVaultSecretBaseURL",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"EntityName": {
+				"type": "string"
+			},
+			"KeyVaultSecretBaseURL": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Azure/REST"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "@dataset().EntityName",
+				"type": "Expression"
+			}
+		},
+		"schema": []
+	}
+}

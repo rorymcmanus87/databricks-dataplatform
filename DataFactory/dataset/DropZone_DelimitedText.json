@@ -1,0 +1,70 @@
+{
+	"name": "DropZone_DelimitedText",
+	"properties": {
+		"description": "Generic dataset used to ingest csv, tab separated or any delimited text file from drop zone",
+		"linkedServiceName": {
+			"referenceName": "DropZone",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"container": {
+				"type": "string"
+			},
+			"folder": {
+				"type": "string"
+			},
+			"file": {
+				"type": "string"
+			},
+			"colDelimiter": {
+				"type": "string"
+			},
+			"headerFlag": {
+				"type": "bool"
+			}
+		},
+		"folder": {
+			"name": "Azure/Datalake"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folder",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().container",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": {
+				"value": "@dataset().colDelimiter",
+				"type": "Expression"
+			},
+			"escapeChar": "\"",
+			"firstRowAsHeader": {
+				"value": "@dataset().headerFlag",
+				"type": "Expression"
+			},
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "ControlDB_Dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ControlDB",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Azure/Databases"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

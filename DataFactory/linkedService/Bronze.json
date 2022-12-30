@@ -1,0 +1,11 @@
+{
+	"name": "Bronze",
+	"properties": {
+		"description": "Bronze Zone of Datalake Storage",
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://dlsdatamasterydev02.dfs.core.windows.net/"
+		}
+	}
+}
