@@ -1,7 +1,7 @@
 {
 	"name": "DropZone - File Created",
 	"properties": {
-		"description": "Event based trigger to load and process generic CSV",
+		"description": "Event based trigger to load and process generic CSV ",
 		"annotations": [],
 		"runtimeState": "Started",
 		"pipelines": [
