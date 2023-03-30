@@ -1,0 +1,69 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-datamastery-dev-01"
+		},
+		"Azure Daily_properties_API-Master_parameters_SourceSystemName": {
+			"type": "string",
+			"defaultValue": "Azure"
+		},
+		"Azure Daily_properties_API-Master_parameters_StreamName": {
+			"type": "string",
+			"defaultValue": "%"
+		},
+		"Azure Daily_properties_API-Master_parameters_MaxIngestInstance": {
+			"type": "string",
+			"defaultValue": "100"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Azure Daily')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Daily Trigger to Extract, Load and Transform data from Azure REST APIs",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "API-Master",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"SourceSystemName": "[parameters('Azure Daily_properties_API-Master_parameters_SourceSystemName')]",
+							"StreamName": "[parameters('Azure Daily_properties_API-Master_parameters_StreamName')]",
+							"MaxIngestInstance": "[parameters('Azure Daily_properties_API-Master_parameters_MaxIngestInstance')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-07-01T00:49:00",
+						"timeZone": "AUS Eastern Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								4
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -1,0 +1,259 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-datamastery-dev-01"
+		},
+		"ControlDB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ControlDB'"
+		},
+		"Delta Lake_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'Delta Lake'"
+		},
+		"DropZone_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'DropZone'"
+		},
+		"Silver_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Silver'"
+		},
+		"ADX_properties_typeProperties_endpoint": {
+			"type": "string",
+			"defaultValue": "https://datamastery.australiaeast.kusto.windows.net"
+		},
+		"ADX_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MyDatabase"
+		},
+		"Bronze_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsdatamasterydev02.dfs.core.windows.net/"
+		},
+		"Databricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0322-225607-42lo6d0c"
+		},
+		"DropZone_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsdatamasterydev01.dfs.core.windows.net/"
+		},
+		"KeyVault01_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://akvdatamasterydev01.vault.azure.net/"
+		},
+		"RestAnonymous_properties_typeProperties_url": {
+			"type": "object",
+			"defaultValue": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().KeyVaultBaseURL",
+					"type": "Expression"
+				}
+			}
+		},
+		"SQL Server_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "@linkedService().KeyVaultConnString"
+		},
+		"Salesforce_properties_typeProperties_environmentUrl": {
+			"type": "object",
+			"defaultValue": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().EnvironmentUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"Salesforce_properties_typeProperties_username": {
+			"type": "object",
+			"defaultValue": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().UserName",
+					"type": "Expression"
+				}
+			}
+		},
+		"Silver_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsdatamasterydev02.dfs.core.windows.net/"
+		},
+		"Azure Daily_properties_API-Master_parameters_SourceSystemName": {
+			"type": "string",
+			"defaultValue": "Azure"
+		},
+		"Azure Daily_properties_API-Master_parameters_StreamName": {
+			"type": "string",
+			"defaultValue": "%"
+		},
+		"Azure Daily_properties_API-Master_parameters_MaxIngestInstance": {
+			"type": "string",
+			"defaultValue": "100"
+		},
+		"DropZone - File Created_properties_FileDrop-Master_parameters_SourceFile": {
+			"type": "string",
+			"defaultValue": "@triggerBody().folderPath"
+		},
+		"DropZone - File Created_properties_FileDrop-Master_parameters_SourceFolder": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"DropZone - File Created_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/0050b161-81d7-4cad-ab40-279ecb440b43/resourceGroups/rg-datamastery-dev-01/providers/Microsoft.Storage/storageAccounts/dlsdatamasterydev01"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-datamastery-dev-01_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ControlDB_connectionString": {
+						"value": "[parameters('ControlDB_connectionString')]"
+					},
+					"Delta Lake_accessToken": {
+						"value": "[parameters('Delta Lake_accessToken')]"
+					},
+					"DropZone_accountKey": {
+						"value": "[parameters('DropZone_accountKey')]"
+					},
+					"Silver_accountKey": {
+						"value": "[parameters('Silver_accountKey')]"
+					},
+					"ADX_properties_typeProperties_endpoint": {
+						"value": "[parameters('ADX_properties_typeProperties_endpoint')]"
+					},
+					"ADX_properties_typeProperties_database": {
+						"value": "[parameters('ADX_properties_typeProperties_database')]"
+					},
+					"Bronze_properties_typeProperties_url": {
+						"value": "[parameters('Bronze_properties_typeProperties_url')]"
+					},
+					"DropZone_properties_typeProperties_url": {
+						"value": "[parameters('DropZone_properties_typeProperties_url')]"
+					},
+					"KeyVault01_properties_typeProperties_baseUrl": {
+						"value": "[parameters('KeyVault01_properties_typeProperties_baseUrl')]"
+					},
+					"Silver_properties_typeProperties_url": {
+						"value": "[parameters('Silver_properties_typeProperties_url')]"
+					},
+					"Databricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('Databricks_properties_typeProperties_existingClusterId')]"
+					},
+					"RestAnonymous_properties_typeProperties_url": {
+						"value": "[parameters('RestAnonymous_properties_typeProperties_url')]"
+					},
+					"SQL Server_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('SQL Server_properties_typeProperties_connectionString_secretName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-datamastery-dev-01_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Salesforce_properties_typeProperties_environmentUrl": {
+						"value": "[parameters('Salesforce_properties_typeProperties_environmentUrl')]"
+					},
+					"Salesforce_properties_typeProperties_username": {
+						"value": "[parameters('Salesforce_properties_typeProperties_username')]"
+					},
+					"DropZone - File Created_properties_FileDrop-Master_parameters_SourceFile": {
+						"value": "[parameters('DropZone - File Created_properties_FileDrop-Master_parameters_SourceFile')]"
+					},
+					"DropZone - File Created_properties_FileDrop-Master_parameters_SourceFolder": {
+						"value": "[parameters('DropZone - File Created_properties_FileDrop-Master_parameters_SourceFolder')]"
+					},
+					"DropZone - File Created_properties_typeProperties_scope": {
+						"value": "[parameters('DropZone - File Created_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-datamastery-dev-01_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-datamastery-dev-01_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Azure Daily_properties_API-Master_parameters_SourceSystemName": {
+						"value": "[parameters('Azure Daily_properties_API-Master_parameters_SourceSystemName')]"
+					},
+					"Azure Daily_properties_API-Master_parameters_StreamName": {
+						"value": "[parameters('Azure Daily_properties_API-Master_parameters_StreamName')]"
+					},
+					"Azure Daily_properties_API-Master_parameters_MaxIngestInstance": {
+						"value": "[parameters('Azure Daily_properties_API-Master_parameters_MaxIngestInstance')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-datamastery-dev-01_ArmTemplate_1')]"
+			]
+		}
+	]
+}

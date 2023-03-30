@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-datamastery-dev-01"
+		},
+		"ControlDB_connectionString": {
+			"value": ""
+		},
+		"Delta Lake_accessToken": {
+			"value": ""
+		},
+		"DropZone_accountKey": {
+			"value": ""
+		},
+		"Silver_accountKey": {
+			"value": ""
+		},
+		"ADX_properties_typeProperties_endpoint": {
+			"value": "https://datamastery.australiaeast.kusto.windows.net"
+		},
+		"ADX_properties_typeProperties_database": {
+			"value": "MyDatabase"
+		},
+		"Bronze_properties_typeProperties_url": {
+			"value": "https://dlsdatamasterydev02.dfs.core.windows.net/"
+		},
+		"Databricks_properties_typeProperties_existingClusterId": {
+			"value": "0322-225607-42lo6d0c"
+		},
+		"DropZone_properties_typeProperties_url": {
+			"value": "https://dlsdatamasterydev01.dfs.core.windows.net/"
+		},
+		"KeyVault01_properties_typeProperties_baseUrl": {
+			"value": "https://akvdatamasterydev01.vault.azure.net/"
+		},
+		"RestAnonymous_properties_typeProperties_url": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().KeyVaultBaseURL",
+					"type": "Expression"
+				}
+			}
+		},
+		"SQL Server_properties_typeProperties_connectionString_secretName": {
+			"value": "@linkedService().KeyVaultConnString"
+		},
+		"Salesforce_properties_typeProperties_environmentUrl": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().EnvironmentUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"Salesforce_properties_typeProperties_username": {
+			"value": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "KeyVault01",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().UserName",
+					"type": "Expression"
+				}
+			}
+		},
+		"Silver_properties_typeProperties_url": {
+			"value": "https://dlsdatamasterydev02.dfs.core.windows.net/"
+		},
+		"Azure Daily_properties_API-Master_parameters_SourceSystemName": {
+			"value": "Azure"
+		},
+		"Azure Daily_properties_API-Master_parameters_StreamName": {
+			"value": "%"
+		},
+		"Azure Daily_properties_API-Master_parameters_MaxIngestInstance": {
+			"value": "100"
+		},
+		"DropZone - File Created_properties_FileDrop-Master_parameters_SourceFile": {
+			"value": "@triggerBody().folderPath"
+		},
+		"DropZone - File Created_properties_FileDrop-Master_parameters_SourceFolder": {
+			"value": "@triggerBody().fileName"
+		},
+		"DropZone - File Created_properties_typeProperties_scope": {
+			"value": "/subscriptions/0050b161-81d7-4cad-ab40-279ecb440b43/resourceGroups/rg-datamastery-dev-01/providers/Microsoft.Storage/storageAccounts/dlsdatamasterydev01"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
